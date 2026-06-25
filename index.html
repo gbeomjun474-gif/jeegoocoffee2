@@ -314,7 +314,7 @@
     <!-- =========================================
          ✨ 자바스크립트 (타이핑 효과 & 팝업창) ✨
     ========================================= -->
-    <script>
+   <script>
         // 1. 타이핑 애니메이션 로직
         document.addEventListener("DOMContentLoaded", function() {
             const titleContainer = document.getElementById("typing-text");
@@ -323,21 +323,15 @@
             
             function typeWriter() {
                 if (i < fullText.length) {
-                    // 한 글자씩 가져오기
                     let currentText = fullText.substring(0, i + 1);
-                    
-                    // '얼마'라는 글자가 완성되면 라이트블루 색상 스팬 태그 입히기
                     currentText = currentText.replace("얼마", "<span class='highlight'>얼마</span>");
-                    
                     titleContainer.innerHTML = currentText;
                     i++;
                     
-                    // 글자 치는 속도 조절 (띄어쓰기에서는 살짝 빠름)
                     let speed = fullText.charAt(i-1) === " " ? 40 : 100;
                     setTimeout(typeWriter, speed);
                 }
             }
-            // 0.5초 뒤 타이핑 시작
             setTimeout(typeWriter, 500);
         });
 
@@ -356,22 +350,22 @@
                 closeModal();
             }
         }
+
         // 3. 구글 스프레드시트 연동 로직
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxUF2wCP-wmDzoUOsguh3ZgJr2Mjk5wCH8xNuSigSt7u25jOZECJoOPnzT0mTXko9afyA/exec'; // 3단계에서 복사한 URL을 여기에 넣으세요!
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxUF2wCP-wmDzoUOsguh3ZgJr2Mjk5wCH8xNuSigSt7u25jOZECJoOPnzT0mTXko9afyA/exec';
         const forms = document.querySelectorAll('form[name="google-sheet"]');
 
         forms.forEach(form => {
             form.addEventListener('submit', e => {
                 e.preventDefault(); // 기본 새로고침 방지
                 
-                // 버튼 상태를 '전송 중'으로 변경하여 중복 클릭 방지
                 const btn = form.querySelector('.submit-btn');
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '전송 중...';
                 btn.disabled = true;
 
-                // 구글 시트로 데이터 쏘기
-                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                // 구글 시트로 데이터 쏘기 (에러 방지를 위해 mode: 'no-cors' 옵션 추가!)
+                fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
                     .then(response => {
                         alert('상담 신청이 완료되었습니다! 확인 후 빠르게 연락드리겠습니다.');
                         form.reset(); // 폼 비우기
