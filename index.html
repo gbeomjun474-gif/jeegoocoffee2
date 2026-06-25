@@ -22,7 +22,20 @@
         .logo-img { height: 40px; display: block; margin: 0 auto; }
 
         /* =========================================
-           ✨ 3. 히어로 섹션 (패럴랙스 + 타이핑 효과) ✨
+           ✨ 3. 스크롤 슬라이드 애니메이션 (새로 추가) ✨
+        ========================================= */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px); /* 처음에 아래로 40px 내려가 있음 */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0); /* 스크롤하면 제자리로 스르륵 올라옴 */
+        }
+
+        /* =========================================
+           4. 히어로 섹션 (패럴랙스 + 타이핑 효과)
         ========================================= */
         .hero { 
             padding: 150px 20px; 
@@ -34,53 +47,26 @@
             color: #fff; 
             text-align: center; 
         }
-        /* 타이핑되는 글자 스타일 */
         .hero h1 { font-size: 64px; font-weight: 900; margin-bottom: 24px; word-break: keep-all; line-height: 1.2; letter-spacing: -2px; text-shadow: 0 4px 15px rgba(0,0,0,0.3); min-height: 80px; }
         .hero h1 span.highlight { color: #E0E5E9; } 
-        /* 깜빡이는 커서 효과 */
         .cursor { display: inline-block; width: 4px; height: 50px; background-color: #E0E5E9; vertical-align: text-bottom; margin-left: 8px; animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
-
         .hero p { font-size: 22px; margin-bottom: 50px; color: #E0E5E9; word-break: keep-all; font-weight: 300; }
         .btn-primary { display: inline-block; padding: 20px 45px; background-color: #E0E5E9; color: #0051A1; font-size: 22px; font-weight: 800; border-radius: 8px; transition: 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.3); cursor: pointer; border: none; width: auto; }
         .btn-primary:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
 
-      /* =========================================
-           ✨ 4. 무한 롤링 텍스트 (완벽한 끊김 방지 구조) ✨
+        /* =========================================
+           5. 무한 롤링 텍스트 (Marquee)
         ========================================= */
-        .marquee-section {
-            background-color: #E0E5E9;
-            color: #0051A1; 
-            padding: 12px 0;
-            display: flex; /* 그룹 2개를 가로로 완벽히 나열 */
-            overflow: hidden;
-            border-bottom: 1px solid #ccc;
-            white-space: nowrap;
-        }
-        .marquee-content {
-            display: flex;
-            flex-shrink: 0; /* 창 크기가 줄어도 글자가 찌그러지지 않게 방지 */
-            animation: rolling 20s linear infinite; 
-            padding-right: 30px; /* 첫 번째 그룹과 두 번째 그룹 사이의 연결부 여백 */
-        }
-        .marquee-content span {
-            font-size: 20px;
-            font-weight: 800;
-            margin-right: 30px; /* 글자 사이 간격 */
-            letter-spacing: -0.5px;
-        }
-        .marquee-content span:last-child {
-            margin-right: 0; /* 각 그룹의 마지막 글자 여백을 없애서 간격을 일정하게 맞춤 */
-        }
-        @keyframes rolling {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); } /* 내 그룹의 길이만큼 완벽히 넘어가면 뒤에 오던 그룹이 그 자리를 메꿈 */
-        }
+        .marquee-section { background-color: #E0E5E9; color: #0051A1; padding: 12px 0; display: flex; overflow: hidden; border-bottom: 1px solid #ccc; white-space: nowrap; }
+        .marquee-content { display: flex; flex-shrink: 0; animation: rolling 20s linear infinite; padding-right: 30px; }
+        .marquee-content span { font-size: 20px; font-weight: 800; margin-right: 30px; letter-spacing: -0.5px; }
+        .marquee-content span:last-child { margin-right: 0; }
+        @keyframes rolling { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         .marquee-section:hover .marquee-content { animation-play-state: paused; }
 
-        
         /* =========================================
-           5. 경쟁력 섹션
+           6. 경쟁력 섹션
         ========================================= */
         .features { padding: 100px 20px; background: #fff; }
         .section-title { font-size: 36px; font-weight: 800; margin-bottom: 60px; color: #0051A1; letter-spacing: -1px; word-break: keep-all; }
@@ -91,14 +77,14 @@
         .card p { color: #555; font-size: 17px; word-break: keep-all; line-height: 1.6; }
 
         /* =========================================
-           6. 중간 배너 (패럴랙스)
+           7. 중간 배너 (패럴랙스)
         ========================================= */
         .parallax-banner { padding: 100px 20px; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('dudu.jpg'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; color: #fff; text-align: center; }
         .parallax-banner h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
         .parallax-banner p { font-size: 18px; font-weight: 300; color: #ddd; }
 
         /* =========================================
-           7. 사진 갤러리 섹션
+           8. 사진 갤러리 섹션
         ========================================= */
         .photo-section { padding: 80px 20px; background-color: #f8fafd; border-top: 1px solid #E0E5E9; }
         .photo-section .section-title { text-align: center; margin-bottom: 50px; }
@@ -109,7 +95,7 @@
         .photo-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,81,161,0.9), transparent); color: #fff; padding: 20px 15px 15px; font-weight: 700; font-size: 18px; text-align: center; }
 
         /* =========================================
-           8. 하단 고정 폼
+           9. 하단 고정 폼 & 전화연결 스타일
         ========================================= */
         .cta-section { padding: 90px 20px; background-color: #E0E5E9; }
         .cta-section .section-title { color: #0051A1; margin-bottom: 40px; }
@@ -121,24 +107,12 @@
         .submit-btn { width: 100%; padding: 20px; background-color: #0051A1; color: #fff; font-size: 20px; font-weight: 800; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; -webkit-appearance: none; }
         .submit-btn:hover { background-color: #003d7a; }
 
-        /* =========================================
-           ✨ 전화 문의 (다이렉트 콜) 스타일 ✨
-        ========================================= */
         .direct-call { margin-top: 25px; font-size: 15px; color: #666; text-align: center; }
         .direct-call a { color: #0051A1; font-weight: 800; font-size: 20px; text-decoration: none; margin-left: 5px; display: inline-block; transition: 0.2s; }
         .direct-call a:hover { color: #003d7a; transform: scale(1.05); }
-        
+
         /* =========================================
-           9. 팝업창 스타일
-        ========================================= */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); padding: 15px; }
-        .modal-content { background: #fff; padding: 50px 40px; border-radius: 16px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out forwards; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 32px; cursor: pointer; color: #999; font-weight: 300; transition: 0.2s; line-height: 1; }
-        .close-btn:hover { color: #0051A1; }
-        
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-      /* =========================================
-           ✨ 추가된 약관 동의 & 푸터 스타일 ✨
+           10. 푸터 (사업자 정보 & 약관 동의)
         ========================================= */
         .terms-group { margin-top: 15px; margin-bottom: 25px; text-align: left; font-size: 14px; color: #555; }
         .terms-group label { display: flex; align-items: center; cursor: pointer; font-weight: normal; }
@@ -147,16 +121,20 @@
 
         footer { padding: 50px 20px; background: #f8fafd; border-top: 1px solid #E0E5E9; color: #666; font-size: 14px; line-height: 1.8; text-align: left; }
         .footer-links { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
-        .footer-links a { margin-right: 15px; color: #333; }
+        .footer-links a { margin-right: 15px; color: #333; transition: 0.2s; }
+        .footer-links a:hover { color: #0051A1; }
         .footer-links a.privacy { font-weight: 800; color: #0051A1; }
         .footer-info p { margin-bottom: 5px; }
         .copyright { margin-top: 20px; color: #999; font-size: 13px; }
-        
-        /* 푸터 모바일 중앙 정렬 */
-        @media (max-width: 768px) {
-            footer { text-align: center; padding: 40px 15px; }
-            .terms-group { font-size: 13px; }
-        }
+
+        /* =========================================
+           11. 팝업창 스타일
+        ========================================= */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); padding: 15px; }
+        .modal-content { background: #fff; padding: 50px 40px; border-radius: 16px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out forwards; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 32px; cursor: pointer; color: #999; font-weight: 300; transition: 0.2s; line-height: 1; }
+        .close-btn:hover { color: #0051A1; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* =========================================
            📱 모바일 화면 최적화
@@ -165,19 +143,13 @@
             header { padding: 12px 0; }
             .logo-img { height: 35px; }
             .hero { padding: 100px 15px; background-attachment: scroll; }
-            
-            /* 모바일 타이핑 글자 크기 조정 */
             .hero h1 { font-size: 34px; margin-bottom: 16px; letter-spacing: -1px; min-height: 50px; }
             .cursor { height: 30px; margin-left: 5px; }
-            
             .hero p { font-size: 16px; margin-bottom: 35px; }
             .btn-primary { padding: 16px 30px; font-size: 18px; width: 100%; max-width: 320px; }
-            
-             /* 모바일 롤링 텍스트 최적화 */
             .marquee-section { padding: 8px 0; }
             .marquee-content { padding-right: 15px; } 
             .marquee-content span { font-size: 16px; margin-right: 15px; }
-
             .features { padding: 60px 15px; }
             .section-title { font-size: 26px; margin-bottom: 35px; letter-spacing: -0.5px; }
             .grid-3 { gap: 15px; }
@@ -198,6 +170,8 @@
             .submit-btn { padding: 16px; font-size: 18px; border-radius: 8px; }
             .modal-content { padding: 40px 20px 30px 20px; }
             .modal-content h2 { font-size: 24px; }
+            footer { text-align: center; padding: 40px 15px; }
+            .terms-group { font-size: 13px; }
         }
     </style>
 </head>
@@ -211,26 +185,21 @@
         </div>
     </header>
 
-    <!-- 1. 히어로 섹션 (자바스크립트로 텍스트가 타이핑됩니다) -->
     <section class="hero">
-        <div class="container">
-            <!-- 글자가 써질 빈 공간과 깜빡이는 커서 -->
+        <div class="container fade-in">
             <h1><span id="typing-text"></span><span class="cursor"></span></h1>
             <p>파푸아뉴기니 원두 직수입으로 원가는 낮추고 수익은 극대화했습니다.<br>마진율로 증명하는 튼튼한 브랜드, 지구커피와 함께하세요.</p>
             <button onclick="openModal()" class="btn-primary">예상 수익금 확인하기</button>
         </div>
     </section>
 
-   <!-- ✨ 2. 무한 롤링 텍스트 (Marquee) ✨ -->
-    <div class="marquee-section">
-        <!-- 첫 번째 텍스트 묶음 -->
+    <div class="marquee-section fade-in">
         <div class="marquee-content">
             <span>🇵🇬 파푸아뉴기니 다이렉트 무역</span>
             <span>🔥 자체 로스팅 팩토리</span>
             <span>💰 압도적인 원가율 달성</span>
             <span>🤝 거품 없는 투명한 창업 비용</span>
         </div>
-        <!-- 끊김 없이 이어지도록 완벽하게 똑같은 묶음을 하나 더 배치합니다 -->
         <div class="marquee-content">
             <span>🇵🇬 파푸아뉴기니 다이렉트 무역</span>
             <span>🔥 자체 로스팅 팩토리</span>
@@ -239,20 +208,19 @@
         </div>
     </div>
 
-    <!-- 3. 경쟁력 섹션 -->
     <section class="features text-center">
         <div class="container">
-            <h2 class="section-title">왜 지구커피 가맹점은 마진이 압도적일까요?</h2>
+            <h2 class="section-title fade-in">왜 지구커피 가맹점은 마진이 압도적일까요?</h2>
             <div class="grid-3">
-                <div class="card">
+                <div class="card fade-in">
                     <h3>🇵🇬 파푸아뉴기니 직수입</h3>
                     <p>중간 유통사를 거치지 않습니다. 산지에서 직접 눈으로 확인한 고품질 생두만 다이렉트로 수입합니다.</p>
                 </div>
-                <div class="card">
+                <div class="card fade-in" style="transition-delay: 0.1s;">
                     <h3>🔥 자체 로스팅 시스템</h3>
                     <p>외주에 맡기지 않고 본사에서 직접 로스팅하여, 뛰어난 맛과 향을 유지하면서 단가를 낮췄습니다.</p>
                 </div>
-                <div class="card">
+                <div class="card fade-in" style="transition-delay: 0.2s;">
                     <h3>💰 저가 커피보다 싼 원가</h3>
                     <p>최상급 원두를 흔한 저가 프랜차이즈보다 훨씬 저렴한 단가로 공급하여 점주님의 순수익을 극대화합니다.</p>
                 </div>
@@ -260,28 +228,26 @@
         </div>
     </section>
 
-    <!-- 4. 중간 배너 섹션 (패럴랙스) -->
-  <section class="parallax-banner">
-        <div class="container">
+    <section class="parallax-banner">
+        <div class="container fade-in">
             <h2>지속가능한 커피, 상생하는 커피</h2>
             <p style="word-break: keep-all;">매일 마시는 커피, 본질에서부터 앞서가는 <span style="white-space: nowrap;">지구커피의 철학</span></p>
         </div>
     </section>
 
-    <!-- 5. 사진 갤러리 섹션 -->
     <section class="photo-section">
         <div class="container">
-            <h2 class="section-title">지구커피의 자부심을 확인하세요</h2>
+            <h2 class="section-title fade-in">지구커피의 자부심을 확인하세요</h2>
             <div class="photo-gallery">
-                <div class="photo-item">
+                <div class="photo-item fade-in">
                     <img src="du.jpg" alt="파푸아뉴기니 생두">
                     <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
                 </div>
-                <div class="photo-item">
+                <div class="photo-item fade-in" style="transition-delay: 0.1s;">
                     <img src="coffee.jpg" alt="자체 로스팅 공정">
                     <div class="photo-caption">지구커피 자체 로스팅 팩토리</div>
                 </div>
-                <div class="photo-item">
+                <div class="photo-item fade-in" style="transition-delay: 0.2s;">
                     <img src="shop3.jpg" alt="지구커피 매장 인테리어">
                     <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
                 </div>
@@ -289,11 +255,10 @@
         </div>
     </section>
 
-    <!-- 6. 하단 상담 신청 폼 -->
-  <section class="cta-section text-center">
+    <section class="cta-section text-center">
         <div class="container">
-            <h2 class="section-title">지금 바로 창업 상담을 받아보세요</h2>
-            <div class="form-container">
+            <h2 class="section-title fade-in">지금 바로 창업 상담을 받아보세요</h2>
+            <div class="form-container fade-in">
              <form name="google-sheet">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="성함 (예: 홍길동)" required>
@@ -304,6 +269,7 @@
                 <div class="form-group" style="margin-bottom: 20px;">
                     <input type="text" name="location" placeholder="희망 지역 (예: 전주시 완산구)" required>
                 </div>
+                
                 <div class="terms-group">
                     <label>
                         <input type="checkbox" required>
@@ -311,34 +277,33 @@
                         <span class="terms-link" onclick="alert('[개인정보 수집 및 이용 안내]\n\n1. 수집 목적: 가맹점 창업 상담 및 관련 안내\n2. 수집 항목: 이름, 연락처, 희망지역\n3. 보유 기간: 상담 완료 후 6개월 보관 후 지체 없이 파기\n\n귀하는 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.'); return false;">[내용보기]</span>
                     </label>
                 </div>
-             <button type="submit" class="submit-btn">예상 수익금 확인하기</button>
+
+                <button type="submit" class="submit-btn">예상 수익금 확인하기</button>
                 
-                <div class="direct-call" style="margin-top: 20px;">
+                <div class="direct-call">
                     빠른 가맹문의 📞 <a href="tel:1551-2776">1551-2776</a>
-                </div>
                 </div>
             </form>
             </div>
         </div>
     </section>
 
-<footer>
+    <footer class="fade-in">
         <div class="container">
             <div class="footer-links">
-                <a href="#">이용약관</a>
-                <a href="#" class="privacy">개인정보처리방침</a>
+                <a href="#" onclick="alert('이용약관 페이지 준비중입니다.'); return false;">이용약관</a>
+                <a href="#" class="privacy" onclick="alert('개인정보처리방침 페이지 준비중입니다.'); return false;">개인정보처리방침</a>
             </div>
             <div class="footer-info">
-                <p><strong>(주)지구커피</strong> (또는 지구커피 본사)</p>
-                <p>대표자: 이재구 | 사업자등록번호: 446-85-03011</p>
-                <p>본사 주소: 전북 전주시 완산구 기린대로 163, 1F 지구커피</p>
-                <p>가맹문의: 1551-2776 | 이메일: jeegoocoffee@naver.com</p>
+                <p><strong>(주)지구커피</strong></p>
+                <p>대표자: 대표님성함 | 사업자등록번호: 000-00-00000</p>
+                <p>본사 주소: 전북 전주시 완산구 상세주소</p>
+                <p>가맹문의: 1551-2776 | 이메일: info@jigucoffee.com</p>
             </div>
             <p class="copyright">&copy; 2026 지구커피. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- 팝업창 (Modal) -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content text-center">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -354,23 +319,26 @@
                 <div class="form-group" style="margin-bottom: 20px;">
                     <input type="text" name="location" placeholder="희망 지역 (예: 전주시 완산구)" required>
                 </div>
-                <button type="submit" class="submit-btn">예상 수익금 확인하기</button>
-              <div class="terms-group">
+
+                <div class="terms-group">
                     <label>
                         <input type="checkbox" required>
                         개인정보 수집 및 이용에 동의합니다. 
-                        <span class="terms-link" onclick="alert('[개인정보 수집 및 이용 안내]\n\n1. 수집 목적: 가맹점 창업 상담 및 관련 안내\n2. 수집 항목: 이름, 연락처, 희망지역\n3. 보유 기간: 상담 완료 후 6개월 보관 후 지체 없이 파기\n\n귀하는 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.'); return false;">[내용보기]</span>
+                        <span class="terms-link" onclick="alert('[개인정보 수집 및 이용 안내]\n\n1. 수집 목적: 가맹점 창업 상담 및 관련 안내\n2. 수집 항목: 이름, 연락처, 희망지역\n3. 보유 기간: 상담 완료 후 6개월 보관 후 파기\n\n귀하는 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.'); return false;">[내용보기]</span>
                     </label>
+                </div>
+
+                <button type="submit" class="submit-btn">예상 수익금 확인하기</button>
+
+                <div class="direct-call" style="margin-top: 20px;">
+                    빠른 가맹문의 📞 <a href="tel:1551-2776">1551-2776</a>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- =========================================
-         ✨ 자바스크립트 (타이핑 효과 & 팝업창) ✨
-    ========================================= -->
-   <script>
-        // 1. 타이핑 애니메이션 로직
+    <script>
+        // 1. 타이핑 애니메이션
         document.addEventListener("DOMContentLoaded", function() {
             const titleContainer = document.getElementById("typing-text");
             const fullText = '"우리매장은 월 얼마 벌 수 있을까?"';
@@ -382,7 +350,6 @@
                     currentText = currentText.replace("얼마", "<span class='highlight'>얼마</span>");
                     titleContainer.innerHTML = currentText;
                     i++;
-                    
                     let speed = fullText.charAt(i-1) === " " ? 40 : 100;
                     setTimeout(typeWriter, speed);
                 }
@@ -390,7 +357,7 @@
             setTimeout(typeWriter, 500);
         });
 
-        // 2. 팝업창 로직
+        // 2. 팝업창 열기/닫기
         function openModal() {
             document.getElementById('contactModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -406,27 +373,26 @@
             }
         }
 
-        // 3. 구글 스프레드시트 연동 로직
+        // 3. 구글 스프레드시트 연동
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxB2_Fnm9M42770-zRpe_AqRaEniO2Lz6m_6hrkAR_KtmZnNFaUAbXfycnHko2Dc94rSg/exec';
         const forms = document.querySelectorAll('form[name="google-sheet"]');
 
         forms.forEach(form => {
             form.addEventListener('submit', e => {
-                e.preventDefault(); // 기본 새로고침 방지
+                e.preventDefault(); 
                 
                 const btn = form.querySelector('.submit-btn');
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '전송 중...';
                 btn.disabled = true;
 
-                // 구글 시트로 데이터 쏘기 (에러 방지를 위해 mode: 'no-cors' 옵션 추가!)
                 fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
                     .then(response => {
                         alert('상담 신청이 완료되었습니다! 확인 후 빠르게 연락드리겠습니다.');
-                        form.reset(); // 폼 비우기
+                        form.reset(); 
                         btn.innerHTML = originalText;
                         btn.disabled = false;
-                        closeModal(); // 팝업창 닫기
+                        closeModal(); 
                     })
                     .catch(error => {
                         console.error('Error!', error.message);
@@ -434,6 +400,29 @@
                         btn.innerHTML = originalText;
                         btn.disabled = false;
                     });
+            });
+        });
+
+        // 🌟 4. 스크롤 슬라이드(Fade-in Up) 애니메이션 로직 추가 🌟
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // 요소가 화면에 15% 정도 보일 때 애니메이션 실행
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // 스크롤 시 visible 클래스 추가
+                        observer.unobserve(entry.target); // 한 번 올라오면 다시 안 내려가게 고정
+                    }
+                });
+            }, observerOptions);
+
+            // fade-in 클래스가 붙은 모든 요소를 감시
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
             });
         });
     </script>
