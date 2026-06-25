@@ -137,7 +137,26 @@
         .close-btn:hover { color: #0051A1; }
         
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        footer { padding: 40px 20px; text-align: center; background: #fff; color: #888; border-top: 1px solid #E0E5E9; font-size: 14px; }
+      /* =========================================
+           ✨ 추가된 약관 동의 & 푸터 스타일 ✨
+        ========================================= */
+        .terms-group { margin-top: 15px; margin-bottom: 25px; text-align: left; font-size: 14px; color: #555; }
+        .terms-group label { display: flex; align-items: center; cursor: pointer; font-weight: normal; }
+        .terms-group input[type="checkbox"] { margin-right: 8px; width: 16px; height: 16px; cursor: pointer; }
+        .terms-link { color: #0051A1; text-decoration: underline; margin-left: 5px; cursor: pointer; }
+
+        footer { padding: 50px 20px; background: #f8fafd; border-top: 1px solid #E0E5E9; color: #666; font-size: 14px; line-height: 1.8; text-align: left; }
+        .footer-links { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
+        .footer-links a { margin-right: 15px; color: #333; }
+        .footer-links a.privacy { font-weight: 800; color: #0051A1; }
+        .footer-info p { margin-bottom: 5px; }
+        .copyright { margin-top: 20px; color: #999; font-size: 13px; }
+        
+        /* 푸터 모바일 중앙 정렬 */
+        @media (max-width: 768px) {
+            footer { text-align: center; padding: 40px 15px; }
+            .terms-group { font-size: 13px; }
+        }
 
         /* =========================================
            📱 모바일 화면 최적화
@@ -285,7 +304,13 @@
                 <div class="form-group" style="margin-bottom: 20px;">
                     <input type="text" name="location" placeholder="희망 지역 (예: 전주시 완산구)" required>
                 </div>
-                
+                <div class="terms-group">
+                    <label>
+                        <input type="checkbox" required>
+                        개인정보 수집 및 이용에 동의합니다. 
+                        <span class="terms-link" onclick="alert('[개인정보 수집 및 이용 안내]\n\n1. 수집 목적: 가맹점 창업 상담 및 관련 안내\n2. 수집 항목: 이름, 연락처, 희망지역\n3. 보유 기간: 상담 완료 후 6개월 보관 후 지체 없이 파기\n\n귀하는 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.'); return false;">[내용보기]</span>
+                    </label>
+                </div>
              <button type="submit" class="submit-btn">예상 수익금 확인하기</button>
                 
                 <div class="direct-call" style="margin-top: 20px;">
@@ -297,9 +322,19 @@
         </div>
     </section>
 
-    <footer>
+<footer>
         <div class="container">
-            <p>&copy; 2026 지구커피. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">이용약관</a>
+                <a href="#" class="privacy">개인정보처리방침</a>
+            </div>
+            <div class="footer-info">
+                <p><strong>(주)지구커피</strong> (또는 지구커피 본사)</p>
+                <p>대표자: 이재구 | 사업자등록번호: 446-85-03011</p>
+                <p>본사 주소: 전북 전주시 완산구 기린대로 163, 1F 지구커피</p>
+                <p>가맹문의: 1551-2776 | 이메일: jeegoocoffee@naver.com</p>
+            </div>
+            <p class="copyright">&copy; 2026 지구커피. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -320,6 +355,13 @@
                     <input type="text" name="location" placeholder="희망 지역 (예: 전주시 완산구)" required>
                 </div>
                 <button type="submit" class="submit-btn">예상 수익금 확인하기</button>
+              <div class="terms-group">
+                    <label>
+                        <input type="checkbox" required>
+                        개인정보 수집 및 이용에 동의합니다. 
+                        <span class="terms-link" onclick="alert('[개인정보 수집 및 이용 안내]\n\n1. 수집 목적: 가맹점 창업 상담 및 관련 안내\n2. 수집 항목: 이름, 연락처, 희망지역\n3. 보유 기간: 상담 완료 후 6개월 보관 후 지체 없이 파기\n\n귀하는 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.'); return false;">[내용보기]</span>
+                    </label>
+                </div>
             </form>
         </div>
     </div>
