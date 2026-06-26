@@ -22,7 +22,7 @@
         .logo-img { height: 40px; display: block; margin: 0 auto; }
 
         /* =========================================
-           ✨ 3. 스크롤 슬라이드 애니메이션 ✨
+           3. 스크롤 슬라이드 애니메이션
         ========================================= */
         .fade-in {
             opacity: 0;
@@ -56,7 +56,16 @@
         .btn-primary:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
 
         /* =========================================
-           5. 무한 롤링 텍스트 (완벽한 끊김 방지)
+           ✨ 5. 메인 상단 2장 사진 섹션 스타일 (새로 추가) ✨
+        ========================================= */
+        .mid-gallery { padding: 60px 0 30px 0; background-color: #fff; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .mid-photo-item { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .mid-photo-item img { width: 100%; height: 380px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .mid-photo-item:hover img { transform: scale(1.03); }
+
+        /* =========================================
+           6. 무한 롤링 텍스트 (완벽한 끊김 방지)
         ========================================= */
         .marquee-section { background-color: #E0E5E9; color: #0051A1; padding: 12px 0; display: flex; overflow: hidden; border-bottom: 1px solid #ccc; white-space: nowrap; }
         .marquee-content { display: flex; flex-shrink: 0; animation: rolling 20s linear infinite; padding-right: 30px; }
@@ -66,7 +75,7 @@
         .marquee-section:hover .marquee-content { animation-play-state: paused; }
 
         /* =========================================
-           6. 경쟁력 섹션
+           7. 경쟁력 섹션
         ========================================= */
         .features { padding: 100px 20px; background: #fff; }
         .section-title { font-size: 36px; font-weight: 800; margin-bottom: 60px; color: #0051A1; letter-spacing: -1px; word-break: keep-all; }
@@ -77,14 +86,14 @@
         .card p { color: #555; font-size: 17px; word-break: keep-all; line-height: 1.6; }
 
         /* =========================================
-           7. 중간 배너 (패럴랙스)
+           8. 중간 배너 (패럴랙스)
         ========================================= */
         .parallax-banner { padding: 100px 20px; background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('dudu.jpg'); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; color: #fff; text-align: center; }
         .parallax-banner h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
         .parallax-banner p { font-size: 18px; font-weight: 300; color: #ddd; }
 
         /* =========================================
-           8. 사진 갤러리 섹션
+           9. 사진 갤러리 섹션
         ========================================= */
         .photo-section { padding: 80px 20px; background-color: #f8fafd; border-top: 1px solid #E0E5E9; }
         .photo-section .section-title { text-align: center; margin-bottom: 50px; }
@@ -95,7 +104,7 @@
         .photo-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,81,161,0.9), transparent); color: #fff; padding: 20px 15px 15px; font-weight: 700; font-size: 18px; text-align: center; }
 
         /* =========================================
-           9. 하단 고정 폼 & 팝업 & 전화연결 스타일
+           10. 하단 고정 폼 & 팝업 & 전화연결 스타일
         ========================================= */
         .cta-section { padding: 90px 20px; background-color: #E0E5E9; }
         .cta-section .section-title { color: #0051A1; margin-bottom: 40px; }
@@ -118,7 +127,7 @@
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* =========================================
-           10. 푸터 및 약관 동의 영역 스타일
+           11. 푸터 및 약관 동의 영역 스타일
         ========================================= */
         .terms-group { margin-top: 15px; margin-bottom: 25px; text-align: left; font-size: 14px; color: #555; }
         .terms-group label { display: flex; align-items: center; cursor: pointer; font-weight: normal; }
@@ -134,7 +143,7 @@
         .copyright { margin-top: 20px; color: #999; font-size: 13px; }
 
         /* =========================================
-           📱 11. 모바일 화면 최적화
+           📱 12. 모바일 화면 최적화
         ========================================= */
         @media (max-width: 768px) {
             header { padding: 12px 0; }
@@ -144,6 +153,12 @@
             .cursor { height: 30px; margin-left: 5px; }
             .hero p { font-size: 16px; margin-bottom: 35px; }
             .btn-primary { padding: 16px 30px; font-size: 18px; width: 100%; max-width: 320px; }
+            
+            /* 모바일에서 새로 추가된 사진 2장 크기 및 여백 조정 */
+            .mid-gallery { padding: 30px 0 15px 0; }
+            .grid-2 { grid-template-columns: 1fr; gap: 15px; }
+            .mid-photo-item img { height: 240px; }
+
             .marquee-section { padding: 8px 0; }
             .marquee-content { padding-right: 15px; } 
             .marquee-content span { font-size: 16px; margin-right: 15px; }
@@ -182,7 +197,6 @@
         </div>
     </header>
 
-    <!-- 1. 히어로 섹션 -->
     <section class="hero">
         <div class="container fade-in">
             <h1><span id="typing-text"></span><span class="cursor"></span></h1>
@@ -191,7 +205,19 @@
         </div>
     </section>
 
-    <!-- 2. 무한 롤링 텍스트 -->
+    <section class="mid-gallery">
+        <div class="container">
+            <div class="grid-2">
+                <div class="mid-photo-item fade-in">
+                    <img src="sub1.jpg" alt="지구커피 가맹점 이미지 1">
+                </div>
+                <div class="mid-photo-item fade-in" style="transition-delay: 0.1s;">
+                    <img src="sub2.jpg" alt="지구커피 가맹점 이미지 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="marquee-section fade-in">
         <div class="marquee-content">
             <span>🇵🇬 파푸아뉴기니 다이렉트 무역</span>
@@ -207,7 +233,6 @@
         </div>
     </div>
 
-    <!-- 3. 경쟁력 섹션 -->
     <section class="features text-center">
         <div class="container">
             <h2 class="section-title fade-in">왜 지구커피 가맹점은 마진이 압도적일까요?</h2>
@@ -228,7 +253,6 @@
         </div>
     </section>
 
-    <!-- 4. 중간 배너 섹션 (줄바꿈 방지 적용) -->
     <section class="parallax-banner">
         <div class="container fade-in">
             <h2>지속가능한 커피, 상생하는 커피</h2>
@@ -236,7 +260,6 @@
         </div>
     </section>
 
-    <!-- 5. 사진 갤러리 섹션 -->
     <section class="photo-section">
         <div class="container">
             <h2 class="section-title fade-in">지구커피의 자부심을 확인하세요</h2>
@@ -257,7 +280,6 @@
         </div>
     </section>
 
-    <!-- 6. 하단 상담 신청 폼 -->
     <section class="cta-section text-center">
         <div class="container">
             <h2 class="section-title fade-in">지금 바로 창업 상담을 받아보세요</h2>
@@ -273,19 +295,16 @@
                     <input type="text" name="location" placeholder="희망 지역 (예: 전주시 완산구)" required>
                 </div>
                 
-                <!-- 약관 동의 체크박스 -->
                 <div class="terms-group">
                     <label>
                         <input type="checkbox" required>
                         개인정보 수집 및 이용에 동의합니다. 
-                        <span class="terms-link" onclick="alert('[개인정보 수집 및 이용 안내]\n\n1. 수집 목적: 가맹점 창업 상담\n2. 수집 항목: 이름, 연락처, 희망지역\n3. 보유 기간: 6개월 보관 후 파기'); return false;">[내용보기]</span>
+                        <span class="terms-link" onclick="openPrivacyModal(); return false;">[내용보기]</span>
                     </label>
                 </div>
 
-                <!-- 제출 버튼은 반드시 1개만! -->
                 <button type="submit" class="submit-btn">예상 수익금 확인하기</button>
                 
-                <!-- 전화 바로 걸기 -->
                 <div class="direct-call">
                     빠른 가맹문의 📞 <a href="tel:1551-2776">1551-2776</a>
                 </div>
@@ -294,11 +313,9 @@
         </div>
     </section>
 
-    <!-- 7. 푸터 (사업자 정보 및 팝업 링크) -->
     <footer class="fade-in">
         <div class="container">
             <div class="footer-links">
-                <!-- 팝업창을 열도록 자바스크립트 연결 -->
                 <a href="javascript:void(0);" onclick="openTermsModal()">이용약관</a>
                 <a href="javascript:void(0);" class="privacy" onclick="openPrivacyModal()">개인정보처리방침</a>
             </div>
@@ -312,11 +329,6 @@
         </div>
     </footer>
 
-    <!-- =========================================
-         ✨ 팝업창 (Modal) 모음 ✨
-    ========================================= -->
-
-    <!-- [1] 상담 신청 팝업창 -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content text-center">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -337,7 +349,7 @@
                     <label>
                         <input type="checkbox" required>
                         개인정보 수집 및 이용에 동의합니다. 
-                        <span class="terms-link" onclick="alert('[개인정보 수집 및 이용 안내]\n\n1. 수집 목적: 가맹점 창업 상담\n2. 수집 항목: 이름, 연락처, 희망지역\n3. 보유 기간: 6개월 보관 후 파기'); return false;">[내용보기]</span>
+                        <span class="terms-link" onclick="openPrivacyModal(); return false;">[내용보기]</span>
                     </label>
                 </div>
 
@@ -350,59 +362,39 @@
         </div>
     </div>
 
-    <!-- [2] 이용약관 팝업창 -->
     <div id="termsModal" class="modal-overlay">
         <div class="modal-content" style="text-align: left;">
             <span class="close-btn" onclick="closeTermsModal()">&times;</span>
             <h2 style="color: #0051A1; margin-bottom: 15px; font-size: 22px; font-weight: 800;">이용약관</h2>
             <div style="height: 250px; overflow-y: auto; color: #666; font-size: 14px; background: #f9f9f9; padding: 15px; border-radius: 8px; line-height: 1.6;">
-                제 1 장 총칙<br><br>
-                제 1 조 (목적)<br>
-               본 약관은 [지구커피](이하 "회사"라 합니다)가 제공하는 가맹점 창업 안내 및 상담 서비스(이하 "서비스"라 합니다)의 이용조건 및 절차, 이용자와 회사의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.<br><br>
-                제 2 조 (약관의 효력 및 변경)<br>
-                1. 본 약관은 서비스를 이용하고자 하는 모든 이용자에 대하여 그 효력을 발생합니다.<br>
-                2. 회사는 관련 법령을 위배하지 않는 범위 내에서 본 약관을 변경할 수 있으며, 변경된 약관은 웹사이트 화면에 게시함으로써 효력이 발생합니다.<br><br>
-               제 3조 (서비스의 제공 및 변경)<br>
-                1. 회사는 가맹 희망자에게 창업과 관련된 상담,예상 수익 안내,브랜드 정보제공 등의 서비스를 제공합니다.<br>
-                2. 회사는 원활한 상담을 위해 이용자가 입력한 연락처로 전화, 문자메시지(카카오톡 포함) 등을 통해 연락을 취할 수 있습니다.<br><br>
-               제 4조 (사용자의 의무)<br>
-                1. 이용자는 상담 신청 시 사실에 기반한 정확한 정보(성함, 연락처 등)을 제공해야 합니다.<br>
-                2. 타인의 정보를 도용하거나 허위 정보를 입력하여 발생한 불이익에 대한 책임은 이용자 본인에게 있습니다.<br>
-               제 5조 (면책조항)<br>
-                1. 회사가 제공하는 예상 수익 및 창업 비용 등의 정보는 평균적인 데이터를 기반한 참고용이며, 실제 매장의 입지나 운영방식에 따라 차이가 발생할 수 있습니다. 회사는 이에 대한 최종적인 법적 책임을 지지 않습니다.<br>
-                2. 회사는 이용자의 귀책사유로 인한 서비스 이용 장애에 대하여 책임을 지지 않습니다.<br>
-                부칙<br> 
-                본 약관은 2026년 6월 26일부터 시행됩니다.
+                <strong>제 1 조 (목적)</strong><br>
+                본 약관은 지구커피(이하 "회사"라 합니다)가 제공하는 가맹점 창업 안내 및 상담 서비스의 이용조건 및 절차, 이용자와 회사의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.<br><br>
+                <strong>제 2 조 (서비스의 제공 및 변경)</strong><br>
+                1. 회사는 가맹 희망자에게 창업과 관련된 상담, 예상 수익 안내, 브랜드 정보 제공 등의 서비스를 제공합니다.<br>
+                2. 회사는 원활한 상담을 위해 이용자가 입력한 연락처로 전화, 문자메시지 등을 통해 연락을 취할 수 있습니다.<br><br>
+                <strong>제 3 조 (면책조항)</strong><br>
+                회사가 제공하는 예상 수익 및 창업 비용 등의 정보는 평균적인 데이터에 기반한 참고용이며, 실제 매장의 입지나 운영 방식에 따라 차이가 발생할 수 있습니다. 회사는 이에 대한 최종적인 법적 책임을 지지 않습니다.
             </div>
         </div>
     </div>
 
-    <!-- [3] 개인정보처리방침 팝업창 -->
     <div id="privacyModal" class="modal-overlay">
         <div class="modal-content" style="text-align: left;">
             <span class="close-btn" onclick="closePrivacyModal()">&times;</span>
             <h2 style="color: #0051A1; margin-bottom: 15px; font-size: 22px; font-weight: 800;">개인정보처리방침</h2>
             <div style="height: 250px; overflow-y: auto; color: #666; font-size: 14px; background: #f9f9f9; padding: 15px; border-radius: 8px; line-height: 1.6;">
-                지구커피(이하 "회사"라 함)는 개인정보보호법 등 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.<br><br>
-                1. 수집하는 개인정보의 항목<br>
+                지구커피는 관련 법령상의 개인정보보호 규정을 준수하며, 가맹 상담 이용자의 권익 보호에 최선을 다하고 있습니다.<br><br>
+                <strong>1. 수집하는 개인정보의 항목</strong><br>
                 회사는 가맹 상담을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
                 - 수집항목 : 성명, 연락처, 창업희망지역<br><br>
-                2. 개인정보의 수집 및 이용목적<br>
+                <strong>2. 개인정보의 수집 및 이용목적</strong><br>
                 - 가맹점 개설에 관한 상담, 안내, 관련 자료 제공<br><br>
-                - 본사 설명회 안내 및 신규 소식 전달(마케팅 활용 동의시)<br>
-                - 상담 이력 관리 및 중복 신청 확인
-                3. 개인정보의 보유 및 이용기간<br>
-                - 수집된 개인정보는 원칙적으로 상담이 종료된 후 6개월간 보관하며 이후 해당 정보를 지체 없이 파기합니다.<br>
-                - 보존이유: 상담 이력 관리 및 가맹 안내<br>
-                - 보존기간: 상담 신청일로부터 6개월 (단, 계약이 체결된 경ㅇ누 가맹게약 해지 시까지 보관)<br><br>
-            
+                <strong>3. 개인정보의 보유 및 이용기간</strong><br>
+                - 수집된 개인정보는 원칙적으로 상담이 종료된 후 6개월간 보관하며 이후 해당 정보를 지체 없이 파기합니다.
             </div>
         </div>
     </div>
 
-    <!-- =========================================
-         ✨ 자바스크립트 통합 (기능 및 애니메이션) ✨
-    ========================================= -->
     <script>
         // 1. 타이핑 애니메이션
         document.addEventListener("DOMContentLoaded", function() {
@@ -423,7 +415,7 @@
             setTimeout(typeWriter, 500);
         });
 
-        // 2. 팝업창 통합 관리 (상담, 이용약관, 개인정보)
+        // 2. 팝업창 통합 관리
         function openModal() { document.getElementById('contactModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closeModal() { document.getElementById('contactModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
         
@@ -440,7 +432,7 @@
             }
         }
 
-        // 3. 구글 스프레드시트 연동 (no-cors 적용 완료)
+        // 3. 구글 스프레드시트 연동
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxB2_Fnm9M42770-zRpe_AqRaEniO2Lz6m_6hrkAR_KtmZnNFaUAbXfycnHko2Dc94rSg/exec';
         const forms = document.querySelectorAll('form[name="google-sheet"]');
 
@@ -459,7 +451,7 @@
                         form.reset(); 
                         btn.innerHTML = originalText;
                         btn.disabled = false;
-                        closeModal(); // 혹시 팝업 폼에서 전송했다면 창 닫기
+                        closeModal(); 
                     })
                     .catch(error => {
                         console.error('Error!', error.message);
@@ -470,7 +462,7 @@
             });
         });
 
-        // 4. 스크롤 슬라이드 (Fade-in Up) 애니메이션
+        // 4. 스크롤 애니메이션
         document.addEventListener("DOMContentLoaded", function() {
             const observerOptions = {
                 root: null,
