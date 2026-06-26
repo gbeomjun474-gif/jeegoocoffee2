@@ -56,13 +56,13 @@
         .btn-primary:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
 
         /* =========================================
-           ✨ 5. 메인 상단 2장 사진 섹션 스타일 (새로 추가) ✨
+           5. 메인 상단 2장 사진 섹션 (클릭 효과 추가)
         ========================================= */
-        .mid-gallery { padding: 60px 0 30px 0; background-color: #fff; }
+        .mid-gallery { padding: 40px 0 20px 0; background-color: #fff; }
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .mid-photo-item { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
-        .mid-photo-item img { width: 100%; height: 380px; object-fit: cover; display: block; transition: transform 0.4s ease; }
-        .mid-photo-item:hover img { transform: scale(1.03); }
+        .mid-photo-item { border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06); background: #f8fafd; cursor: pointer; }
+        .mid-photo-item img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+        .mid-photo-item:hover img { transform: scale(1.02); }
 
         /* =========================================
            6. 무한 롤링 텍스트 (완벽한 끊김 방지)
@@ -93,15 +93,15 @@
         .parallax-banner p { font-size: 18px; font-weight: 300; color: #ddd; }
 
         /* =========================================
-           9. 사진 갤러리 섹션
+           9. 하단 사진 갤러리 섹션 (클릭 효과 추가)
         ========================================= */
         .photo-section { padding: 80px 20px; background-color: #f8fafd; border-top: 1px solid #E0E5E9; }
         .photo-section .section-title { text-align: center; margin-bottom: 50px; }
         .photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .photo-item { border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; }
-        .photo-item img { width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.4s ease; }
-        .photo-item:hover img { transform: scale(1.05); }
-        .photo-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,81,161,0.9), transparent); color: #fff; padding: 20px 15px 15px; font-weight: 700; font-size: 18px; text-align: center; }
+        .photo-item { border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; background: #fff; cursor: pointer; }
+        .photo-item img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+        .photo-item:hover img { transform: scale(1.03); }
+        .photo-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,81,161,0.95), transparent); color: #fff; padding: 30px 15px 15px; font-weight: 700; font-size: 18px; text-align: center; pointer-events: none; /* 클릭 방해 방지 */ }
 
         /* =========================================
            10. 하단 고정 폼 & 팝업 & 전화연결 스타일
@@ -120,14 +120,22 @@
         .direct-call a { color: #0051A1; font-weight: 800; font-size: 20px; text-decoration: none; margin-left: 5px; display: inline-block; transition: 0.2s; }
         .direct-call a:hover { color: #003d7a; transform: scale(1.05); }
 
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); padding: 15px; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); padding: 15px; }
         .modal-content { background: #fff; padding: 50px 40px; border-radius: 16px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out forwards; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 32px; cursor: pointer; color: #999; font-weight: 300; transition: 0.2s; line-height: 1; }
         .close-btn:hover { color: #0051A1; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* =========================================
-           11. 푸터 및 약관 동의 영역 스타일
+           ✨ 11. 이미지 확대(라이트박스) 전용 스타일 ✨
+        ========================================= */
+        #imageModal .modal-content { background: transparent; box-shadow: none; padding: 0; display: flex; justify-content: center; align-items: center; max-width: 900px; }
+        #imageModal img { max-width: 100%; max-height: 85vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain; }
+        #imageModal .close-btn { top: -45px; right: 0; color: #fff; font-size: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        #imageModal .close-btn:hover { color: #ccc; }
+
+        /* =========================================
+           12. 푸터 및 약관 동의 영역 스타일
         ========================================= */
         .terms-group { margin-top: 15px; margin-bottom: 25px; text-align: left; font-size: 14px; color: #555; }
         .terms-group label { display: flex; align-items: center; cursor: pointer; font-weight: normal; }
@@ -143,7 +151,7 @@
         .copyright { margin-top: 20px; color: #999; font-size: 13px; }
 
         /* =========================================
-           📱 12. 모바일 화면 최적화
+           📱 13. 모바일 화면 최적화
         ========================================= */
         @media (max-width: 768px) {
             header { padding: 12px 0; }
@@ -154,10 +162,8 @@
             .hero p { font-size: 16px; margin-bottom: 35px; }
             .btn-primary { padding: 16px 30px; font-size: 18px; width: 100%; max-width: 320px; }
             
-            /* 모바일에서 새로 추가된 사진 2장 크기 및 여백 조정 */
-            .mid-gallery { padding: 30px 0 15px 0; }
+            .mid-gallery { padding: 20px 0 10px 0; }
             .grid-2 { grid-template-columns: 1fr; gap: 15px; }
-            .mid-photo-item img { height: 240px; }
 
             .marquee-section { padding: 8px 0; }
             .marquee-content { padding-right: 15px; } 
@@ -173,8 +179,7 @@
             .parallax-banner p { font-size: 15px; }
             .photo-section { padding: 60px 15px; }
             .photo-gallery { gap: 15px; }
-            .photo-item img { height: 210px; }
-            .photo-caption { font-size: 16px; padding: 15px 10px 10px; }
+            
             .cta-section { padding: 60px 15px; }
             .form-container { padding: 30px 20px; border-radius: 12px; }
             .form-group { margin-bottom: 18px; }
@@ -197,6 +202,7 @@
         </div>
     </header>
 
+    <!-- 1. 히어로 섹션 -->
     <section class="hero">
         <div class="container fade-in">
             <h1><span id="typing-text"></span><span class="cursor"></span></h1>
@@ -205,19 +211,21 @@
         </div>
     </section>
 
+    <!-- 2. 메인 상단 이미지 섹션 (클릭 시 확대 기능 연결) -->
     <section class="mid-gallery">
         <div class="container">
             <div class="grid-2">
-                <div class="mid-photo-item fade-in">
-                    <img src="dududu.jpg" alt="지구커피 가맹점 이미지 1">
+                <div class="mid-photo-item fade-in" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="sub1.jpg" alt="지구커피 가맹점 이미지 1">
                 </div>
-                <div class="mid-photo-item fade-in" style="transition-delay: 0.1s;">
-                    <img src="dudududu.png" alt="지구커피 가맹점 이미지 2">
+                <div class="mid-photo-item fade-in" style="transition-delay: 0.1s;" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="sub2.jpg" alt="지구커피 가맹점 이미지 2">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 3. 무한 롤링 텍스트 -->
     <div class="marquee-section fade-in">
         <div class="marquee-content">
             <span>🇵🇬 파푸아뉴기니 다이렉트 무역</span>
@@ -233,6 +241,7 @@
         </div>
     </div>
 
+    <!-- 4. 경쟁력 섹션 -->
     <section class="features text-center">
         <div class="container">
             <h2 class="section-title fade-in">왜 지구커피 가맹점은 마진이 압도적일까요?</h2>
@@ -253,6 +262,7 @@
         </div>
     </section>
 
+    <!-- 5. 중간 배너 섹션 -->
     <section class="parallax-banner">
         <div class="container fade-in">
             <h2>지속가능한 커피, 상생하는 커피</h2>
@@ -260,19 +270,20 @@
         </div>
     </section>
 
+    <!-- 6. 사진 갤러리 섹션 (클릭 시 확대 기능 연결) -->
     <section class="photo-section">
         <div class="container">
             <h2 class="section-title fade-in">지구커피의 자부심을 확인하세요</h2>
             <div class="photo-gallery">
-                <div class="photo-item fade-in">
+                <div class="photo-item fade-in" onclick="openImageModal(this.querySelector('img').src)">
                     <img src="du.jpg" alt="파푸아뉴기니 생두">
                     <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
                 </div>
-                <div class="photo-item fade-in" style="transition-delay: 0.1s;">
+                <div class="photo-item fade-in" style="transition-delay: 0.1s;" onclick="openImageModal(this.querySelector('img').src)">
                     <img src="coffee.jpg" alt="자체 로스팅 공정">
                     <div class="photo-caption">지구커피 자체 로스팅 팩토리</div>
                 </div>
-                <div class="photo-item fade-in" style="transition-delay: 0.2s;">
+                <div class="photo-item fade-in" style="transition-delay: 0.2s;" onclick="openImageModal(this.querySelector('img').src)">
                     <img src="shop3.jpg" alt="지구커피 매장 인테리어">
                     <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
                 </div>
@@ -280,6 +291,7 @@
         </div>
     </section>
 
+    <!-- 7. 하단 상담 신청 폼 -->
     <section class="cta-section text-center">
         <div class="container">
             <h2 class="section-title fade-in">지금 바로 창업 상담을 받아보세요</h2>
@@ -313,6 +325,7 @@
         </div>
     </section>
 
+    <!-- 8. 푸터 -->
     <footer class="fade-in">
         <div class="container">
             <div class="footer-links">
@@ -329,6 +342,11 @@
         </div>
     </footer>
 
+    <!-- =========================================
+         팝업창 (Modal) 모음
+    ========================================= -->
+
+    <!-- [1] 가맹 상담 신청 팝업창 -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal-content text-center">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -362,6 +380,7 @@
         </div>
     </div>
 
+    <!-- [2] 이용약관 팝업창 -->
     <div id="termsModal" class="modal-overlay">
         <div class="modal-content" style="text-align: left;">
             <span class="close-btn" onclick="closeTermsModal()">&times;</span>
@@ -378,6 +397,7 @@
         </div>
     </div>
 
+    <!-- [3] 개인정보처리방침 팝업창 -->
     <div id="privacyModal" class="modal-overlay">
         <div class="modal-content" style="text-align: left;">
             <span class="close-btn" onclick="closePrivacyModal()">&times;</span>
@@ -395,6 +415,17 @@
         </div>
     </div>
 
+    <!-- ✨ [4] 새롭게 추가된 이미지 확대용 팝업창 ✨ -->
+    <div id="imageModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeImageModal()">&times;</span>
+            <img id="expandedImg" src="" alt="확대된 이미지">
+        </div>
+    </div>
+
+    <!-- =========================================
+         자바스크립트 통합
+    ========================================= -->
     <script>
         // 1. 타이핑 애니메이션
         document.addEventListener("DOMContentLoaded", function() {
@@ -415,7 +446,7 @@
             setTimeout(typeWriter, 500);
         });
 
-        // 2. 팝업창 통합 관리
+        // 2. 팝업창 통합 관리 (상담, 약관, 확대 이미지)
         function openModal() { document.getElementById('contactModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closeModal() { document.getElementById('contactModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
         
@@ -425,6 +456,18 @@
         function openPrivacyModal() { document.getElementById('privacyModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closePrivacyModal() { document.getElementById('privacyModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
 
+        // 사진 확대 팝업 제어
+        function openImageModal(imgSrc) {
+            document.getElementById("expandedImg").src = imgSrc;
+            document.getElementById("imageModal").style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+        function closeImageModal() {
+            document.getElementById("imageModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // 바깥 어두운 배경 클릭 시 팝업 닫기
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = 'none';
