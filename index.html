@@ -56,10 +56,9 @@
         .btn-primary:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
 
         /* =========================================
-           5. 메인 상단 2장 사진 섹션 (클릭 효과 추가)
+           5. 메인 상단 1장 사진 섹션
         ========================================= */
         .mid-gallery { padding: 40px 0 20px 0; background-color: #fff; }
-        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .mid-photo-item { border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.06); background: #f8fafd; cursor: pointer; }
         .mid-photo-item img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
         .mid-photo-item:hover img { transform: scale(1.02); }
@@ -93,15 +92,66 @@
         .parallax-banner p { font-size: 18px; font-weight: 300; color: #ddd; }
 
         /* =========================================
-           9. 하단 사진 갤러리 섹션 (클릭 효과 추가)
+           ✨ 9. 무한 롤링 이미지 배너 스타일 ✨
         ========================================= */
-        .photo-section { padding: 80px 20px; background-color: #f8fafd; border-top: 1px solid #E0E5E9; }
-        .photo-section .section-title { text-align: center; margin-bottom: 50px; }
-        .photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .photo-item { border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; background: #fff; cursor: pointer; }
-        .photo-item img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
-        .photo-item:hover img { transform: scale(1.03); }
-        .photo-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(0,81,161,0.95), transparent); color: #fff; padding: 30px 15px 15px; font-weight: 700; font-size: 18px; text-align: center; pointer-events: none; /* 클릭 방해 방지 */ }
+        .photo-section { padding: 80px 0; background-color: #f8fafd; border-top: 1px solid #E0E5E9; overflow: hidden; }
+        .photo-section .section-title { text-align: center; margin-bottom: 50px; padding: 0 20px; }
+        
+        .banner-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+            position: relative;
+        }
+        .banner-track {
+            display: flex;
+            width: max-content;
+            animation: scrollBanner 25s linear infinite; 
+        }
+        
+        @keyframes scrollBanner {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .banner-container:hover .banner-track {
+            animation-play-state: paused;
+        }
+
+        .banner-item {
+            width: 320px;
+            margin: 0 10px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: #fff;
+            flex-shrink: 0;
+        }
+        .banner-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .banner-item:hover img {
+            transform: scale(1.05);
+        }
+        .banner-item .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,81,161,0.9), transparent);
+            color: #fff;
+            padding: 30px 15px 15px;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+            pointer-events: none;
+        }
 
         /* =========================================
            10. 하단 고정 폼 & 팝업 & 전화연결 스타일
@@ -127,7 +177,7 @@
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* =========================================
-           ✨ 11. 이미지 확대(라이트박스) 전용 스타일 ✨
+           11. 이미지 확대(라이트박스) 전용 스타일
         ========================================= */
         #imageModal .modal-content { background: transparent; box-shadow: none; padding: 0; display: flex; justify-content: center; align-items: center; max-width: 900px; }
         #imageModal img { max-width: 100%; max-height: 85vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); object-fit: contain; }
@@ -163,7 +213,9 @@
             .btn-primary { padding: 16px 30px; font-size: 18px; width: 100%; max-width: 320px; }
             
             .mid-gallery { padding: 20px 0 10px 0; }
-            .grid-2 { grid-template-columns: 1fr; gap: 15px; }
+            
+            .banner-item { width: 250px; }
+            .banner-item img { height: 200px; }
 
             .marquee-section { padding: 8px 0; }
             .marquee-content { padding-right: 15px; } 
@@ -177,8 +229,8 @@
             .parallax-banner { padding: 70px 15px; background-attachment: scroll; }
             .parallax-banner h2 { font-size: 24px; }
             .parallax-banner p { font-size: 15px; }
-            .photo-section { padding: 60px 15px; }
-            .photo-gallery { gap: 15px; }
+            .photo-section { padding: 60px 0; }
+            .photo-section .section-title { margin-bottom: 30px; }
             
             .cta-section { padding: 60px 15px; }
             .form-container { padding: 30px 20px; border-radius: 12px; }
@@ -211,14 +263,13 @@
         </div>
     </section>
 
-    <!-- 2. 메인 상단 이미지 섹션 (클릭 시 확대 기능 연결) -->
+    <!-- ✨ 2. 메인 상단 1장 사진 섹션 (가운데 정렬) ✨ -->
     <section class="mid-gallery">
-        <div class="container">
-            <!-- 사진 한 장을 가운데 정렬하고 최대 너비를 설정하여 보기 좋게 배치 -->
+        <div class="container fade-in">
             <div style="max-width: 600px; margin: 0 auto;">
-                <div class="mid-photo-item fade-in" onclick="openImageModal(this.querySelector('img').src)">
-                    <!-- 👇 아래 src 부분에 남길 사진의 파일명을 적어주세요 (dududu.jpg 또는 dudududu.png) 👇 -->
-                    <img src="qwer.png" alt="지구커피 가맹점 이미지">
+                <div class="mid-photo-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <!-- 👇 여기에 남길 사진 파일명을 적어주세요 👇 -->
+                    <img src="dududu.jpg" alt="지구커피 가맹점 이미지">
                 </div>
             </div>
         </div>
@@ -269,51 +320,52 @@
         </div>
     </section>
 
-<!-- 6. 배너형 사진 갤러리 섹션 (무한 롤링) -->
+    <!-- ✨ 6. 배너형 사진 무한 롤링 섹션 ✨ -->
     <section class="photo-section">
-        <div class="container">
-            <h2 class="section-title fade-in">지구커피의 자부심을 확인하세요</h2>
-            
-            <div class="banner-container fade-in">
-                <div class="banner-track">
-                    <!-- 👇 [첫 번째 세트] 원본 5장 👇 -->
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="du.jpg" alt="파푸아뉴기니 생두">
-                        <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
-                    </div>
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="PG.jpg" alt="파푸야뉴기니 생두">
-                        <div class="photo-caption">파푸아뉴기니 생수 직수입 현장</div>
-                    </div>
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="shop3.jpg" alt="지구커피 매장 인테리어">
-                        <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
-                    </div>
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="shop5.jpg" alt="지구커피 전경">
-                        <div class="photo-caption">지구커피 매장 전경</div>
-                    </div>
-                
-                    <!-- 👇 [두 번째 세트] 무한 반복을 위해 똑같은 5장 한 번 더 👇 -->
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="du.jpg" alt="파푸아뉴기니 생두">
-                        <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
-                    </div>
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="PG.jpg" alt="파푸아뉴기니 생두">
-                        <div class="photo-caption">파푸아뉴기니 생두 직수입 현장</div>
-                    </div>
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="shop3.jpg" alt="지구커피 매장 인테리어">
-                        <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
-                    </div>
-                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="shop5.jpg" alt="지구커피 매장 전경">
-                        <div class="photo-caption">지구커피 매장 전경</div>
-                    </div
+        <h2 class="section-title fade-in">지구커피의 자부심을 확인하세요</h2>
+        
+        <div class="banner-container fade-in">
+            <div class="banner-track">
+                <!-- 👇 [첫 번째 세트] 원본 5장 👇 -->
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="du.jpg" alt="파푸아뉴기니 생두">
+                    <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
+                </div>
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="coffee.jpg" alt="자체 로스팅 공정">
+                    <div class="photo-caption">지구커피 자체 로스팅 팩토리</div>
+                </div>
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="shop3.jpg" alt="지구커피 매장 인테리어">
+                    <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
+                </div>
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="추가할사진1.jpg" alt="시그니처 메뉴">
+                    <div class="photo-caption">압도적인 퀄리티의 시그니처 메뉴</div>
+                </div>
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="추가할사진2.jpg" alt="가맹점 전경">
+                    <div class="photo-caption">지구커피 가맹점 전경</div>
+                </div>
+
+                <!-- 👇 [두 번째 세트] 무한 반복을 위해 똑같은 5장 한 번 더 👇 -->
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="du.jpg" alt="파푸아뉴기니 생두">
+                    <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
+                </div>
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="PG.jpg" alt="파푸아뉴기니 현장">
+                    <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
+                </div>
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="shop3.jpg" alt="지구커피 매장 인테리어">
+                    <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
+                </div>
+                <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <img src="shop5.jpg" alt="가맹점 전경">
+                    <div class="photo-caption">지구커피 가맹점 전경</div>
                 </div>
             </div>
-            
         </div>
     </section>
 
@@ -441,7 +493,7 @@
         </div>
     </div>
 
-    <!-- ✨ [4] 새롭게 추가된 이미지 확대용 팝업창 ✨ -->
+    <!-- [4] 이미지 확대용 팝업창 -->
     <div id="imageModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-btn" onclick="closeImageModal()">&times;</span>
@@ -453,27 +505,27 @@
          자바스크립트 통합
     ========================================= -->
     <script>
-      // 1. 타이핑 애니메이션
-document.addEventListener("DOMContentLoaded", function() {
-    const titleContainer = document.getElementById("typing-text");
-    const fullText = '"우리매장은 월 얼마 벌 수 있을까?"';
-    let i = 0;
-    
-    function typeWriter() {
-        if (i < fullText.length) {
-            let currentText = fullText.substring(0, i + 1);
-            currentText = currentText.replace("얼마", "<span class='highlight'>얼마</span>");
-            titleContainer.innerHTML = currentText;
-            i++;
-            let speed = fullText.charAt(i-1) === " " ? 40 : 100;
-            setTimeout(typeWriter, speed);
-        } else {
-            // 👇 타이핑이 끝난 후 커서 숨기기 추가 👇
-            document.querySelector('.cursor').style.display = 'none';
-        }
-    }
-    setTimeout(typeWriter, 500);
-});
+        // ✨ 1. 타이핑 애니메이션 (끝나면 커서 숨김) ✨
+        document.addEventListener("DOMContentLoaded", function() {
+            const titleContainer = document.getElementById("typing-text");
+            const fullText = '"우리매장은 월 얼마 벌 수 있을까?"';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < fullText.length) {
+                    let currentText = fullText.substring(0, i + 1);
+                    currentText = currentText.replace("얼마", "<span class='highlight'>얼마</span>");
+                    titleContainer.innerHTML = currentText;
+                    i++;
+                    let speed = fullText.charAt(i-1) === " " ? 40 : 100;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    const cursor = document.querySelector('.cursor');
+                    if(cursor) cursor.style.display = 'none';
+                }
+            }
+            setTimeout(typeWriter, 500);
+        });
 
         // 2. 팝업창 통합 관리 (상담, 약관, 확대 이미지)
         function openModal() { document.getElementById('contactModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
@@ -555,73 +607,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 observer.observe(el);
             });
         });
-       /* =========================================
-           ✨ 무한 롤링 배너(이미지) 스타일 ✨
-        ========================================= */
-        .banner-container {
-            width: 100%;
-            overflow: hidden;
-            padding: 10px 0;
-            position: relative;
-        }
-        .banner-track {
-            display: flex;
-            width: max-content;
-            /* 25초 동안 한 바퀴 돎 (더 빠르게 하려면 20s, 15s 등으로 숫자 낮추기) */
-            animation: scrollBanner 25s linear infinite; 
-        }
-        
-        /* 오른쪽에서 왼쪽으로 스르륵 넘어가는 애니메이션 */
-        @keyframes scrollBanner {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* 배너에 마우스 올리면 잠시 멈춤 기능 */
-        .banner-container:hover .banner-track {
-            animation-play-state: paused;
-        }
-
-        .banner-item {
-            width: 320px; /* 사진 한 장의 너비 */
-            margin: 0 10px; /* 사진 사이 간격 */
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            background: #fff;
-            flex-shrink: 0;
-        }
-        .banner-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-        .banner-item:hover img {
-            transform: scale(1.05);
-        }
-        .banner-item .photo-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(to top, rgba(0,81,161,0.9), transparent);
-            color: #fff;
-            padding: 30px 15px 15px;
-            font-weight: 700;
-            font-size: 16px;
-            text-align: center;
-            pointer-events: none;
-        }
-
-        /* 모바일 화면 크기 대응 */
-        @media (max-width: 768px) {
-            .banner-item { width: 250px; }
-            .banner-item img { height: 200px; }
-        }
     </script>
 
 </body>
