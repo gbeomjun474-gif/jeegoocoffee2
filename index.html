@@ -218,7 +218,7 @@
             <div style="max-width: 600px; margin: 0 auto;">
                 <div class="mid-photo-item fade-in" onclick="openImageModal(this.querySelector('img').src)">
                     <!-- 👇 아래 src 부분에 남길 사진의 파일명을 적어주세요 (dududu.jpg 또는 dudududu.png) 👇 -->
-                    <img src="dududu.jpg" alt="지구커피 가맹점 이미지">
+                    <img src="qwer.png" alt="지구커피 가맹점 이미지">
                 </div>
             </div>
         </div>
@@ -269,24 +269,40 @@
         </div>
     </section>
 
-    <!-- 6. 사진 갤러리 섹션 (클릭 시 확대 기능 연결) -->
+ <!-- 6. 사진 자동 슬라이드 섹션 (클릭 시 확대 기능 유지) -->
     <section class="photo-section">
         <div class="container">
             <h2 class="section-title fade-in">지구커피의 자부심을 확인하세요</h2>
-            <div class="photo-gallery">
-                <div class="photo-item fade-in" onclick="openImageModal(this.querySelector('img').src)">
-                    <img src="du.jpg" alt="파푸아뉴기니 생두">
-                    <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
-                </div>
-                <div class="photo-item fade-in" style="transition-delay: 0.1s;" onclick="openImageModal(this.querySelector('img').src)">
-                    <img src="coffee.jpg" alt="자체 로스팅 공정">
-                    <div class="photo-caption">지구커피 자체 로스팅 팩토리</div>
-                </div>
-                <div class="photo-item fade-in" style="transition-delay: 0.2s;" onclick="openImageModal(this.querySelector('img').src)">
-                    <img src="shop3.jpg" alt="지구커피 매장 인테리어">
-                    <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
+            
+            <div class="slider-container fade-in">
+                <div class="slider-track" id="autoSlider">
+                    <!-- 1번째 사진 -->
+                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="du.jpg" alt="파푸아뉴기니 생두">
+                        <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
+                    </div>
+                    
+                    <!-- 2번째 사진 -->
+                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="coffee.jpg" alt="파푸아뉴기니 생두 직수입2">
+                        <div class="photo-caption">파푸아뉴기니 생두 직수입2</div>
+                    </div>
+                    
+                    <!-- 3번째 사진 -->
+                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="shop3.jpg" alt="지구커피 매장 인테리어">
+                        <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
+                    </div>
+                    
+                    <!-- 4번째 사진 (새로 추가) -->
+                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <!-- 👇 여기에 4번째 사진 파일명을 적어주세요 👇 -->
+                        <img src="추가할사진1.jpg" alt="지구커피 메뉴">
+                        <div class="photo-caption">지구커피 가맹점 전경</div>
+                    </div>
                 </div>
             </div>
+            
         </div>
     </section>
 
@@ -527,6 +543,28 @@ document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('.fade-in').forEach(el => {
                 observer.observe(el);
             });
+        });
+        // 5. 자동 슬라이드 스크립트
+        document.addEventListener("DOMContentLoaded", function() {
+            const track = document.getElementById('autoSlider');
+            if(!track) return; // 슬라이드가 없으면 실행 안함
+            
+            const slides = track.querySelectorAll('.slide');
+            let currentIndex = 0;
+
+            function slideNext() {
+                currentIndex++;
+                // 마지막 사진 다음엔 다시 첫 번째 사진으로
+                if (currentIndex >= slides.length) {
+                    currentIndex = 0; 
+                }
+                // 사진 너비(100%)만큼 왼쪽으로 이동
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            // 3초(3000ms)마다 자동으로 다음 슬라이드로 넘어감
+            // 시간을 바꾸고 싶으시다면 아래 3000을 변경하세요 (예: 4초 = 4000)
+            setInterval(slideNext, 3000); 
         });
     </script>
 
