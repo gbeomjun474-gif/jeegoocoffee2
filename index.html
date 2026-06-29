@@ -269,37 +269,48 @@
         </div>
     </section>
 
- <!-- 6. 사진 자동 슬라이드 섹션 (클릭 시 확대 기능 유지) -->
+<!-- 6. 배너형 사진 갤러리 섹션 (무한 롤링) -->
     <section class="photo-section">
         <div class="container">
             <h2 class="section-title fade-in">지구커피의 자부심을 확인하세요</h2>
             
-            <div class="slider-container fade-in">
-                <div class="slider-track" id="autoSlider">
-                    <!-- 1번째 사진 -->
-                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
+            <div class="banner-container fade-in">
+                <div class="banner-track">
+                    <!-- 👇 [첫 번째 세트] 원본 5장 👇 -->
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
                         <img src="du.jpg" alt="파푸아뉴기니 생두">
                         <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
                     </div>
-                    
-                    <!-- 2번째 사진 -->
-                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <img src="PG.jpg" alt="파푸아뉴기니 생두 직수입2">
-                        <div class="photo-caption">파푸아뉴기니 생두 직수입2</div>
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="PG.jpg" alt="파푸야뉴기니 생두">
+                        <div class="photo-caption">파푸아뉴기니 생수 직수입 현장</div>
                     </div>
-                    
-                    <!-- 3번째 사진 -->
-                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
                         <img src="shop3.jpg" alt="지구커피 매장 인테리어">
                         <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
                     </div>
-                    
-                    <!-- 4번째 사진 (새로 추가) -->
-                    <div class="slide photo-item" onclick="openImageModal(this.querySelector('img').src)">
-                        <!-- 👇 여기에 4번째 사진 파일명을 적어주세요 👇 -->
-                        <img src="shop5.jpg" alt="지구커피 메뉴">
-                        <div class="photo-caption">지구커피 가맹점 전경</div>
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="shop5.jpg" alt="지구커피 전경">
+                        <div class="photo-caption">지구커피 매장 전경</div>
                     </div>
+                
+                    <!-- 👇 [두 번째 세트] 무한 반복을 위해 똑같은 5장 한 번 더 👇 -->
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="du.jpg" alt="파푸아뉴기니 생두">
+                        <div class="photo-caption">파푸아뉴기니 생두 직수입</div>
+                    </div>
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="PG.jpg" alt="파푸아뉴기니 생두">
+                        <div class="photo-caption">파푸아뉴기니 생두 직수입 현장</div>
+                    </div>
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="shop3.jpg" alt="지구커피 매장 인테리어">
+                        <div class="photo-caption">트렌디하고 깔끔한 매장 인테리어</div>
+                    </div>
+                    <div class="banner-item" onclick="openImageModal(this.querySelector('img').src)">
+                        <img src="shop5.jpg" alt="지구커피 매장 전경">
+                        <div class="photo-caption">지구커피 매장 전경</div>
+                    </div
                 </div>
             </div>
             
