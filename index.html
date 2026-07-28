@@ -26,10 +26,9 @@
 
         /* [효과 1] 오로라 물결 배경 애니메이션 */
         .hero { 
-            /* 4가지 블루 색상이 섞인 그라데이션 */
             background: linear-gradient(-45deg, #0051A1, #003d7a, #001f3f, #0051A1);
             background-size: 400% 400%;
-            animation: gradientWave 10s ease infinite; /* 10초마다 반복 */
+            animation: gradientWave 10s ease infinite;
             color: #fff; text-align: center; padding: 120px 20px; position: relative; overflow: hidden; 
         }
         @keyframes gradientWave {
@@ -46,12 +45,16 @@
         .marquee span { margin-right: 50px; opacity: 0.8; }
         @keyframes textFlow {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* 내용의 절반만큼 이동하면 다시 처음처럼 보이게 착시 효과 */
+            100% { transform: translateX(-50%); } 
         }
 
         /* 공통 섹션 */
         section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--text-dark); }
+
+        /* 브랜드 스토리 섹션 */
+        .story-content { text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--text-dark); font-size: 18px; }
+        .story-content strong { color: var(--main-color); font-size: 22px; display: block; margin-bottom: 20px; }
 
         /* 메뉴 섹션 */
         .category-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
@@ -60,7 +63,10 @@
         .menu-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
         .menu-card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; transition: transform 0.3s; position: relative; }
         .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,81,161,0.15); border-color: var(--main-color); }
-        .menu-img { width: 100%; height: 250px; background: #eaeaea; display: flex; justify-content: center; align-items: center; color: #999; font-size: 14px; }
+        
+        /* 이미지 태그 최적화 */
+        .menu-img { width: 100%; height: 250px; background: #eaeaea; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .menu-img img { width: 100%; height: 100%; object-fit: cover; }
         .menu-info { padding: 20px; text-align: center; }
         .menu-name { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
         .menu-price { font-size: 16px; color: var(--text-light); }
@@ -91,14 +97,44 @@
         .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--text-dark); }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
         .form-group textarea { height: 150px; resize: none; }
-        .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        
+        /* 개인정보 동의 약관 스타일 */
+        .privacy-box { width: 100%; height: 120px; overflow-y: scroll; border: 1px solid #ddd; padding: 15px; font-size: 13px; color: var(--text-light); background: var(--bg-gray); border-radius: 6px; margin-bottom: 10px; line-height: 1.6; }
+        .checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: normal !important; cursor: pointer; }
+        .checkbox-label input { width: auto; margin: 0; }
+
+        .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;}
         .submit-btn:hover { background: #003d7a; }
 
         /* 푸터 */
         footer { background: var(--text-dark); color: #888; padding: 50px 20px; font-size: 14px; }
-        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
         .footer-info p { margin-bottom: 8px; }
-        .footer-logo { font-size: 24px; font-weight: bold; color: #fff; margin-bottom: 15px; }
+        .footer-logo-img { height: 50px; object-fit: contain; margin-bottom: 15px; opacity: 0.5; filter: grayscale(100%); transition: 0.3s; }
+        .footer-logo-img:hover { opacity: 1; filter: none; }
+        .footer-links { margin-top: 15px; padding-top: 15px; border-top: 1px solid #444; width: 100%; }
+        .footer-links a { color: #aaa; margin: 0 10px; }
+        .footer-links a:hover { color: #fff; }
+
+        /* ========================================= */
+        /* 📱 모바일 최적화 (반응형 미디어 쿼리) */
+        /* ========================================= */
+        @media (max-width: 768px) {
+            .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
+            .gnb { width: 100%; justify-content: center; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
+            .gnb::-webkit-scrollbar { display: none; }
+            .hero { padding: 80px 20px; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            section { margin: 60px auto; }
+            .section-title { font-size: 26px; margin-bottom: 30px; }
+            .category-tabs { flex-wrap: wrap; gap: 8px; }
+            .tab-btn { padding: 8px 16px; font-size: 14px; }
+            .menu-list { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+            .menu-img { height: 160px; }
+            .store-list { grid-template-columns: 1fr; }
+            .inquiry-form { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -110,7 +146,8 @@
                 <img src="logo.png" alt="지구커피 로고" class="logo-img">
             </a>
             <ul class="gnb">
-                <li><a onclick="showPage('home', 'hero')">브랜드 스토리</a></li>
+                <!-- 브랜드 스토리 클릭 시 #story 영역으로 이동 -->
+                <li><a onclick="showPage('home', 'story')">브랜드 스토리</a></li>
                 <li><a onclick="showPage('home', 'menu')">메뉴소개</a></li>
                 <li><a onclick="showPage('home', 'store')">매장안내</a></li>
                 <li><a onclick="showPage('found')">창업문의</a></li>
@@ -130,7 +167,6 @@
         <!-- 흐르는 텍스트 애니메이션 띠 -->
         <div class="marquee-wrap">
             <div class="marquee">
-                <!-- 자연스러운 반복을 위해 똑같은 문구를 두 번 복사해서 넣습니다 -->
                 <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
                 <span>✧</span>
                 <span>The Purest Coffee in the World</span>
@@ -150,7 +186,21 @@
             </div>
         </div>
 
-        <!-- 메뉴 섹션 (reveal 클래스 추가) -->
+        <!-- [신규] 브랜드 스토리 섹션 -->
+        <section id="story">
+            <h2 class="section-title reveal">BRAND STORY</h2>
+            <div class="story-content reveal">
+                <strong>"타협하지 않는 순수함, 커피 본연의 가치를 담다"</strong>
+                <p>지구커피는 매일 마시는 커피 한 잔이 주는 작은 위로와 휴식의 힘을 믿습니다.<br>
+                화려한 기교나 자극적인 단맛으로 본질을 가리지 않고, 오직 최상급 생두가 가진<br>
+                고유의 향미를 가장 깨끗하고 순수하게 추출하는 것에 집착합니다.</p>
+                <br>
+                <p>첫 모금부터 마지막 한 방울까지 텁텁함 없이 깔끔하게 떨어지는 맛.<br>
+                우리가 정의하는 '세상에서 가장 순수한 커피'를 지금 만나보세요.</p>
+            </div>
+        </section>
+
+        <!-- 메뉴 섹션 -->
         <section id="menu">
             <h2 class="section-title reveal">MENU</h2>
             <div class="category-tabs reveal">
@@ -161,14 +211,14 @@
             <div class="menu-list">
                 <div class="menu-card item-coffee reveal">
                     <div class="badge best">BEST</div>
-                    <div class="americano.png">이미지 (250x250)</div>
+                    <div class="menu-img"><img src="americano.png" alt="지구 아메리카노"></div>
                     <div class="menu-info">
                         <div class="menu-name">지구 아메리카노</div>
                         <div class="menu-price">3,000원</div>
                     </div>
                 </div>
                 <div class="menu-card item-coffee reveal">
-                    <div class="signature.png">이미지 (250x250)</div>
+                    <div class="menu-img"><img src="signature.png" alt="지구 시그니처 라떼"></div>
                     <div class="menu-info">
                         <div class="menu-name">지구 시그니처 라떼</div>
                         <div class="menu-price">3,500원</div>
@@ -176,15 +226,15 @@
                 </div>
                 <div class="menu-card item-beverage reveal">
                     <div class="badge new">NEW</div>
-                    <div class="fa.png">이미지 (250x250)</div>
+                    <div class="menu-img"><img src="fa.png" alt="초코 프라프치노"></div>
                     <div class="menu-info">
                         <div class="menu-name">초코 프라프치노</div>
                         <div class="menu-price">4,000원</div>
                     </div>
-                </div>    
-                      <div class="menu-card item-beverage reveal">
+                </div>  
+                <div class="menu-card item-beverage reveal">
                     <div class="badge new">NEW</div>
-                    <div class="fa2.png">이미지 (250x250)</div>
+                    <div class="menu-img"><img src="fa2.png" alt="피스타치오 카페라떼"></div>
                     <div class="menu-info">
                         <div class="menu-name">피스타치오 카페라떼</div>
                         <div class="menu-price">4,000원</div>
@@ -193,7 +243,7 @@
             </div>
         </section>
 
-        <!-- 매장안내 섹션 (reveal 클래스 추가) -->
+        <!-- 매장안내 섹션 -->
         <section id="store">
             <h2 class="section-title reveal">STORE</h2>
             <div class="store-list">
@@ -255,6 +305,23 @@
                     <label for="message">문의 내용</label>
                     <textarea id="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요." required></textarea>
                 </div>
+                
+                <!-- [신규] 개인정보 수집 및 이용 동의 추가 -->
+                <div class="form-group">
+                    <label>개인정보 수집 및 이용 동의</label>
+                    <div class="privacy-box">
+                        가맹점 개설 관련 상담 및 안내를 위하여 아래와 같이 개인정보를 수집 및 이용합니다.<br><br>
+                        1. 수집 목적 : 가맹 상담, 창업 관련 정보 제공 및 안내<br>
+                        2. 수집 항목 : 성명, 연락처, 창업 희망지역 및 문의 내용<br>
+                        3. 보유 및 이용 기간 : 상담 완료 후 6개월 보관 후 파기 (단, 관계 법령에 의거 보존할 필요성이 있는 경우 해당 기간 동안 보관)<br><br>
+                        * 귀하는 개인정보 수집 및 이용에 동의를 거부할 권리가 있으나, 거부 시 상담이 제한될 수 있습니다.
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="privacyConsent" required>
+                        개인정보 수집 및 이용에 동의합니다. (필수)
+                    </label>
+                </div>
+
                 <button type="submit" class="submit-btn">문의 접수하기</button>
             </form>
         </section>
@@ -264,12 +331,23 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-info">
-                <div class="footer-logo">JeeGoo COFFEE</div>
+                <!-- [신규] 푸터 로고 이미지 교체 (기본 로고와 동일한 로고 파일 사용 권장) -->
+                <img src="logo.png" alt="지구커피 로고" class="footer-logo-img">
+                
                 <p>지구커피 | 대표자: 이재구 | 사업자등록번호: 446-85-03011</p>
                 <p>전북특별자치도 전주시 완산구 기린대로 163, 1층</p>
                 <p>가맹문의: 1551-2776 | 고객센터: 1551-2776</p>
-                <br>
-                <p>&copy; JeeGoo COFFEE. All Rights Reserved.</p>
+                
+                <!-- [신규] 개인정보 책임자 추가 -->
+                <p style="margin-top: 10px; color: #aaa;"><strong>개인정보보호책임자: 김범준</strong></p>
+                
+                <!-- [신규] 약관 링크 추가 -->
+                <div class="footer-links">
+                    <a href="#">이용약관</a> | 
+                    <a href="#"><strong>개인정보처리방침</strong></a>
+                </div>
+                
+                <p style="margin-top: 15px;">&copy; JeeGoo COFFEE. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -310,13 +388,13 @@
         // 폼 제출 함수
         function submitForm(event) {
             event.preventDefault();
+            // 폼 체크박스(개인정보 동의) 확인 로직은 html 태그의 required 속성으로 이미 구현됨
             alert('창업 문의가 성공적으로 접수되었습니다. 빠르게 연락드리겠습니다!');
             event.target.reset();
             showPage('home', 'hero'); 
         }
 
-        // --- 새로 추가된 스크롤 애니메이션 (Intersection Observer) ---
-        // 화면에 요소가 보이면 'active' 클래스를 붙여 애니메이션을 실행시킵니다.
+        // 스크롤 애니메이션 (Intersection Observer)
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -324,9 +402,8 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { threshold: 0.1 }); // 요소가 10% 정도 보일 때 작동
+            }, { threshold: 0.1 });
 
-            // reveal 클래스를 가진 모든 요소를 감시
             document.querySelectorAll('.reveal').forEach((el) => {
                 observer.observe(el);
             });
