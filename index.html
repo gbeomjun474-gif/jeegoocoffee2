@@ -74,37 +74,429 @@
 
         /* 매장안내 섹션 */
         .store-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        .store-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 30px; box-shadow: 0 4px 1네, 정말 좋은 생각입니다! 창업을 고민하는 예비 점주 입장에서는 어떤 과정을 거쳐 매장을 열게 되는지 **명확한 가맹 절차**를 미리 확인하면 본사에 대한 신뢰감이 훨씬 높아집니다. 
+        .store-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
+        .store-card:hover { border-color: var(--main-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,81,161,0.1); }
+        .store-name { font-size: 22px; font-weight: 800; color: var(--main-color); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .store-badge { font-size: 12px; background: var(--text-dark); color: #fff; padding: 4px 10px; border-radius: 20px; font-weight: bold; }
+        .store-info p { font-size: 15px; color: var(--text-light); margin-bottom: 8px; }
+        .store-info strong { color: var(--text-dark); display: inline-block; width: 70px; }
 
-일반적이고 체계적인 프랜차이즈 가맹 절차 초안을 단계별로 정리해 드릴 테니, 브랜드 상황에 맞게 수정해서 활용해 보세요.
+        /* 스크롤 스르륵 등장 (Reveal) 애니메이션 */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
----
+        /* 창업문의 페이지 - 가맹 절차 추가 */
+        .process-wrap { margin-bottom: 60px; }
+        .process-title { text-align: center; font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 30px; }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+        .process-step { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 25px 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.02); position: relative; }
+        .step-num { font-size: 30px; font-weight: 900; color: var(--main-color); opacity: 0.3; margin-bottom: 10px; }
+        .process-step h4 { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
+        .process-step p { font-size: 13px; color: var(--text-light); word-break: keep-all; }
 
-## 🏢 표준 가맹 절차 초안
+        /* 창업문의 폼 스타일 */
+        .contact-banner { background: var(--bg-gray); padding: 40px; text-align: center; border-radius: 12px; margin-bottom: 40px; }
+        .contact-banner h3 { font-size: 20px; color: var(--text-light); margin-bottom: 10px; }
+        .contact-banner .phone { font-size: 40px; font-weight: 900; color: var(--main-color); margin-bottom: 10px; }
+        .inquiry-form { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--text-dark); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
+        .form-group textarea { height: 150px; resize: none; }
+        
+        .privacy-box { width: 100%; height: 120px; overflow-y: scroll; border: 1px solid #ddd; padding: 15px; font-size: 13px; color: var(--text-light); background: var(--bg-gray); border-radius: 6px; margin-bottom: 10px; line-height: 1.6; }
+        .checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: normal !important; cursor: pointer; }
+        .checkbox-label input { width: auto; margin: 0; }
+        .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;}
+        .submit-btn:hover { background: #003d7a; }
 
-**1. 창업 문의 및 1차 상담**
-홈페이지, 전화 등을 통해 문의를 남겨주시면 담당자가 브랜드 소개, 개설 조건, 예상 창업 비용 등을 상세히 안내해 드립니다.
+        /* 약관 및 개인정보처리방침 페이지 스타일 */
+        .policy-container { max-width: 800px; margin: 50px auto; padding: 40px; background: #fff; border: 1px solid #eee; border-radius: 12px; line-height: 1.8; }
+        .policy-container h2 { font-size: 28px; font-weight: 800; color: var(--main-color); margin-bottom: 30px; border-bottom: 2px solid var(--text-dark); padding-bottom: 15px; }
+        .policy-content h3 { font-size: 18px; color: var(--text-dark); margin-top: 30px; margin-bottom: 10px; }
+        .policy-content p { font-size: 15px; color: var(--text-light); margin-bottom: 15px; }
 
-**2. 상권 분석 및 점포 개발**
-창업 희망 지역의 상권과 유동 인구를 분석하고, 수익성을 고려하여 최적의 점포를 추천 및 선정합니다. (기존 보유 점포가 있을 경우 상권 타당성 분석 진행)
+        /* 푸터 */
+        footer { background: var(--text-dark); color: #888; padding: 50px 20px; font-size: 14px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+        .footer-info p { margin-bottom: 8px; }
+        .footer-logo-img { height: 50px; object-fit: contain; margin-bottom: 15px; opacity: 0.5; filter: grayscale(100%); transition: 0.3s; }
+        .footer-logo-img:hover { opacity: 1; filter: none; }
+        .footer-links { margin-top: 15px; padding-top: 15px; border-top: 1px solid #444; width: 100%; }
+        .footer-links a { color: #aaa; margin: 0 10px; }
+        .footer-links a:hover { color: #fff; }
 
-**3. 가맹 계약 체결**
-최종 점포가 확정되면 본사와 가맹 계약을 체결합니다. 이때 정보공개서를 제공받고 가맹비 등 초기 비용을 납부하게 됩니다.
+        /* 모바일 최적화 */
+        @media (max-width: 768px) {
+            .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
+            .gnb { width: 100%; justify-content: center; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
+            .gnb::-webkit-scrollbar { display: none; }
+            .hero { padding: 80px 20px; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            section { margin: 60px auto; }
+            .section-title { font-size: 26px; margin-bottom: 30px; }
+            .category-tabs { flex-wrap: wrap; gap: 8px; }
+            .tab-btn { padding: 8px 16px; font-size: 14px; }
+            .menu-list { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+            .menu-img { height: 160px; }
+            .store-list { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 모바일에서 가맹절차 2열 배치 */
+            .inquiry-form { padding: 20px; }
+            .policy-container { padding: 20px; margin: 30px 10px; }
+        }
+    </style>
+</head>
+<body>
 
-**4. 인테리어 설계 및 시공**
-브랜드 표준 매뉴얼에 맞춘 인테리어 설계 도면을 확정하고, 본격적인 매장 시공 및 필수 장비 세팅을 진행합니다.
+    <!-- 헤더 -->
+    <header>
+        <div class="nav-inner">
+            <a onclick="showPage('home', 'hero')" class="logo">
+                <img src="logo.png" alt="지구커피 로고" class="logo-img">
+            </a>
+            <ul class="gnb">
+                <li><a onclick="showPage('home', 'story')">브랜드 스토리</a></li>
+                <li><a onclick="showPage('home', 'menu')">메뉴소개</a></li>
+                <li><a onclick="showPage('home', 'store')">매장안내</a></li>
+                <li><a onclick="showPage('found')">창업문의</a></li>
+            </ul>
+        </div>
+    </header>
 
-**5. 가맹점주 및 직원 교육**
-시공이 진행되는 동안 본사 교육장 또는 직영점에서 조리(제조), 매장 운영 노하우, 고객 서비스(CS), 마케팅 등 실무 밀착 교육을 실시합니다.
+    <!-- [1] 메인 화면 영역 -->
+    <div id="page-home">
+        
+        <!-- 오로라 배경 애니메이션 배너 -->
+        <div class="hero" id="hero">
+            <h1>세상에서 가장 순수한 커피</h1>
+            <p>매일 마시는 커피, 지구커피에서 더 특별하게 즐기세요.</p>
+        </div>
 
-**6. 최종 점검 및 가오픈**
-인테리어 완공 후 각종 설비의 정상 작동 여부를 점검합니다. 이후 가오픈을 통해 실제 운영 동선을 체크하고 미흡한 부분을 보완합니다.
+        <!-- 흐르는 텍스트 애니메이션 띠 -->
+        <div class="marquee-wrap">
+            <div class="marquee">
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+            </div>
+        </div>
 
-**7. 그랜드 오픈 및 사후 관리**
-정식으로 매장을 오픈합니다. 오픈 이후에도 본사 담당자(슈퍼바이저)가 정기적으로 방문하여 매출 분석, 마케팅 지원 등 안정적인 매장 운영을 돕습니다.
+        <!-- 브랜드 스토리 섹션 -->
+        <section id="story">
+            <h2 class="section-title reveal">BRAND STORY</h2>
+            <div class="story-content reveal">
+                <strong>"타협하지 않는 순수함, 커피 본연의 가치를 담다"</strong>
+                <p>지구커피는 매일 마시는 커피 한 잔이 주는 작은 위로와 휴식의 힘을 믿습니다.<br>
+                화려한 기교나 자극적인 단맛으로 본질을 가리지 않고, 오직 최상급 생두가 가진<br>
+                고유의 향미를 가장 깨끗하고 순수하게 추출하는 것에 집착합니다.</p>
+                <br>
+                <p>첫 모금부터 마지막 한 방울까지 텁텁함 없이 깔끔하게 떨어지는 맛.<br>
+                우리가 정의하는 '세상에서 가장 순수한 커피'를 지금 만나보세요.</p>
+            </div>
+        </section>
 
----
+        <!-- 메뉴 섹션 -->
+        <section id="menu">
+            <h2 class="section-title reveal">MENU</h2>
+            <div class="category-tabs reveal">
+                <button class="tab-btn active" onclick="filterMenu('all')">전체보기</button>
+                <button class="tab-btn" onclick="filterMenu('coffee')">커피</button>
+                <button class="tab-btn" onclick="filterMenu('beverage')">음료</button>
+            </div>
+            <div class="menu-list">
+                <div class="menu-card item-coffee reveal">
+                    <div class="badge best">BEST</div>
+                    <div class="menu-img"><img src="americano.png" alt="지구 아메리카노"></div>
+                    <div class="menu-info">
+                        <div class="menu-name">지구 아메리카노</div>
+                        <div class="menu-price">3,000원</div>
+                    </div>
+                </div>
+                <div class="menu-card item-coffee reveal">
+                    <div class="menu-img"><img src="signature.png" alt="지구 시그니처 라떼"></div>
+                    <div class="menu-info">
+                        <div class="menu-name">지구 시그니처 라떼</div>
+                        <div class="menu-price">3,500원</div>
+                    </div>
+                </div>
+                <div class="menu-card item-beverage reveal">
+                    <div class="badge new">NEW</div>
+                    <div class="menu-img"><img src="fa.png" alt="초코 프라프치노"></div>
+                    <div class="menu-info">
+                        <div class="menu-name">초코 프라프치노</div>
+                        <div class="menu-price">4,000원</div>
+                    </div>
+                </div>  
+                <div class="menu-card item-beverage reveal">
+                    <div class="badge new">NEW</div>
+                    <div class="menu-img"><img src="fa2.png" alt="피스타치오 카페라떼"></div>
+                    <div class="menu-info">
+                        <div class="menu-name">피스타치오 카페라떼</div>
+                        <div class="menu-price">4,000원</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-> **💡 추가 팁:** 각 단계별로 소요되는 **'예상 기간'**(예: 인테리어 3주, 교육 1주 등)을 함께 기재해 주시면, 예비 창업자가 전체적인 오픈 일정을 계획하는 데 큰 도움이 됩니다.
+        <!-- 매장안내 섹션 -->
+        <section id="store">
+            <h2 class="section-title reveal">STORE</h2>
+            <div class="store-list">
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 본점 <span class="store-badge">MAIN</span></div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 기린대로 163 123</p>
+                        <p><strong>전화번호</strong> 1551-2776</p>
+                        <p><strong>영업시간</strong> 월~금 07:00 - 14:00</p>
+                    </div>
+                </div>
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 금암직영점</div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 전북특별자치도 전주시 덕진구 거북바우로 34</p>
+                        <p><strong>전화번호</strong> 1551-2776</p>
+                        <p><strong>영업시간</strong> 매일 08:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 시청점</div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 기린대로 203</p>
+                        <p><strong>전화번호</strong> 1551-2776</p>
+                        <p><strong>영업시간</strong> 평일 07:00 - 21:00 / 주말 정기휴무</p>
+                    </div>
+                </div>
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 종각점</div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 서울특별시 종로구 우정국로 4 1F</p>
+                        <p><strong>전화번호</strong> 02-733-3920</p>
+                        <p><strong>영업시간</strong> 매일 07:00 - 20:30</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-현재 준비 중이신 업종(예: 요식업, 카페, 무인 매장, 서비스업 등)이 어떤 분야인지 알려주시면, 해당 업종 특성에 딱 맞는 맞춤형 절차로 조금 더 다듬어 드릴 수 있는데 어떤 아이템을 준비 중이신가요?
+    <!-- [2] 창업문의 화면 영역 -->
+    <div id="page-found" style="display: none;">
+        <section class="reveal">
+            <h2 class="section-title">창업문의</h2>
+            
+            <!-- [추가된 영역] 가맹 절차 -->
+            <div class="process-wrap">
+                <h3 class="process-title">지구커피 가맹 절차</h3>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-num">01</div>
+                        <h4>가맹상담</h4>
+                        <p>전화 및 방문 상담을 통한 예산/지역 검토</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">02</div>
+                        <h4>상권분석</h4>
+                        <p>전문가의 현장 답사 및 최적의 점포 개발</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">03</div>
+                        <h4>가맹계약</h4>
+                        <p>정보공개서 제공 및 최종 가맹 계약 체결</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">04</div>
+                        <h4>인테리어</h4>
+                        <p>매뉴얼에 따른 도면 설계 및 시공 진행</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">05</div>
+                        <h4>교육진행</h4>
+                        <p>본사/직영점에서 레시피 및 매장 운영 교육</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">06</div>
+                        <h4>그랜드오픈</h4>
+                        <p>최종 점검 후 정식 오픈 및 슈퍼바이저 관리</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-banner">
+                <h3>가맹상담 전화번호</h3>
+                <div class="phone">1551-2776</div>
+                <p>평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00 / 주말 및 공휴일 휴무)</p>
+            </div>
+            <form class="inquiry-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">성함</label>
+                    <input type="text" id="name" placeholder="홍길동" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" placeholder="010-0000-0000" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">문의 내용</label>
+                    <textarea id="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>개인정보 수집 및 이용 동의</label>
+                    <div class="privacy-box">
+                        가맹점 개설 관련 상담 및 안내를 위하여 아래와 같이 개인정보를 수집 및 이용합니다.<br><br>
+                        1. 수집 목적 : 가맹 상담, 창업 관련 정보 제공 및 안내<br>
+                        2. 수집 항목 : 성명, 연락처, 창업 희망지역 및 문의 내용<br>
+                        3. 보유 및 이용 기간 : 상담 완료 후 6개월 보관 후 파기 (단, 관계 법령에 의거 보존할 필요성이 있는 경우 해당 기간 동안 보관)<br><br>
+                        * 귀하는 개인정보 수집 및 이용에 동의를 거부할 권리가 있으나, 거부 시 상담이 제한될 수 있습니다.
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="privacyConsent" required>
+                        개인정보 수집 및 이용에 동의합니다. (필수)
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">문의 접수하기</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- [3] 이용약관 화면 영역 -->
+    <div id="page-terms" style="display: none;">
+        <div class="policy-container">
+            <h2>이용약관</h2>
+            <div class="policy-content">
+                <h3>제 1 조 (목적)</h3>
+                <p>본 약관은 지구커피(이하 "회사"라 합니다)가 제공하는 웹사이트 및 관련 제반 서비스의 이용과 관련하여 회사와 이용자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+                
+                <h3>제 2 조 (약관의 게시와 개정)</h3>
+                <p>① 회사는 본 약관의 내용을 이용자가 쉽게 알 수 있도록 서비스 초기 화면에 게시합니다.<br>
+                ② 회사는 관련법을 위배하지 않는 범위에서 본 약관을 개정할 수 있으며, 개정 시에는 적용일자 및 개정사유를 명시하여 현행 약관과 함께 공지합니다.</p>
+
+                <h3>제 3 조 (서비스의 제공 및 변경)</h3>
+                <p>회사는 창업 가맹 문의 접수, 브랜드 정보 제공, 매장 안내 등의 서비스를 제공하며, 운영상 또는 기술상의 필요에 따라 제공하고 있는 서비스를 변경할 수 있습니다.</p>
+
+                <h3>제 4 조 (이용자의 의무)</h3>
+                <p>이용자는 창업 문의 등 서비스 이용 시 타인의 정보를 도용하거나 허위 정보를 등록해서는 안 되며, 회사의 업무를 방해하는 행위를 하여서는 안 됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- [4] 개인정보처리방침 화면 영역 -->
+    <div id="page-privacy" style="display: none;">
+        <div class="policy-container">
+            <h2>개인정보처리방침</h2>
+            <div class="policy-content">
+                <p>지구커피는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법 등 관련 법령에 따라 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
+
+                <h3>1. 개인정보의 수집 및 이용 목적</h3>
+                <p>회사는 창업(가맹) 상담 및 관련 안내, 가맹점 개설 절차 진행을 위해 최소한의 개인정보를 수집하고 있습니다.</p>
+
+                <h3>2. 수집하는 개인정보의 항목</h3>
+                <p>- 필수항목: 성명, 연락처(휴대전화번호), 문의내용 및 창업희망지역</p>
+
+                <h3>3. 개인정보의 보유 및 이용 기간</h3>
+                <p>원칙적으로, 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 상담 이력 관리를 위해 상담 완료 후 6개월간 보관하며, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우 해당 법령에서 정한 기간 동안 보관합니다.</p>
+
+                <h3>4. 이용자의 권리와 그 행사방법</h3>
+                <p>이용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 수 있으며 가입 해지(동의 철회)를 요청할 수 있습니다.</p>
+
+                <h3>5. 개인정보보호책임자</h3>
+                <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.<br>
+                <strong>- 책임자 성명 : 김범준</strong><br>
+                - 연락처 : 1551-2776</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-info">
+                <img src="logo.png" alt="지구커피 로고" class="footer-logo-img">
+                
+                <p>지구커피 | 대표자: 이재구 | 사업자등록번호: 446-85-03011</p>
+                <p>전북특별자치도 전주시 완산구 기린대로 163, 1층</p>
+                <p>가맹문의: 1551-2776 | 고객센터: 1551-2776</p>
+                
+                <p style="margin-top: 10px; color: #aaa;"><strong>개인정보보호책임자: 김범준</strong></p>
+                
+                <div class="footer-links">
+                    <a onclick="showPage('terms')">이용약관</a> | 
+                    <a onclick="showPage('privacy')"><strong>개인정보처리방침</strong></a>
+                </div>
+                
+                <p style="margin-top: 15px;">&copy; JeeGoo COFFEE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId, sectionId) {
+            document.getElementById('page-home').style.display = 'none';
+            document.getElementById('page-found').style.display = 'none';
+            document.getElementById('page-terms').style.display = 'none';
+            document.getElementById('page-privacy').style.display = 'none';
+            
+            document.getElementById('page-' + pageId).style.display = 'block';
+            
+            if (sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
+                }
+            } else {
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-card');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains('item-' + category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            alert('창업 문의가 성공적으로 접수되었습니다. 빠르게 연락드리겠습니다!');
+            event.target.reset();
+            showPage('home', 'hero'); 
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
