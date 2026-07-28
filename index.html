@@ -52,9 +52,13 @@
         section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--text-dark); }
 
-        /* 브랜드 스토리 섹션 */
+        /* 브랜드 스토리 섹션 & 가게 전경 사진 */
         .story-content { text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--text-dark); font-size: 18px; }
         .story-content strong { color: var(--main-color); font-size: 22px; display: block; margin-bottom: 20px; }
+        
+        .story-img-wrap { max-width: 1000px; margin: 50px auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .story-img-wrap img { width: 100%; display: block; object-fit: cover; transition: transform 0.5s; }
+        .story-img-wrap:hover img { transform: scale(1.03); }
 
         /* 메뉴 섹션 */
         .category-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
@@ -85,7 +89,7 @@
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* 창업문의 페이지 - 가맹 절차 추가 */
+        /* 창업문의 페이지 - 가맹 절차 */
         .process-wrap { margin-bottom: 60px; }
         .process-title { text-align: center; font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 30px; }
         .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
@@ -141,7 +145,7 @@
             .menu-list { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
             .menu-img { height: 160px; }
             .store-list { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 모바일에서 가맹절차 2열 배치 */
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
             .inquiry-form { padding: 20px; }
             .policy-container { padding: 20px; margin: 30px 10px; }
         }
@@ -206,6 +210,11 @@
                 <br>
                 <p>첫 모금부터 마지막 한 방울까지 텁텁함 없이 깔끔하게 떨어지는 맛.<br>
                 우리가 정의하는 '세상에서 가장 순수한 커피'를 지금 만나보세요.</p>
+            </div>
+            
+            <!-- 가게 전경 사진 영역 -->
+            <div class="story-img-wrap reveal">
+                <img src="store.png" alt="지구커피 매장 전경">
             </div>
         </section>
 
@@ -297,7 +306,7 @@
         <section class="reveal">
             <h2 class="section-title">창업문의</h2>
             
-            <!-- [추가된 영역] 가맹 절차 -->
+            <!-- 가맹 절차 -->
             <div class="process-wrap">
                 <h3 class="process-title">지구커피 가맹 절차</h3>
                 <div class="process-grid">
@@ -334,23 +343,24 @@
                 </div>
             </div>
 
+            <!-- 구글 시트 연동 폼 -->
             <div class="contact-banner">
                 <h3>가맹상담 전화번호</h3>
                 <div class="phone">1551-2776</div>
                 <p>평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00 / 주말 및 공휴일 휴무)</p>
             </div>
-            <form class="inquiry-form" onsubmit="submitForm(event)">
+            <form class="inquiry-form" id="inquiryForm" onsubmit="submitForm(event)">
                 <div class="form-group">
                     <label for="name">성함</label>
-                    <input type="text" id="name" placeholder="홍길동" required>
+                    <input type="text" id="name" name="name" placeholder="홍길동" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">연락처</label>
-                    <input type="tel" id="phone" placeholder="010-0000-0000" required>
+                    <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
                 </div>
                 <div class="form-group">
                     <label for="message">문의 내용</label>
-                    <textarea id="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요." required></textarea>
+                    <textarea id="message" name="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요." required></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -368,7 +378,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="submit-btn">문의 접수하기</button>
+                <button type="submit" class="submit-btn" id="submitBtn">문의 접수하기</button>
             </form>
         </section>
     </div>
@@ -444,6 +454,7 @@
     </footer>
 
     <script>
+        // 화면 전환 함수
         function showPage(pageId, sectionId) {
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-found').style.display = 'none';
@@ -462,6 +473,7 @@
             }
         }
 
+        // 메뉴 탭 필터링 함수
         function filterMenu(category) {
             const items = document.querySelectorAll('.menu-card');
             items.forEach(item => {
@@ -477,13 +489,42 @@
             event.target.classList.add('active');
         }
 
+        // 폼 제출 (구글 스프레드시트 연동) 함수
         function submitForm(event) {
-            event.preventDefault();
-            alert('창업 문의가 성공적으로 접수되었습니다. 빠르게 연락드리겠습니다!');
-            event.target.reset();
-            showPage('home', 'hero'); 
+            event.preventDefault(); // 기본 제출 방지
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // ★ 주의: 아래 scriptURL에 발급받은 '구글 웹 앱 URL'을 반드시 붙여넣으세요!
+            const scriptURL = '여기에_웹앱_URL을_붙여넣으세요'; 
+            
+            const formData = new FormData(form);
+            
+            // 전송 중 상태 표시
+            submitBtn.innerText = '접수 중...';
+            submitBtn.disabled = true;
+            submitBtn.style.backgroundColor = '#999';
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    alert('창업 문의가 성공적으로 접수되었습니다. 빠르게 연락드리겠습니다!');
+                    form.reset(); 
+                    showPage('home', 'hero'); 
+                })
+                .catch(error => {
+                    alert('접수 중 오류가 발생했습니다. 다시 시도해주세요.');
+                    console.error('Error!', error.message);
+                })
+                .finally(() => {
+                    // 버튼 상태 복구
+                    submitBtn.innerText = '문의 접수하기';
+                    submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = 'var(--main-color)';
+                });
         }
 
+        // 스크롤 시 부드럽게 등장하는 Reveal 애니메이션 설정
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
