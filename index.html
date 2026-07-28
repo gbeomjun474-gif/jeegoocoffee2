@@ -24,7 +24,7 @@
         .gnb { display: flex; gap: 40px; font-weight: 600; font-size: 17px; }
         .gnb a:hover { color: var(--main-color); }
 
-        /* [효과 1] 오로라 물결 배경 애니메이션 */
+        /* 오로라 물결 배경 애니메이션 */
         .hero { 
             background: linear-gradient(-45deg, #0051A1, #003d7a, #001f3f, #0051A1);
             background-size: 400% 400%;
@@ -39,7 +39,7 @@
         .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .hero p { font-size: 20px; opacity: 0.9; }
 
-        /* [효과 2] 트렌디 흐름 텍스트 (Marquee) */
+        /* 트렌디 흐름 텍스트 (Marquee) */
         .marquee-wrap { background: var(--main-color); overflow: hidden; white-space: nowrap; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.2); }
         .marquee { display: inline-block; color: #fff; font-size: 16px; font-weight: bold; letter-spacing: 2px; animation: textFlow 25s linear infinite; }
         .marquee span { margin-right: 50px; opacity: 0.8; }
@@ -63,8 +63,6 @@
         .menu-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
         .menu-card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; transition: transform 0.3s; position: relative; }
         .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,81,161,0.15); border-color: var(--main-color); }
-        
-        /* 이미지 태그 최적화 */
         .menu-img { width: 100%; height: 250px; background: #eaeaea; display: flex; justify-content: center; align-items: center; overflow: hidden; }
         .menu-img img { width: 100%; height: 100%; object-fit: cover; }
         .menu-info { padding: 20px; text-align: center; }
@@ -83,7 +81,7 @@
         .store-info p { font-size: 15px; color: var(--text-light); margin-bottom: 8px; }
         .store-info strong { color: var(--text-dark); display: inline-block; width: 70px; }
 
-        /* [효과 3] 스크롤 스르륵 등장 (Reveal) 애니메이션 준비 설정 */
+        /* 스크롤 스르륵 등장 (Reveal) 애니메이션 준비 설정 */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -91,20 +89,23 @@
         .contact-banner { background: var(--bg-gray); padding: 40px; text-align: center; border-radius: 12px; margin-bottom: 40px; }
         .contact-banner h3 { font-size: 20px; color: var(--text-light); margin-bottom: 10px; }
         .contact-banner .phone { font-size: 40px; font-weight: 900; color: var(--main-color); margin-bottom: 10px; }
-        
         .inquiry-form { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--text-dark); }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
         .form-group textarea { height: 150px; resize: none; }
         
-        /* 개인정보 동의 약관 스타일 */
         .privacy-box { width: 100%; height: 120px; overflow-y: scroll; border: 1px solid #ddd; padding: 15px; font-size: 13px; color: var(--text-light); background: var(--bg-gray); border-radius: 6px; margin-bottom: 10px; line-height: 1.6; }
         .checkbox-label { display: flex; align-items: center; gap: 8px; font-weight: normal !important; cursor: pointer; }
         .checkbox-label input { width: auto; margin: 0; }
-
         .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;}
         .submit-btn:hover { background: #003d7a; }
+
+        /* [신규] 약관 및 개인정보처리방침 페이지 스타일 */
+        .policy-container { max-width: 800px; margin: 50px auto; padding: 40px; background: #fff; border: 1px solid #eee; border-radius: 12px; line-height: 1.8; }
+        .policy-container h2 { font-size: 28px; font-weight: 800; color: var(--main-color); margin-bottom: 30px; border-bottom: 2px solid var(--text-dark); padding-bottom: 15px; }
+        .policy-content h3 { font-size: 18px; color: var(--text-dark); margin-top: 30px; margin-bottom: 10px; }
+        .policy-content p { font-size: 15px; color: var(--text-light); margin-bottom: 15px; }
 
         /* 푸터 */
         footer { background: var(--text-dark); color: #888; padding: 50px 20px; font-size: 14px; }
@@ -116,9 +117,7 @@
         .footer-links a { color: #aaa; margin: 0 10px; }
         .footer-links a:hover { color: #fff; }
 
-        /* ========================================= */
-        /* 📱 모바일 최적화 (반응형 미디어 쿼리) */
-        /* ========================================= */
+        /* 모바일 최적화 */
         @media (max-width: 768px) {
             .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
             .gnb { width: 100%; justify-content: center; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
@@ -134,6 +133,7 @@
             .menu-img { height: 160px; }
             .store-list { grid-template-columns: 1fr; }
             .inquiry-form { padding: 20px; }
+            .policy-container { padding: 20px; margin: 30px 10px; }
         }
     </style>
 </head>
@@ -146,7 +146,6 @@
                 <img src="logo.png" alt="지구커피 로고" class="logo-img">
             </a>
             <ul class="gnb">
-                <!-- 브랜드 스토리 클릭 시 #story 영역으로 이동 -->
                 <li><a onclick="showPage('home', 'story')">브랜드 스토리</a></li>
                 <li><a onclick="showPage('home', 'menu')">메뉴소개</a></li>
                 <li><a onclick="showPage('home', 'store')">매장안내</a></li>
@@ -186,7 +185,7 @@
             </div>
         </div>
 
-        <!-- [신규] 브랜드 스토리 섹션 -->
+        <!-- 브랜드 스토리 섹션 -->
         <section id="story">
             <h2 class="section-title reveal">BRAND STORY</h2>
             <div class="story-content reveal">
@@ -214,12 +213,14 @@
                     <div class="menu-img"><img src="americano.png" alt="지구 아메리카노"></div>
                     <div class="menu-info">
                         <div class="menu-name">지구 아메리카노</div>
+                        <div class="menu-price">3,000원</div>
                     </div>
                 </div>
                 <div class="menu-card item-coffee reveal">
                     <div class="menu-img"><img src="signature.png" alt="지구 시그니처 라떼"></div>
                     <div class="menu-info">
                         <div class="menu-name">지구 시그니처 라떼</div>
+                        <div class="menu-price">3,500원</div>
                     </div>
                 </div>
                 <div class="menu-card item-beverage reveal">
@@ -227,6 +228,7 @@
                     <div class="menu-img"><img src="fa.png" alt="초코 프라프치노"></div>
                     <div class="menu-info">
                         <div class="menu-name">초코 프라프치노</div>
+                        <div class="menu-price">4,000원</div>
                     </div>
                 </div>  
                 <div class="menu-card item-beverage reveal">
@@ -234,6 +236,7 @@
                     <div class="menu-img"><img src="fa2.png" alt="피스타치오 카페라떼"></div>
                     <div class="menu-info">
                         <div class="menu-name">피스타치오 카페라떼</div>
+                        <div class="menu-price">4,000원</div>
                     </div>
                 </div>
             </div>
@@ -281,7 +284,7 @@
 
     <!-- [2] 창업문의 화면 영역 -->
     <div id="page-found" style="display: none;">
-        <section class="reveal">
+        <section>
             <h2 class="section-title">창업문의</h2>
             <div class="contact-banner">
                 <h3>가맹상담 전화번호</h3>
@@ -302,7 +305,6 @@
                     <textarea id="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요." required></textarea>
                 </div>
                 
-                <!-- [신규] 개인정보 수집 및 이용 동의 추가 -->
                 <div class="form-group">
                     <label>개인정보 수집 및 이용 동의</label>
                     <div class="privacy-box">
@@ -323,24 +325,70 @@
         </section>
     </div>
 
+    <!-- [3] 이용약관 화면 영역 -->
+    <div id="page-terms" style="display: none;">
+        <div class="policy-container">
+            <h2>이용약관</h2>
+            <div class="policy-content">
+                <h3>제 1 조 (목적)</h3>
+                <p>본 약관은 지구커피(이하 "회사"라 합니다)가 제공하는 웹사이트 및 관련 제반 서비스의 이용과 관련하여 회사와 이용자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+                
+                <h3>제 2 조 (약관의 게시와 개정)</h3>
+                <p>① 회사는 본 약관의 내용을 이용자가 쉽게 알 수 있도록 서비스 초기 화면에 게시합니다.<br>
+                ② 회사는 관련법을 위배하지 않는 범위에서 본 약관을 개정할 수 있으며, 개정 시에는 적용일자 및 개정사유를 명시하여 현행 약관과 함께 공지합니다.</p>
+
+                <h3>제 3 조 (서비스의 제공 및 변경)</h3>
+                <p>회사는 창업 가맹 문의 접수, 브랜드 정보 제공, 매장 안내 등의 서비스를 제공하며, 운영상 또는 기술상의 필요에 따라 제공하고 있는 서비스를 변경할 수 있습니다.</p>
+
+                <h3>제 4 조 (이용자의 의무)</h3>
+                <p>이용자는 창업 문의 등 서비스 이용 시 타인의 정보를 도용하거나 허위 정보를 등록해서는 안 되며, 회사의 업무를 방해하는 행위를 하여서는 안 됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- [4] 개인정보처리방침 화면 영역 -->
+    <div id="page-privacy" style="display: none;">
+        <div class="policy-container">
+            <h2>개인정보처리방침</h2>
+            <div class="policy-content">
+                <p>지구커피는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법 등 관련 법령에 따라 이용자의 개인정보를 보호하고, 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
+
+                <h3>1. 개인정보의 수집 및 이용 목적</h3>
+                <p>회사는 창업(가맹) 상담 및 관련 안내, 가맹점 개설 절차 진행을 위해 최소한의 개인정보를 수집하고 있습니다.</p>
+
+                <h3>2. 수집하는 개인정보의 항목</h3>
+                <p>- 필수항목: 성명, 연락처(휴대전화번호), 문의내용 및 창업희망지역</p>
+
+                <h3>3. 개인정보의 보유 및 이용 기간</h3>
+                <p>원칙적으로, 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 상담 이력 관리를 위해 상담 완료 후 6개월간 보관하며, 관계 법령의 규정에 의하여 보존할 필요가 있는 경우 해당 법령에서 정한 기간 동안 보관합니다.</p>
+
+                <h3>4. 이용자의 권리와 그 행사방법</h3>
+                <p>이용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 수 있으며 가입 해지(동의 철회)를 요청할 수 있습니다.</p>
+
+                <h3>5. 개인정보보호책임자</h3>
+                <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.<br>
+                <strong>- 책임자 성명 : 김범준</strong><br>
+                - 연락처 : 1551-2776</p>
+            </div>
+        </div>
+    </div>
+
     <!-- 푸터 -->
     <footer>
         <div class="footer-inner">
             <div class="footer-info">
-                <!-- [신규] 푸터 로고 이미지 교체 (기본 로고와 동일한 로고 파일 사용 권장) -->
                 <img src="logo.png" alt="지구커피 로고" class="footer-logo-img">
                 
                 <p>지구커피 | 대표자: 이재구 | 사업자등록번호: 446-85-03011</p>
                 <p>전북특별자치도 전주시 완산구 기린대로 163, 1층</p>
                 <p>가맹문의: 1551-2776 | 고객센터: 1551-2776</p>
                 
-                <!-- [신규] 개인정보 책임자 추가 -->
                 <p style="margin-top: 10px; color: #aaa;"><strong>개인정보보호책임자: 김범준</strong></p>
                 
-                <!-- [신규] 약관 링크 추가 -->
+                <!-- [수정] a 태그의 href="#" 삭제하고 클릭 함수 연결 -->
                 <div class="footer-links">
-                    <a href="#">이용약관</a> | 
-                    <a href="#"><strong>개인정보처리방침</strong></a>
+                    <a onclick="showPage('terms')">이용약관</a> | 
+                    <a onclick="showPage('privacy')"><strong>개인정보처리방침</strong></a>
                 </div>
                 
                 <p style="margin-top: 15px;">&copy; JeeGoo COFFEE. All Rights Reserved.</p>
@@ -349,10 +397,15 @@
     </footer>
 
     <script>
-        // 화면 전환 함수
+        // 화면 전환 함수 (약관 및 방침 페이지 추가됨)
         function showPage(pageId, sectionId) {
+            // 모든 페이지 숨김 처리
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-found').style.display = 'none';
+            document.getElementById('page-terms').style.display = 'none';
+            document.getElementById('page-privacy').style.display = 'none';
+            
+            // 요청받은 페이지만 노출
             document.getElementById('page-' + pageId).style.display = 'block';
             
             if (sectionId) {
@@ -361,6 +414,7 @@
                     window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
                 }
             } else {
+                // 특정 섹션 지정이 없으면 화면 맨 위로 이동
                 window.scrollTo(0, 0);
             }
         }
@@ -384,7 +438,6 @@
         // 폼 제출 함수
         function submitForm(event) {
             event.preventDefault();
-            // 폼 체크박스(개인정보 동의) 확인 로직은 html 태그의 required 속성으로 이미 구현됨
             alert('창업 문의가 성공적으로 접수되었습니다. 빠르게 연락드리겠습니다!');
             event.target.reset();
             showPage('home', 'hero'); 
