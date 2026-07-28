@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JeeGoo COFFEE | 세상에서 가장 순수한 커피</title>
+    <style>
+        /* 기본 설정 */
+        :root {
+            --main-color: #0051A1; /* 지구커피의 컬러 딥블루 */
+            --text-dark: #222;
+            --text-light: #666;
+            --bg-gray: #f9f9f9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Malgun Gothic', sans-serif; }
+        a { text-decoration: none; color: inherit; cursor: pointer; }
+        ul { list-style: none; }
+
+        /* 헤더 */
+        header { background: #fff; border-bottom: 2px solid var(--main-color); position: sticky; top: 0; z-index: 1000; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; cursor: pointer; }
+        .logo-img { height: 40px; object-fit: contain; }
+        .gnb { display: flex; gap: 40px; font-weight: 600; font-size: 17px; }
+        .gnb a:hover { color: var(--main-color); }
+
+        /* [효과 1] 오로라 물결 배경 애니메이션 */
+        .hero { 
+            /* 4가지 블루 색상이 섞인 그라데이션 */
+            background: linear-gradient(-45deg, #0051A1, #003d7a, #001f3f, #0051A1);
+            background-size: 400% 400%;
+            animation: gradientWave 10s ease infinite; /* 10초마다 반복 */
+            color: #fff; text-align: center; padding: 120px 20px; position: relative; overflow: hidden; 
+        }
+        @keyframes gradientWave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .hero p { font-size: 20px; opacity: 0.9; }
+
+        /* [효과 2] 트렌디 흐름 텍스트 (Marquee) */
+        .marquee-wrap { background: var(--main-color); overflow: hidden; white-space: nowrap; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.2); }
+        .marquee { display: inline-block; color: #fff; font-size: 16px; font-weight: bold; letter-spacing: 2px; animation: textFlow 25s linear infinite; }
+        .marquee span { margin-right: 50px; opacity: 0.8; }
+        @keyframes textFlow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* 내용의 절반만큼 이동하면 다시 처음처럼 보이게 착시 효과 */
+        }
+
+        /* 공통 섹션 */
+        section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--text-dark); }
+
+        /* 메뉴 섹션 */
+        .category-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .tab-btn { padding: 10px 30px; font-size: 16px; font-weight: bold; border: 2px solid #ddd; background: #fff; border-radius: 50px; cursor: pointer; transition: all 0.3s; }
+        .tab-btn.active, .tab-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
+        .menu-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; }
+        .menu-card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; transition: transform 0.3s; position: relative; }
+        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,81,161,0.15); border-color: var(--main-color); }
+        .menu-img { width: 100%; height: 250px; background: #eaeaea; display: flex; justify-content: center; align-items: center; color: #999; font-size: 14px; }
+        .menu-info { padding: 20px; text-align: center; }
+        .menu-name { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+        .menu-price { font-size: 16px; color: var(--text-light); }
+        .badge { position: absolute; top: 15px; left: 15px; padding: 5px 12px; font-size: 12px; font-weight: bold; border-radius: 4px; color: #fff; }
+        .badge.best { background: #e74c3c; }
+        .badge.new { background: #3498db; }
+
+        /* 매장안내 섹션 */
+        .store-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .store-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); transition: 0.3s; }
+        .store-card:hover { border-color: var(--main-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,81,161,0.1); }
+        .store-name { font-size: 22px; font-weight: 800; color: var(--main-color); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+        .store-badge { font-size: 12px; background: var(--text-dark); color: #fff; padding: 4px 10px; border-radius: 20px; font-weight: bold; }
+        .store-info p { font-size: 15px; color: var(--text-light); margin-bottom: 8px; }
+        .store-info strong { color: var(--text-dark); display: inline-block; width: 70px; }
+
+        /* [효과 3] 스크롤 스르륵 등장 (Reveal) 애니메이션 준비 설정 */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* 창업문의 페이지 스타일 */
+        .contact-banner { background: var(--bg-gray); padding: 40px; text-align: center; border-radius: 12px; margin-bottom: 40px; }
+        .contact-banner h3 { font-size: 20px; color: var(--text-light); margin-bottom: 10px; }
+        .contact-banner .phone { font-size: 40px; font-weight: 900; color: var(--main-color); margin-bottom: 10px; }
+        
+        .inquiry-form { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--text-dark); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; }
+        .form-group textarea { height: 150px; resize: none; }
+        .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #003d7a; }
+
+        /* 푸터 */
+        footer { background: var(--text-dark); color: #888; padding: 50px 20px; font-size: 14px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        .footer-info p { margin-bottom: 8px; }
+        .footer-logo { font-size: 24px; font-weight: bold; color: #fff; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <header>
+        <div class="nav-inner">
+            <a onclick="showPage('home', 'hero')" class="logo">
+                <img src="https://via.placeholder.com/150x40/0051A1/FFFFFF?text=JeeGoo+Logo" alt="지구커피 로고" class="logo-img">
+            </a>
+            <ul class="gnb">
+                <li><a onclick="showPage('home', 'hero')">브랜드 스토리</a></li>
+                <li><a onclick="showPage('home', 'menu')">메뉴소개</a></li>
+                <li><a onclick="showPage('home', 'store')">매장안내</a></li>
+                <li><a onclick="showPage('found')">창업문의</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- [1] 메인 화면 영역 -->
+    <div id="page-home">
+        
+        <!-- 오로라 배경 애니메이션 배너 -->
+        <div class="hero" id="hero">
+            <h1>세상에서 가장 순수한 커피</h1>
+            <p>매일 마시는 커피, 지구커피에서 더 특별하게 즐기세요.</p>
+        </div>
+
+        <!-- 흐르는 텍스트 애니메이션 띠 -->
+        <div class="marquee-wrap">
+            <div class="marquee">
+                <!-- 자연스러운 반복을 위해 똑같은 문구를 두 번 복사해서 넣습니다 -->
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+                <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
+                <span>✧</span>
+                <span>The Purest Coffee in the World</span>
+                <span>✧</span>
+            </div>
+        </div>
+
+        <!-- 메뉴 섹션 (reveal 클래스 추가) -->
+        <section id="menu">
+            <h2 class="section-title reveal">MENU</h2>
+            <div class="category-tabs reveal">
+                <button class="tab-btn active" onclick="filterMenu('all')">전체보기</button>
+                <button class="tab-btn" onclick="filterMenu('coffee')">커피</button>
+                <button class="tab-btn" onclick="filterMenu('beverage')">음료</button>
+            </div>
+            <div class="menu-list">
+                <div class="menu-card item-coffee reveal">
+                    <div class="badge best">BEST</div>
+                    <div class="menu-img">이미지 (250x250)</div>
+                    <div class="menu-info">
+                        <div class="menu-name">지구 아메리카노</div>
+                        <div class="menu-price">3,000원</div>
+                    </div>
+                </div>
+                <div class="menu-card item-coffee reveal">
+                    <div class="menu-img">이미지 (250x250)</div>
+                    <div class="menu-info">
+                        <div class="menu-name">헤이즐넛 라떼</div>
+                        <div class="menu-price">3,500원</div>
+                    </div>
+                </div>
+                <div class="menu-card item-beverage reveal">
+                    <div class="badge new">NEW</div>
+                    <div class="menu-img">이미지 (250x250)</div>
+                    <div class="menu-info">
+                        <div class="menu-name">딸기 퐁크러쉬</div>
+                        <div class="menu-price">4,000원</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 매장안내 섹션 (reveal 클래스 추가) -->
+        <section id="store">
+            <h2 class="section-title reveal">STORE</h2>
+            <div class="store-list">
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 본점 <span class="store-badge">MAIN</span></div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 전북특별자치도 전주시 카페거리 123</p>
+                        <p><strong>전화번호</strong> 063-000-0001</p>
+                        <p><strong>영업시간</strong> 매일 09:00 - 22:00</p>
+                    </div>
+                </div>
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 전북대점</div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 전북특별자치도 전주시 덕진구 백제대로 111</p>
+                        <p><strong>전화번호</strong> 063-000-0002</p>
+                        <p><strong>영업시간</strong> 매일 08:30 - 23:00</p>
+                    </div>
+                </div>
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 한옥마을점</div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 태조로 222</p>
+                        <p><strong>전화번호</strong> 063-000-0003</p>
+                        <p><strong>영업시간</strong> 평일 10:00 - 21:00 / 주말 09:00 - 22:00</p>
+                    </div>
+                </div>
+                <div class="store-card reveal">
+                    <div class="store-name">지구커피 객사점</div>
+                    <div class="store-info">
+                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 전주객사길 333</p>
+                        <p><strong>전화번호</strong> 063-000-0004</p>
+                        <p><strong>영업시간</strong> 매일 11:00 - 22:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- [2] 창업문의 화면 영역 -->
+    <div id="page-found" style="display: none;">
+        <section class="reveal">
+            <h2 class="section-title">창업문의</h2>
+            <div class="contact-banner">
+                <h3>가맹상담 전화번호</h3>
+                <div class="phone">1588-0000</div>
+                <p>평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00 / 주말 및 공휴일 휴무)</p>
+            </div>
+            <form class="inquiry-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">성함</label>
+                    <input type="text" id="name" placeholder="홍길동" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" placeholder="010-0000-0000" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">문의 내용</label>
+                    <textarea id="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">문의 접수하기</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-info">
+                <div class="footer-logo">JeeGoo COFFEE</div>
+                <p>(주)지구에프엔비 | 대표자: 홍길동 | 사업자등록번호: 123-45-67890</p>
+                <p>전북특별자치도 전주시 카페거리 123, 1층</p>
+                <p>가맹문의: 1588-0000 | 고객센터: 1588-1111</p>
+                <br>
+                <p>&copy; JeeGoo COFFEE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 화면 전환 함수
+        function showPage(pageId, sectionId) {
+            document.getElementById('page-home').style.display = 'none';
+            document.getElementById('page-found').style.display = 'none';
+            document.getElementById('page-' + pageId).style.display = 'block';
+            
+            if (sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
+                }
+            } else {
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // 메뉴 필터링 함수
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-card');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains('item-' + category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // 폼 제출 함수
+        function submitForm(event) {
+            event.preventDefault();
+            alert('창업 문의가 성공적으로 접수되었습니다. 빠르게 연락드리겠습니다!');
+            event.target.reset();
+            showPage('home', 'hero'); 
+        }
+
+        // --- 새로 추가된 스크롤 애니메이션 (Intersection Observer) ---
+        // 화면에 요소가 보이면 'active' 클래스를 붙여 애니메이션을 실행시킵니다.
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 }); // 요소가 10% 정도 보일 때 작동
+
+            // reveal 클래스를 가진 모든 요소를 감시
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
