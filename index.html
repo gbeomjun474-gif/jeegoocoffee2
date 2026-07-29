@@ -134,6 +134,13 @@
         .footer-info p { margin-bottom: 8px; }
         .footer-logo-img { height: 50px; object-fit: contain; margin-bottom: 15px; opacity: 0.5; filter: grayscale(100%); transition: 0.3s; }
         .footer-logo-img:hover { opacity: 1; filter: none; }
+        
+        /* [신규] 인스타그램 버튼 스타일 */
+        .social-links { margin-top: 15px; margin-bottom: 5px; }
+        .social-links a { display: inline-flex; align-items: center; gap: 8px; color: #999; padding: 10px 20px; border: 1px solid #555; border-radius: 50px; transition: all 0.3s; font-weight: bold; }
+        .social-links a:hover { color: #fff; border-color: var(--main-color); background: var(--main-color); }
+        .social-links a svg { width: 18px; height: 18px; }
+
         .footer-links { margin-top: 15px; padding-top: 15px; border-top: 1px solid #444; width: 100%; }
         .footer-links a { color: #aaa; margin: 0 10px; }
         .footer-links a:hover { color: #fff; }
@@ -141,7 +148,6 @@
         /* 모바일 최적화 */
         @media (max-width: 768px) {
             .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
-            /* [로고 크기 수정] 모바일 화면에서는 비율에 맞게 50px로 조절 */
             .logo-img { height: 50px; }
             .gnb { width: 100%; justify-content: center; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
             .gnb::-webkit-scrollbar { display: none; }
@@ -355,7 +361,6 @@
                 <p>평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00 / 주말 및 공휴일 휴무)</p>
             </div>
             
-            <!-- 구글 시트 폼 연동 -->
             <form class="inquiry-form" id="inquiryForm" onsubmit="submitForm(event)">
                 <div class="form-group">
                     <label for="name">성함</label>
@@ -433,8 +438,8 @@
                 <h3>5. 개인정보보호책임자</h3>
                 <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.<br>
                 <strong>- 책임자 성명 : 김범준</strong><br>
-                   <p>- 직책 : 사원</p>
-                   <p>- 연락처 : 1551-2776</p>
+                   <br>- 직책 : 사원</br>
+                   <br>- 연락처 : 1551-2776</br>
             </div>
         </div>
     </div>
@@ -449,6 +454,19 @@
                 <p>전북특별자치도 전주시 완산구 기린대로 163, 1층</p>
                 <p>가맹문의: 1551-2776 | 고객센터: 1551-2776</p>
                 
+                <!-- [신규 추가] 인스타그램 바로가기 버튼 -->
+                <div class="social-links">
+                    <!-- ★ href 안의 주소를 지구커피 실제 인스타그램 주소로 변경하세요! -->
+                    <a href="https://www.instagram.com/jeegoocoffee/" target="_blank" title="지구커피 인스타그램">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        Official Instagram
+                    </a>
+                </div>
+
                 <p style="margin-top: 10px; color: #aaa;"><strong>개인정보보호책임자: 김범준</strong></p>
                 
                 <div class="footer-links">
@@ -504,7 +522,6 @@
             const form = event.target;
             const submitBtn = document.getElementById('submitBtn');
             
-            // ★ 주의: 구글 웹 앱 URL을 반드시 붙여넣으세요!
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwbATnrdAjCCPSQL-oXZCq0usxvtHfHUImBC8EsgYwu3pUsBUvwHRnHL1cC40xXfdmJNA/exec'; 
             
             const formData = new FormData(form);
