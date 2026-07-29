@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JeeGoo COFFEE | 세상에서 가장 순수한 커피</title>
     
-    <!-- [신규] 주소창 로고(파비콘) 및 모바일 홈 화면 아이콘 설정 -->
-    <link rel="icon" href="logo3.png" type="image/png">
+    <!-- 주소창 로고(파비콘) 및 모바일 홈 화면 아이콘 설정 -->
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="favicon.png">
 
     <style>
@@ -34,7 +34,8 @@
         header { background: #fff; border-bottom: 2px solid var(--main-color); position: sticky; top: 0; z-index: 1000; }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; cursor: pointer; }
-        .logo-img { height: 40px; object-fit: contain; }
+        /* [로고 크기 수정] 기존 40px에서 70px로 확대 */
+        .logo-img { height: 70px; object-fit: contain; }
         .gnb { display: flex; gap: 40px; font-weight: 600; font-size: 17px; }
         .gnb a:hover { color: var(--main-color); }
 
@@ -121,7 +122,7 @@
         .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;}
         .submit-btn:hover { background: #003d7a; }
 
-        /* 약관 및 방침 스타일 */
+        /* 약관 및 개인정보처리방침 페이지 스타일 */
         .policy-container { max-width: 800px; margin: 50px auto; padding: 40px; background: #fff; border: 1px solid #eee; border-radius: 12px; line-height: 1.8; }
         .policy-container h2 { font-size: 28px; font-weight: 800; color: var(--main-color); margin-bottom: 30px; border-bottom: 2px solid var(--text-dark); padding-bottom: 15px; }
         .policy-content h3 { font-size: 18px; color: var(--text-dark); margin-top: 30px; margin-bottom: 10px; }
@@ -140,6 +141,8 @@
         /* 모바일 최적화 */
         @media (max-width: 768px) {
             .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
+            /* [로고 크기 수정] 모바일 화면에서는 비율에 맞게 50px로 조절 */
+            .logo-img { height: 50px; }
             .gnb { width: 100%; justify-content: center; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
             .gnb::-webkit-scrollbar { display: none; }
             .hero { padding: 80px 20px; }
@@ -543,8 +546,8 @@
 
         // 5. 상단 스크롤 진행바 기능
         window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY; // 현재 스크롤 위치
-            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight; // 전체 스크롤 가능한 높이
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (scrollTop / docHeight) * 100;
             
             document.getElementById('scrollBar').style.width = scrolled + '%';
