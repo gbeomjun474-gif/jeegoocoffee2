@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JeeGoo COFFEE | 세상에서 가장 순수한 커피</title>
+    
+    <!-- [신규] 주소창 로고(파비콘) 및 모바일 홈 화면 아이콘 설정 -->
+    <link rel="icon" href="logo2.png" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png">
+
     <style>
         /* 기본 설정 */
         :root {
@@ -15,6 +20,15 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Malgun Gothic', sans-serif; }
         a { text-decoration: none; color: inherit; cursor: pointer; }
         ul { list-style: none; }
+
+        /* 브라우저 커스텀 스크롤바 */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--main-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #003d7a; }
+
+        /* 상단 스크롤 진행바 */
+        .scroll-progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--main-color); z-index: 9999; width: 0%; transition: width 0.1s ease-out; }
 
         /* 헤더 */
         header { background: #fff; border-bottom: 2px solid var(--main-color); position: sticky; top: 0; z-index: 1000; }
@@ -31,11 +45,7 @@
             animation: gradientWave 10s ease infinite;
             color: #fff; text-align: center; padding: 120px 20px; position: relative; overflow: hidden; 
         }
-        @keyframes gradientWave {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes gradientWave { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .hero p { font-size: 20px; opacity: 0.9; }
 
@@ -43,10 +53,7 @@
         .marquee-wrap { background: var(--main-color); overflow: hidden; white-space: nowrap; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.2); }
         .marquee { display: inline-block; color: #fff; font-size: 16px; font-weight: bold; letter-spacing: 2px; animation: textFlow 25s linear infinite; }
         .marquee span { margin-right: 50px; opacity: 0.8; }
-        @keyframes textFlow {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
-        }
+        @keyframes textFlow { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* 공통 섹션 */
         section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
@@ -114,7 +121,7 @@
         .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;}
         .submit-btn:hover { background: #003d7a; }
 
-        /* 약관 및 개인정보처리방침 페이지 스타일 */
+        /* 약관 및 방침 스타일 */
         .policy-container { max-width: 800px; margin: 50px auto; padding: 40px; background: #fff; border: 1px solid #eee; border-radius: 12px; line-height: 1.8; }
         .policy-container h2 { font-size: 28px; font-weight: 800; color: var(--main-color); margin-bottom: 30px; border-bottom: 2px solid var(--text-dark); padding-bottom: 15px; }
         .policy-content h3 { font-size: 18px; color: var(--text-dark); margin-top: 30px; margin-bottom: 10px; }
@@ -152,6 +159,9 @@
     </style>
 </head>
 <body>
+    
+    <!-- 상단 스크롤 진행 상태바 -->
+    <div class="scroll-progress-bar" id="scrollBar"></div>
 
     <!-- 헤더 -->
     <header>
@@ -171,13 +181,11 @@
     <!-- [1] 메인 화면 영역 -->
     <div id="page-home">
         
-        <!-- 오로라 배경 애니메이션 배너 -->
         <div class="hero" id="hero">
             <h1>세상에서 가장 순수한 커피</h1>
             <p>매일 마시는 커피, 지구커피에서 더 특별하게 즐기세요.</p>
         </div>
 
-        <!-- 흐르는 텍스트 애니메이션 띠 -->
         <div class="marquee-wrap">
             <div class="marquee">
                 <span>세상에서 가장 순수한 커피, JeeGoo COFFEE</span>
@@ -199,7 +207,6 @@
             </div>
         </div>
 
-        <!-- 브랜드 스토리 섹션 -->
         <section id="story">
             <h2 class="section-title reveal">BRAND STORY</h2>
             <div class="story-content reveal">
@@ -212,13 +219,11 @@
                 우리가 정의하는 '세상에서 가장 순수한 커피'를 지금 만나보세요.</p>
             </div>
             
-            <!-- 가게 전경 사진 영역 -->
             <div class="story-img-wrap reveal">
-                <img src="shop.jpg" alt="지구커피 매장 전경">
+                <img src="store.png" alt="지구커피 매장 전경">
             </div>
         </section>
 
-        <!-- 메뉴 섹션 -->
         <section id="menu">
             <h2 class="section-title reveal">MENU</h2>
             <div class="category-tabs reveal">
@@ -261,7 +266,6 @@
             </div>
         </section>
 
-        <!-- 매장안내 섹션 -->
         <section id="store">
             <h2 class="section-title reveal">STORE</h2>
             <div class="store-list">
@@ -306,7 +310,6 @@
         <section class="reveal">
             <h2 class="section-title">창업문의</h2>
             
-            <!-- 가맹 절차 -->
             <div class="process-wrap">
                 <h3 class="process-title">지구커피 가맹 절차</h3>
                 <div class="process-grid">
@@ -343,12 +346,13 @@
                 </div>
             </div>
 
-            <!-- 구글 시트 연동 폼 -->
             <div class="contact-banner">
                 <h3>가맹상담 전화번호</h3>
                 <div class="phone">1551-2776</div>
                 <p>평일 09:00 ~ 18:00 (점심시간 12:00 ~ 13:00 / 주말 및 공휴일 휴무)</p>
             </div>
+            
+            <!-- 구글 시트 폼 연동 -->
             <form class="inquiry-form" id="inquiryForm" onsubmit="submitForm(event)">
                 <div class="form-group">
                     <label for="name">성함</label>
@@ -454,7 +458,7 @@
     </footer>
 
     <script>
-        // 화면 전환 함수
+        // 1. 화면 전환 함수
         function showPage(pageId, sectionId) {
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-found').style.display = 'none';
@@ -473,7 +477,7 @@
             }
         }
 
-        // 메뉴 탭 필터링 함수
+        // 2. 메뉴 탭 필터링 함수
         function filterMenu(category) {
             const items = document.querySelectorAll('.menu-card');
             items.forEach(item => {
@@ -489,19 +493,18 @@
             event.target.classList.add('active');
         }
 
-        // 폼 제출 (구글 스프레드시트 연동) 함수
+        // 3. 폼 제출 (구글 스프레드시트 연동) 함수
         function submitForm(event) {
-            event.preventDefault(); // 기본 제출 방지
+            event.preventDefault(); 
             
             const form = event.target;
             const submitBtn = document.getElementById('submitBtn');
             
-            // ★ 주의: 아래 scriptURL에 발급받은 '구글 웹 앱 URL'을 반드시 붙여넣으세요!
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwbATnrdAjCCPSQL-oXZCq0usxvtHfHUImBC8EsgYwu3pUsBUvwHRnHL1cC40xXfdmJNA/exec'; 
+            // ★ 주의: 구글 웹 앱 URL을 반드시 붙여넣으세요!
+            const scriptURL = '여기에_웹앱_URL을_붙여넣으세요'; 
             
             const formData = new FormData(form);
             
-            // 전송 중 상태 표시
             submitBtn.innerText = '접수 중...';
             submitBtn.disabled = true;
             submitBtn.style.backgroundColor = '#999';
@@ -517,14 +520,13 @@
                     console.error('Error!', error.message);
                 })
                 .finally(() => {
-                    // 버튼 상태 복구
                     submitBtn.innerText = '문의 접수하기';
                     submitBtn.disabled = false;
                     submitBtn.style.backgroundColor = 'var(--main-color)';
                 });
         }
 
-        // 스크롤 시 부드럽게 등장하는 Reveal 애니메이션 설정
+        // 4. 스크롤 시 부드럽게 등장하는 Reveal 애니메이션
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -537,6 +539,15 @@
             document.querySelectorAll('.reveal').forEach((el) => {
                 observer.observe(el);
             });
+        });
+
+        // 5. 상단 스크롤 진행바 기능
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY; // 현재 스크롤 위치
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight; // 전체 스크롤 가능한 높이
+            const scrolled = (scrollTop / docHeight) * 100;
+            
+            document.getElementById('scrollBar').style.width = scrolled + '%';
         });
     </script>
 </body>
