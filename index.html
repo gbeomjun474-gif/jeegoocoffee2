@@ -16,7 +16,7 @@
             --text-dark: #222;
             --text-light: #666;
             --bg-gray: #f9f9f9;
-            --bg-cream: #fbfbfb; /* 계산기 영역 배경색 */
+            --bg-cream: #fbfbfb;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Malgun Gothic', sans-serif; }
         a { text-decoration: none; color: inherit; cursor: pointer; }
@@ -60,11 +60,18 @@
         section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--text-dark); }
 
-        /* 브랜드 스토리 섹션 & 가게 전경 사진 */
-        .story-content { text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--text-dark); font-size: 18px; }
-        .story-content strong { color: var(--main-color); font-size: 22px; display: block; margin-bottom: 20px; }
-        .story-highlight { display: inline-block; padding: 5px 15px; background: rgba(0, 81, 161, 0.1); border-radius: 50px; color: var(--main-color); font-size: 14px; font-weight: bold; margin-bottom: 15px; }
+        /* [개선된 브랜드 스토리 및 카드 레이아웃] */
+        .story-content { text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6; color: var(--text-dark); }
+        .story-content strong { color: var(--main-color); font-size: 24px; display: block; margin-bottom: 15px; }
+        .story-highlight { display: inline-block; padding: 6px 16px; background: rgba(0, 81, 161, 0.1); border-radius: 50px; color: var(--main-color); font-size: 14px; font-weight: bold; margin-bottom: 15px; }
+        .story-lead { color: var(--text-light); font-size: 17px; margin-bottom: 40px; }
         
+        .story-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
+        .story-feature-card { background: #fff; border: 1px solid #eee; padding: 30px; border-radius: 16px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: 0.3s; }
+        .story-feature-card:hover { border-color: var(--main-color); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,81,161,0.08); }
+        .story-feature-card h3 { font-size: 18px; font-weight: 800; color: var(--main-color); margin-bottom: 10px; }
+        .story-feature-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+
         .story-img-wrap { max-width: 1000px; margin: 50px auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .story-img-wrap img { width: 100%; display: block; object-fit: cover; transition: transform 0.5s; }
         .story-img-wrap:hover img { transform: scale(1.03); }
@@ -107,7 +114,7 @@
         .process-step h4 { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
         .process-step p { font-size: 13px; color: var(--text-light); word-break: keep-all; }
 
-        /* ★ [수익 계산기 스타일] ★ */
+        /* 수익 계산기 스타일 */
         .calc-section { padding: 60px 20px; border-radius: 20px; margin-bottom: 60px; }
         .text-gradient { background: linear-gradient(to right, var(--main-color), #00a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 18px; }
@@ -182,7 +189,6 @@
             .store-list { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
             
-            /* 모바일 계산기 최적화 */
             .calc-section { padding: 40px 10px; }
             .calculator-box { padding: 25px 15px; }
             .slider-label { flex-direction: column; gap: 10px; text-align: center; }
@@ -196,14 +202,12 @@
 </head>
 <body>
     
-    <!-- 상단 스크롤 진행 상태바 -->
     <div class="scroll-progress-bar" id="scrollBar"></div>
 
-    <!-- 헤더 -->
     <header>
         <div class="nav-inner">
             <a onclick="showPage('home', 'hero')" class="logo">
-                <img src="logo3.png" alt="지구커피 로고" class="logo-img">
+                <img src="logo.png" alt="지구커피 로고" class="logo-img">
             </a>
             <ul class="gnb">
                 <li><a onclick="showPage('home', 'story')">브랜드 스토리</a></li>
@@ -243,22 +247,28 @@
             </div>
         </div>
 
-        <!-- 브랜드 스토리 섹션 -->
+        <!-- 가독성이 대폭 개선된 브랜드 스토리 섹션 -->
         <section id="story">
             <h2 class="section-title reveal">BRAND STORY</h2>
             <div class="story-content reveal">
                 <span class="story-highlight">Since 2025. 07. 29</span>
                 <strong>"파푸아뉴기니의 순수한 자연을 한 잔의 커피에 담다"</strong>
-                <p>2025년 7월 29일, 지구커피 본점은 '가장 순수한 커피를 가장 합리적으로 제공하겠다'는 일념 하나로 첫 발을 내디뎠습니다.<br>
-                우리의 특별함은 바로 원두의 산지, <strong>파푸아뉴기니</strong>에 있습니다. 오염되지 않은 천혜의 자연에서 자란<br>
-                최상급 생두를 <strong>중간 유통 과정 없이 직접 수입(Direct Trade)</strong>하여 본연의 깊은 향미를 온전히 지켜냅니다.</p>
-                <br>
-                <p>지구커피의 또 다른 경쟁력은 <strong>'압도적인 원두 공급 단가'</strong>입니다.<br>
-                직수입을 통한 단가 절감으로 가맹점과 파트너사에게 타 업체보다 훨씬 저렴하게 원두를 납품하며,<br>
-                고객에게는 부담 없는 가격으로 최고급 스페셜티 커피를 선사합니다.</p>
-                <br>
-                <p>농장에서부터 당신의 손끝까지, 타협하지 않는 품질과 정직한 가격.<br>
-                이것이 바로 지구커피가 만들어가는 순수하고 특별한 커피 문화입니다.</p>
+                <p class="story-lead">지구커피는 가장 순수한 커피를 가장 합리적인 조건으로 세상에 전합니다.</p>
+                
+                <div class="story-features">
+                    <div class="story-feature-card">
+                        <h3>01. 파푸아뉴기니 직수입</h3>
+                        <p>오염되지 않은 천혜의 자연에서 자란 최상급 생두를 중간 유통 과정 없이 직접 수입하여 원연의 향미를 지킵니다.</p>
+                    </div>
+                    <div class="story-feature-card">
+                        <h3>02. 압도적인 원두 단가</h3>
+                        <p>직수입 구조를 통해 단가를 혁신적으로 낮추어, 가맹점과 파트너사에 파격적인 조건으로 원두를 공급 및 납품합니다.</p>
+                    </div>
+                    <div class="story-feature-card">
+                        <h3>03. 정직한 상생 가치</h3>
+                        <p>점주에게는 확실한 원가 절감의 순수익을, 고객에게는 부담 없는 가격의 최고급 스페셜티 커피를 선사합니다.</p>
+                    </div>
+                </div>
             </div>
             
             <div class="story-img-wrap reveal">
@@ -514,8 +524,8 @@
                 <h3>5. 개인정보보호책임자</h3>
                 <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.<br>
                 <strong>- 책임자 성명 : 김범준</strong><br>
-                   <p>- 직책 : 사원</p>
-                   <p>- 연락처 : 1551-2776</p>
+                - 직책 : 사원<br>
+                - 연락처 : 1551-2776</p>
             </div>
         </div>
     </div>
@@ -532,7 +542,7 @@
                 
                 <!-- 인스타그램 바로가기 -->
                 <div class="social-links">
-                    <a href="https://www.instagram.com/본인계정" target="_blank" title="지구커피 인스타그램">
+                    <a href="https://www.instagram.com/jeegoocoffee" target="_blank" title="지구커피 인스타그램">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -555,7 +565,6 @@
     </footer>
 
     <script>
-        // 1. 화면 전환 함수
         function showPage(pageId, sectionId) {
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-found').style.display = 'none';
@@ -574,7 +583,6 @@
             }
         }
 
-        // 2. 메뉴 탭 필터링 함수
         function filterMenu(category) {
             const items = document.querySelectorAll('.menu-card');
             items.forEach(item => {
@@ -590,7 +598,6 @@
             event.target.classList.add('active');
         }
 
-        // 3. 폼 제출 (구글 스프레드시트 연동) 함수
         function submitForm(event) {
             event.preventDefault(); 
             
@@ -621,7 +628,6 @@
                 });
         }
 
-        // 4. 스크롤 시 부드럽게 등장하는 Reveal 애니메이션
         document.addEventListener("DOMContentLoaded", function() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -635,7 +641,6 @@
                 observer.observe(el);
             });
 
-            // 5. 원가 절감 계산기 로직
             const salesSlider = document.getElementById('sales-volume');
             if (salesSlider) {
                 const updateCalculator = () => {
@@ -654,11 +659,10 @@
                     document.getElementById('save-total-txt').innerText = savings.toLocaleString() + " 원";
                 };
                 salesSlider.addEventListener('input', updateCalculator);
-                updateCalculator(); // 페이지 로드 시 초기값 세팅
+                updateCalculator();
             }
         });
 
-        // 6. 상단 스크롤 진행바 기능
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
