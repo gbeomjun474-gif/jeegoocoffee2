@@ -16,6 +16,7 @@
             --text-dark: #222;
             --text-light: #666;
             --bg-gray: #f9f9f9;
+            --bg-cream: #fbfbfb; /* 계산기 영역 배경색 */
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Malgun Gothic', sans-serif; }
         a { text-decoration: none; color: inherit; cursor: pointer; }
@@ -34,7 +35,6 @@
         header { background: #fff; border-bottom: 2px solid var(--main-color); position: sticky; top: 0; z-index: 1000; }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; cursor: pointer; }
-        /* [로고 크기 수정] 기존 40px에서 70px로 확대 */
         .logo-img { height: 70px; object-fit: contain; }
         .gnb { display: flex; gap: 40px; font-weight: 600; font-size: 17px; }
         .gnb a:hover { color: var(--main-color); }
@@ -63,6 +63,7 @@
         /* 브랜드 스토리 섹션 & 가게 전경 사진 */
         .story-content { text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.8; color: var(--text-dark); font-size: 18px; }
         .story-content strong { color: var(--main-color); font-size: 22px; display: block; margin-bottom: 20px; }
+        .story-highlight { display: inline-block; padding: 5px 15px; background: rgba(0, 81, 161, 0.1); border-radius: 50px; color: var(--main-color); font-size: 14px; font-weight: bold; margin-bottom: 15px; }
         
         .story-img-wrap { max-width: 1000px; margin: 50px auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .story-img-wrap img { width: 100%; display: block; object-fit: cover; transition: transform 0.5s; }
@@ -106,6 +107,25 @@
         .process-step h4 { font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; }
         .process-step p { font-size: 13px; color: var(--text-light); word-break: keep-all; }
 
+        /* ★ [수익 계산기 스타일] ★ */
+        .calc-section { padding: 60px 20px; border-radius: 20px; margin-bottom: 60px; }
+        .text-gradient { background: linear-gradient(to right, var(--main-color), #00a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 18px; }
+        .calculator-box { background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); max-width: 900px; margin: 0 auto; }
+        .calc-grid { display: flex; flex-direction: column; gap: 30px; }
+        .slider-group { background: var(--bg-gray); padding: 30px; border-radius: 12px; }
+        .slider-label { display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: bold; margin-bottom: 25px; color: var(--text-dark); }
+        .slider-label .val { color: var(--main-color); font-size: 32px; font-weight: 900; }
+        .range-slider { width: 100%; height: 8px; border-radius: 5px; outline: none; accent-color: var(--main-color); cursor: pointer; }
+        
+        .result-panel { display: flex; flex-direction: column; gap: 0; }
+        .result-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 10px; border-bottom: 1px dashed #ddd; }
+        .result-item .label { font-size: 16px; color: var(--text-light); }
+        .result-item .price { font-size: 20px; font-weight: bold; color: var(--text-dark); }
+        .result-item.highlight { background: rgba(0, 81, 161, 0.05); padding: 30px 20px; border-radius: 12px; margin-top: 15px; border: 2px solid var(--main-color); border-bottom: 2px solid var(--main-color); }
+        .result-item.highlight .label { font-size: 18px; font-weight: bold; color: var(--main-color); }
+        .result-item.highlight .price-save { font-size: 32px; font-weight: 900; color: var(--main-color); }
+
         /* 창업문의 폼 스타일 */
         .contact-banner { background: var(--bg-gray); padding: 40px; text-align: center; border-radius: 12px; margin-bottom: 40px; }
         .contact-banner h3 { font-size: 20px; color: var(--text-light); margin-bottom: 10px; }
@@ -135,7 +155,6 @@
         .footer-logo-img { height: 50px; object-fit: contain; margin-bottom: 15px; opacity: 0.5; filter: grayscale(100%); transition: 0.3s; }
         .footer-logo-img:hover { opacity: 1; filter: none; }
         
-        /* [신규] 인스타그램 버튼 스타일 */
         .social-links { margin-top: 15px; margin-bottom: 5px; }
         .social-links a { display: inline-flex; align-items: center; gap: 8px; color: #999; padding: 10px 20px; border: 1px solid #555; border-radius: 50px; transition: all 0.3s; font-weight: bold; }
         .social-links a:hover { color: #fff; border-color: var(--main-color); background: var(--main-color); }
@@ -162,6 +181,14 @@
             .menu-img { height: 160px; }
             .store-list { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
+            
+            /* 모바일 계산기 최적화 */
+            .calc-section { padding: 40px 10px; }
+            .calculator-box { padding: 25px 15px; }
+            .slider-label { flex-direction: column; gap: 10px; text-align: center; }
+            .result-item { flex-direction: column; align-items: flex-start; gap: 8px; padding: 15px 5px; }
+            .result-item .price, .result-item.highlight .price-save { align-self: flex-end; }
+            
             .inquiry-form { padding: 20px; }
             .policy-container { padding: 20px; margin: 30px 10px; }
         }
@@ -216,16 +243,22 @@
             </div>
         </div>
 
+        <!-- 브랜드 스토리 섹션 -->
         <section id="story">
             <h2 class="section-title reveal">BRAND STORY</h2>
             <div class="story-content reveal">
-                <strong>"타협하지 않는 순수함, 커피 본연의 가치를 담다"</strong>
-                <p>지구커피는 매일 마시는 커피 한 잔이 주는 작은 위로와 휴식의 힘을 믿습니다.<br>
-                화려한 기교나 자극적인 단맛으로 본질을 가리지 않고, 오직 최상급 생두가 가진<br>
-                고유의 향미를 가장 깨끗하고 순수하게 추출하는 것에 집착합니다.</p>
+                <span class="story-highlight">Since 2025. 07. 29</span>
+                <strong>"파푸아뉴기니의 순수한 자연을 한 잔의 커피에 담다"</strong>
+                <p>2025년 7월 29일, 지구커피 본점은 '가장 순수한 커피를 가장 합리적으로 제공하겠다'는 일념 하나로 첫 발을 내디뎠습니다.<br>
+                우리의 특별함은 바로 원두의 산지, <strong>파푸아뉴기니</strong>에 있습니다. 오염되지 않은 천혜의 자연에서 자란<br>
+                최상급 생두를 <strong>중간 유통 과정 없이 직접 수입(Direct Trade)</strong>하여 본연의 깊은 향미를 온전히 지켜냅니다.</p>
                 <br>
-                <p>첫 모금부터 마지막 한 방울까지 텁텁함 없이 깔끔하게 떨어지는 맛.<br>
-                우리가 정의하는 '세상에서 가장 순수한 커피'를 지금 만나보세요.</p>
+                <p>지구커피의 또 다른 경쟁력은 <strong>'압도적인 원두 공급 단가'</strong>입니다.<br>
+                직수입을 통한 단가 절감으로 가맹점과 파트너사에게 타 업체보다 훨씬 저렴하게 원두를 납품하며,<br>
+                고객에게는 부담 없는 가격으로 최고급 스페셜티 커피를 선사합니다.</p>
+                <br>
+                <p>농장에서부터 당신의 손끝까지, 타협하지 않는 품질과 정직한 가격.<br>
+                이것이 바로 지구커피가 만들어가는 순수하고 특별한 커피 문화입니다.</p>
             </div>
             
             <div class="story-img-wrap reveal">
@@ -233,6 +266,7 @@
             </div>
         </section>
 
+        <!-- 메뉴 섹션 -->
         <section id="menu">
             <h2 class="section-title reveal">MENU</h2>
             <div class="category-tabs reveal">
@@ -246,14 +280,12 @@
                     <div class="menu-img"><img src="americano.png" alt="지구 아메리카노"></div>
                     <div class="menu-info">
                         <div class="menu-name">지구 아메리카노</div>
-                        <div class="menu-price">3,000원</div>
                     </div>
                 </div>
                 <div class="menu-card item-coffee reveal">
                     <div class="menu-img"><img src="signature.png" alt="지구 시그니처 라떼"></div>
                     <div class="menu-info">
                         <div class="menu-name">지구 시그니처 라떼</div>
-                        <div class="menu-price">3,500원</div>
                     </div>
                 </div>
                 <div class="menu-card item-beverage reveal">
@@ -261,7 +293,6 @@
                     <div class="menu-img"><img src="fa.png" alt="초코 프라프치노"></div>
                     <div class="menu-info">
                         <div class="menu-name">초코 프라프치노</div>
-                        <div class="menu-price">4,000원</div>
                     </div>
                 </div>  
                 <div class="menu-card item-beverage reveal">
@@ -269,19 +300,19 @@
                     <div class="menu-img"><img src="fa2.png" alt="피스타치오 카페라떼"></div>
                     <div class="menu-info">
                         <div class="menu-name">피스타치오 카페라떼</div>
-                        <div class="menu-price">4,000원</div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- 매장안내 섹션 -->
         <section id="store">
             <h2 class="section-title reveal">STORE</h2>
             <div class="store-list">
                 <div class="store-card reveal">
                     <div class="store-name">지구커피 본점 <span class="store-badge">MAIN</span></div>
                     <div class="store-info">
-                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 기린대로 163 123</p>
+                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 기린대로 163</p>
                         <p><strong>전화번호</strong> 1551-2776</p>
                         <p><strong>영업시간</strong> 월~금 07:00 - 14:00</p>
                     </div>
@@ -319,6 +350,7 @@
         <section class="reveal">
             <h2 class="section-title">창업문의</h2>
             
+            <!-- 가맹 절차 -->
             <div class="process-wrap">
                 <h3 class="process-title">지구커피 가맹 절차</h3>
                 <div class="process-grid">
@@ -355,6 +387,50 @@
                 </div>
             </div>
 
+            <!-- 수익 계산기 -->
+            <section class="section calc-section reveal" style="background-color: var(--bg-cream);">
+                <div class="container">
+                    <h2 class="fade-up" style="text-align: center; font-size: 34px; letter-spacing: -1px; margin-bottom: 15px;">
+                        <span class="text-gradient">우리 매장은 월 얼마를 더 벌 수 있을까?</span>
+                    </h2>
+                    <p class="section-subtitle fade-up delay-1">월간 소모량을 조절하여 한눈에 원가 차이를 확인해 보세요.</p>
+                    
+                    <div class="calculator-box fade-up delay-2">
+                        <div class="calc-grid">
+                            <div class="calc-inputs">
+                                <div class="slider-group" style="margin-bottom: 0;">
+                                    <div class="slider-label">
+                                        <span>월간 예상 원두 소모량</span>
+                                        <span class="val" id="sales-volume-txt">300 kg</span>
+                                    </div>
+                                    <input type="range" id="sales-volume" class="range-slider" min="50" max="300" step="1" value="300">
+                                </div>
+                            </div>
+                            
+                            <div class="result-panel">
+                                <div class="result-item">
+                                    <span class="label">월간 아메리카노 판매 분량 (1kg=50잔)</span>
+                                    <span class="price" id="total-cups-txt" style="color: var(--main-color);">15,000 잔</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label">타사 브랜드 원두 비용 (30,000원/1kg)</span>
+                                    <span class="price" id="competitor-total-txt">9,000,000 원</span>
+                                </div>
+                                <div class="result-item">
+                                    <span class="label">지구카페 원두 비용 (19,800원/1kg)</span>
+                                    <span class="price" id="earth-total-txt">5,940,000 원</span>
+                                </div>
+                                <div class="result-item highlight">
+                                    <span class="label">타사 대비 월 절감액 (순수익 증가)</span>
+                                    <span class="price-save" id="save-total-txt">3,060,000 원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 가맹 상담 폼 -->
             <div class="contact-banner">
                 <h3>가맹상담 전화번호</h3>
                 <div class="phone">1551-2776</div>
@@ -438,8 +514,8 @@
                 <h3>5. 개인정보보호책임자</h3>
                 <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.<br>
                 <strong>- 책임자 성명 : 김범준</strong><br>
-                   <br>- 직책 : 사원</br>
-                   <br>- 연락처 : 1551-2776</br>
+                   <p>- 직책 : 사원</p>
+                   <p>- 연락처 : 1551-2776</p>
             </div>
         </div>
     </div>
@@ -454,10 +530,9 @@
                 <p>전북특별자치도 전주시 완산구 기린대로 163, 1층</p>
                 <p>가맹문의: 1551-2776 | 고객센터: 1551-2776</p>
                 
-                <!-- [신규 추가] 인스타그램 바로가기 버튼 -->
+                <!-- 인스타그램 바로가기 -->
                 <div class="social-links">
-                    <!-- ★ href 안의 주소를 지구커피 실제 인스타그램 주소로 변경하세요! -->
-                    <a href="https://www.instagram.com/jeegoocoffee/" target="_blank" title="지구커피 인스타그램">
+                    <a href="https://www.instagram.com/본인계정" target="_blank" title="지구커피 인스타그램">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -521,7 +596,6 @@
             
             const form = event.target;
             const submitBtn = document.getElementById('submitBtn');
-            
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwbATnrdAjCCPSQL-oXZCq0usxvtHfHUImBC8EsgYwu3pUsBUvwHRnHL1cC40xXfdmJNA/exec'; 
             
             const formData = new FormData(form);
@@ -560,14 +634,35 @@
             document.querySelectorAll('.reveal').forEach((el) => {
                 observer.observe(el);
             });
+
+            // 5. 원가 절감 계산기 로직
+            const salesSlider = document.getElementById('sales-volume');
+            if (salesSlider) {
+                const updateCalculator = () => {
+                    const monthlyKg = parseInt(salesSlider.value);
+                    const compPricePerKg = 30000; 
+                    const earthPricePerKg = 19800;
+                    const totalCups = monthlyKg * 50;
+                    const competitorTotal = monthlyKg * compPricePerKg;
+                    const earthTotal = monthlyKg * earthPricePerKg;
+                    const savings = competitorTotal - earthTotal;
+                    
+                    document.getElementById('sales-volume-txt').innerText = monthlyKg + " kg";
+                    document.getElementById('total-cups-txt').innerText = totalCups.toLocaleString() + " 잔";
+                    document.getElementById('competitor-total-txt').innerText = competitorTotal.toLocaleString() + " 원";
+                    document.getElementById('earth-total-txt').innerText = earthTotal.toLocaleString() + " 원";
+                    document.getElementById('save-total-txt').innerText = savings.toLocaleString() + " 원";
+                };
+                salesSlider.addEventListener('input', updateCalculator);
+                updateCalculator(); // 페이지 로드 시 초기값 세팅
+            }
         });
 
-        // 5. 상단 스크롤 진행바 기능
+        // 6. 상단 스크롤 진행바 기능
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (scrollTop / docHeight) * 100;
-            
             document.getElementById('scrollBar').style.width = scrolled + '%';
         });
     </script>
