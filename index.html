@@ -285,6 +285,10 @@
                         <h3>03. 정직한 상생 가치</h3>
                         <p>점주에게는 확실한 원가 절감의 순수익을, 고객에게는 부담 없는 가격의 최고급 스페셜티 커피를 선사합니다.</p>
                     </div>
+                    <div class="story-feature-card">
+                        <h3>04. 1:1 가맹점 슈퍼바이징</h3>
+                        <p>가맹 상담, 상권 분석, 매장 오픈, 사후 관리까지 담당 슈퍼바이징이 함께 합니다.</p>
+                    </div>
                 </div>
             </div>
             
@@ -300,13 +304,15 @@
             </div>
         </section>
 
-        <!-- 메뉴 섹션 -->
+       <!-- 메뉴 섹션 -->
         <section id="menu">
             <h2 class="section-title reveal">MENU</h2>
             <div class="category-tabs reveal">
                 <button class="tab-btn active" onclick="filterMenu('all')">전체보기</button>
                 <button class="tab-btn" onclick="filterMenu('coffee')">커피</button>
                 <button class="tab-btn" onclick="filterMenu('beverage')">음료</button>
+                <!-- [추가된 부분] 굿즈 탭 버튼 -->
+                <button class="tab-btn" onclick="filterMenu('goods')">굿즈</button>
             </div>
             
             <!-- 메뉴 슬라이드 -->
@@ -314,6 +320,7 @@
                 <button class="slider-btn" onclick="slideMenu(-1)">&#10094;</button>
                 
                 <div class="menu-list" id="menuList">
+                    <!-- 기존 커피 메뉴 -->
                     <div class="menu-card item-coffee">
                         <div class="badge best">BEST</div>
                         <div class="menu-img"><img src="americano.png" alt="지구 아메리카노"></div>
@@ -329,6 +336,8 @@
                             <div class="menu-price">3,500원</div>
                         </div>
                     </div>
+
+                    <!-- 기존 음료 메뉴 -->
                     <div class="menu-card item-beverage">
                         <div class="badge new">NEW</div>
                         <div class="menu-img"><img src="fa.png" alt="초코 프라프치노"></div>
@@ -345,7 +354,48 @@
                             <div class="menu-price">4,000원</div>
                         </div>
                     </div>
+
+                    <!-- [추가된 부분] 굿즈 메뉴 시작 -->
+                    <div class="menu-card item-goods">
+                        <div class="menu-img"><img src="tumbler.png" alt="지구 텀블러"></div>
+                        <div class="menu-info">
+                            <div class="menu-name">지구 텀블러</div>
+                            <div class="menu-price">12,000원</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-card item-goods">
+                        <div class="badge new">NEW</div>
+                        <div class="menu-img"><img src="keyring.png" alt="지구 키링"></div>
+                        <div class="menu-info">
+                            <div class="menu-name">지구 키링</div>
+                            <div class="menu-price">5,000원</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-card item-goods">
+                        <div class="menu-img"><img src="dripbag.png" alt="지구 드립백 세트"></div>
+                        <div class="menu-info">
+                            <div class="menu-name">지구 드립백 세트</div>
+                            <div class="menu-price">8,000원</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-card item-goods">
+                        <div class="badge best">BEST</div>
+                        <div class="menu-img"><img src="beanbag.png" alt="지구 시그니처 원두"></div>
+                        <div class="menu-info">
+                            <div class="menu-name">지구 시그니처 원두</div>
+                            <div class="menu-price">15,000원</div>
+                        </div>
+                    </div>
+                    <!-- 굿즈 메뉴 끝 -->
+
                 </div>
+
+                <button class="slider-btn" onclick="slideMenu(1)">&#10095;</button>
+            </div>
+        </section>
 
                 <button class="slider-btn" onclick="slideMenu(1)">&#10095;</button>
             </div>
@@ -491,7 +541,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message">문의 내용</label>
-                    <textarea id="message" name="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요." required></textarea>
+                    <textarea id="message" name="message" placeholder="창업 희망 지역이나 궁금한 점을 남겨주세요. 담당자가 순차적으로 연락드리겠습니다." required></textarea>
                 </div>
                 
                 <div class="form-group">
