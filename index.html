@@ -188,7 +188,16 @@
         /* 굿즈 쇼케이스 섹션 */
         .goods-showcase { text-align: center; max-width: 1000px; margin: 0 auto; }
         .goods-desc { font-size: 18px; color: var(--text-light); margin-bottom: 30px; word-break: keep-all; }
-        .goods-img-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.08); border: 1px solid #eee; }
+        
+        /* [수정된 부분] 굿즈 이미지 크기 제한 및 가운데 정렬 */
+        .goods-img-wrap { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            border-radius: 16px; 
+            overflow: hidden; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+            border: 1px solid #eee; 
+        }
         .goods-img-wrap img { width: 100%; display: block; object-fit: cover; transition: transform 0.5s; }
         .goods-img-wrap:hover img { transform: scale(1.02); }
 
@@ -221,6 +230,9 @@
             .result-item .price, .result-item.highlight .price-save { align-self: flex-end; }
             .inquiry-form { padding: 20px; }
             .policy-container { padding: 20px; margin: 30px 10px; }
+            
+            /* 모바일에서 굿즈 이미지 크기 조정 */
+            .goods-img-wrap { max-width: 100%; margin: 0 10px; }
         }
     </style>
 </head>
@@ -236,7 +248,7 @@
             <ul class="gnb">
                 <li><a onclick="showPage('home', 'story')">브랜드 스토리</a></li>
                 <li><a onclick="showPage('home', 'menu')">메뉴소개</a></li>
-                <li><a onclick="showPage('home', 'goods')">굿즈소개</a></li>
+                <li><a onclick="showPage('home', 'goods-intro')">굿즈소개</a></li>
                 <li><a onclick="showPage('home', 'store')">매장안내</a></li>
                 <li><a onclick="showPage('found')">창업문의</a></li>
             </ul>
@@ -360,15 +372,11 @@
                             <div class="menu-price">4,000원</div>
                         </div>
                     </div>
-
-                 
-
                 </div>
 
                 <button class="slider-btn" onclick="slideMenu(1)">&#10095;</button>
             </div>
         </section>
-
 
           <!-- 굿즈 소개 섹션 -->
         <section id="goods-intro">
@@ -379,10 +387,6 @@
                     <!-- 굿즈들이 모두 모여있는 사진 파일명을 아래 src에 넣어주세요 -->
                     <img src="test.png" alt="지구커피 굿즈 모음 (텀블러, 키링, 드립백, 원두)">
                 </div>
-            </div>
-        </section>
-        
-                <button class="slider-btn" onclick="slideMenu(1)">&#10095;</button>
             </div>
         </section>
 
