@@ -209,6 +209,19 @@
         .goods-img-wrap img { width: 100%; display: block; object-fit: cover; transition: transform 0.5s; }
         .goods-img-wrap:hover img { transform: scale(1.02); }
 
+
+        /* 프랜차이즈 박람회 갤러리 스타일 */
+        .expo-gallery { display: flex; gap: 15px; margin-bottom: 20px; }
+        .expo-item { flex: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .expo-item img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 350px; transition: transform 0.5s; }
+        .expo-item:hover img { transform: scale(1.03); }
+        
+        /* 모바일에서는 사진이 위아래로 나오도록 처리 */
+        @media (max-width: 768px) {
+            .expo-gallery { flex-direction: column; gap: 10px; }
+        }
+
+        
         /* 모바일 최적화 */
         @media (max-width: 768px) {
             .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
@@ -443,17 +456,23 @@
         <section class="reveal">
             <h2 class="section-title">창업문의</h2>
 
-            <!-- ▼ 추가된 프랜차이즈 박람회 배너 영역 ▼ -->
+           <!-- ▼ 수정된 프랜차이즈 박람회 배너 영역 (사진 2장) ▼ -->
             <div class="expo-banner reveal" style="max-width: 1000px; margin: 0 auto 50px; text-align: center;">
-                <div style="border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 15px;">
-                    <!-- expo.jpg 자리에 박람회 사진 파일명을 적어주세요 -->
-                    <img src="expo.jpg" alt="지구커피 프랜차이즈 창업박람회 현장" style="width: 100%; display: block; object-fit: cover; max-height: 400px;">
+                <div class="expo-gallery">
+                    <!-- 첫 번째 사진 -->
+                    <div class="expo-item">
+                        <img src="bb.png" alt="지구커피 프랜차이즈 창업박람회 현장 1">
+                    </div>
+                    <!-- 두 번째 사진 (추가된 사진 파일명을 넣어주세요) -->
+                    <div class="expo-item">
+                        <img src="bb2.png" alt="지구커피 프랜차이즈 창업박람회 현장 2">
+                    </div>
                 </div>
                 <p style="font-size: 18px; color: var(--text-dark); font-weight: bold;">
                     <span style="color: var(--main-color);">2026 프랜차이즈 창업박람회 성료!</span> 예비 점주님들의 뜨거운 성원에 감사드립니다.
                 </p>
             </div>
-            <!-- ▲ 추가된 프랜차이즈 박람회 배너 영역 끝 ▲ -->
+            <!-- ▲ 수정된 프랜차이즈 박람회 배너 영역 끝 ▲ -->
             
           <div class="process-wrap reveal">
                 <h3 class="process-title">지구커피 가맹 절차</h3>
