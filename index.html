@@ -621,21 +621,26 @@
 
  <script>
         // 1. 페이지 이동 함수 (이 부분이 지워지면 창업문의 버튼이 작동하지 않습니다)
+      // 1. 페이지 이동 함수 (부드러운 스크롤 적용)
         function showPage(pageId, sectionId) {
+            // 모든 페이지 숨기기
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-found').style.display = 'none';
             document.getElementById('page-terms').style.display = 'none';
             document.getElementById('page-privacy').style.display = 'none';
             
+            // 선택한 페이지만 보이기
             document.getElementById('page-' + pageId).style.display = 'block';
             
             if (sectionId) {
+                // 메인 화면 내에서 특정 메뉴(스토리, 메뉴, 매장 등)로 스르륵 이동
                 const section = document.getElementById(sectionId);
                 if (section) {
                     window.scrollTo({ top: section.offsetTop - 80, behavior: 'smooth' });
                 }
             } else {
-                window.scrollTo(0, 0);
+                // 창업문의 등 새 페이지로 넘어갈 때 최상단으로 스르륵 이동
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
