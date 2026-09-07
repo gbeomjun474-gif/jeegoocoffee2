@@ -618,6 +618,15 @@
     </footer>
 
  <script>
+        // 새로고침 시 스크롤 위치 기억을 해제하고 무조건 최상단으로 이동
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+        // 1. 페이지 이동 함수 (기존 코드 이어짐...)
+        function showPage(pageId, sectionId) {
+            // ... 생략 ...
         // 1. 페이지 이동 함수 (이 부분이 지워지면 창업문의 버튼이 작동하지 않습니다)
       // 1. 페이지 이동 함수 (부드러운 스크롤 적용)
         function showPage(pageId, sectionId) {
