@@ -354,47 +354,17 @@
                 <button class="tab-btn" onclick="filterMenu('beverage')">음료</button>
             </div>
             
-            <!-- 메뉴 슬라이드 -->
+          <!-- 메뉴 슬라이드 -->
             <div class="menu-slider-wrap reveal">
                 <button class="slider-btn" onclick="slideMenu(-1)">&#10094;</button>
                 
+                <!-- 카드가 들어갈 껍데기(div)만 남겨둡니다 -->
                 <div class="menu-list" id="menuList">
-                    <!-- 기존 커피 메뉴 -->
-                    <div class="menu-card item-coffee">
-                        <div class="badge best">BEST</div>
-                        <div class="menu-img"><img src="americano.png" alt="지구 아메리카노"></div>
-                        <div class="menu-info">
-                            <div class="menu-name">지구 아메리카노</div>
-                            <div class="menu-price">3,000원</div>
-                        </div>
-                    </div>
-                    <div class="menu-card item-coffee">
-                        <div class="menu-img"><img src="signature.png" alt="지구 시그니처 라떼"></div>
-                        <div class="menu-info">
-                            <div class="menu-name">지구 시그니처 라떼</div>
-                            <div class="menu-price">4,800원</div>
-                        </div>
-                    </div>
-
-                    <!-- 기존 음료 메뉴 -->
-                    <div class="menu-card item-beverage">
-                        <div class="badge new">NEW</div>
-                        <div class="menu-img"><img src="fa.png" alt="초코 프라프치노"></div>
-                        <div class="menu-info">
-                            <div class="menu-name">초코 프라프치노</div>
-                            <div class="menu-price">4,000원</div>
-                        </div>
-                    </div>  
-                    <div class="menu-card item-beverage">
-                        <div class="badge new">NEW</div>
-                        <div class="menu-img"><img src="fa2.png" alt="피스타치오 카페라떼"></div>
-                        <div class="menu-info">
-                            <div class="menu-name">피스타치오 카페라떼</div>
-                            <div class="menu-price">4,000원</div>
-                        </div>
-                    </div>
+                    <!-- 자바스크립트가 여기에 메뉴 카드를 자동으로 꽂아줍니다 -->
                 </div>
 
+                <button class="slider-btn" onclick="slideMenu(1)">&#10095;</button>
+            </div>
                 <button class="slider-btn" onclick="slideMenu(1)">&#10095;</button>
             </div>
         </section>
@@ -650,6 +620,44 @@
     </footer>
 
     <script>
+
+        // 1. 메뉴 데이터 리스트 (앞으로 메뉴가 추가되면 이 목록에 한 줄씩만 추가하면 됩니다!)
+        const menuData = [
+            { category: 'coffee', img: 'americano.png', name: '지구 아메리카노', price: '3,000원', badge: 'best' },
+            { category: 'coffee', img: 'signature.png', name: '지구 시그니처 라떼', price: '4,800원', badge: '' },
+            { category: 'beverage', img: 'fa.png', name: '초코 프라프치노', price: '4,000원', badge: 'new' },
+            { category: 'beverage', img: 'fa2.png', name: '피스타치오 카페라떼', price: '4,000원', badge: 'new' },
+            // 굿즈도 여기에 추가할 수 있습니다.
+            { category: 'goods', img: 'tumbler.png', name: '지구 텀블러', price: '12,000원', badge: '' },
+            { category: 'goods', img: 'keyring.png', name: '지구 호랑이 키링', price: '5,000원', badge: 'new' }
+        ];
+
+        // 2. 화면에 메뉴를 자동으로 그려주는 함수
+        function renderMenus() {
+            const menuList = document.getElementById('menuList');
+            menuList.innerHTML = ''; // 기존 내용 비우기
+            
+            menuData.forEach(menu => {
+                let badgeHtml = '';
+                if(menu.badge === 'best') badgeHtml = '<div class="badge best">BEST</div>';
+                if(menu.badge === 'new') badgeHtml = '<div class="badge new">NEW</div>';
+                
+                const cardHtml = `
+                    <div class="menu-card item-${menu.category}">
+                        ${badgeHtml}
+                        <div class="menu-img"><img src="${menu.img}" alt="${menu.name}"></div>
+                        <div class="menu-info">
+                            <div class="menu-name">${menu.name}</div>
+                            <div class="menu-price">${menu.price}</div>
+                        </div>
+                    </div>
+                `;
+                menuList.innerHTML += cardHtml;
+            });
+        }
+
+        // 3. 홈페이지가 켜질 때 메뉴 자동 생성 실행
+        document.addEventListener("DOMContentLoaded", renderMenus);
         function showPage(pageId, sectionId) {
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-found').style.display = 'none';
