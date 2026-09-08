@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEEGOO COFFEE | 세상에서 가장 순수한 커피</title>
+    <title>JEEGOO COFFEE | 지구커피 가맹 안내</title>
     
-    <!-- 주소창 로고(파비콘) 및 모바일 홈 화면 아이콘 설정 -->
     <link rel="icon" href="fa3.png" type="image/png">
     <link rel="apple-touch-icon" href="favicon.png">
 
     <style>
         /* 기본 설정 */
         :root {
-            --main-color: #0051A1; /* 지구커피의 컬러 딥블루 */
+            --main-color: #0051A1;
             --text-dark: #222;
             --text-light: #666;
             --bg-gray: #f9f9f9;
@@ -22,13 +21,11 @@
         a { text-decoration: none; color: inherit; cursor: pointer; }
         ul { list-style: none; }
 
-        /* 브라우저 커스텀 스크롤바 */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: var(--main-color); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #003d7a; }
 
-        /* 상단 스크롤 진행바 */
         .scroll-progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--main-color); z-index: 9999; width: 0%; transition: width 0.1s ease-out; }
 
         /* 헤더 */
@@ -39,7 +36,7 @@
         .gnb { display: flex; gap: 40px; font-weight: 600; font-size: 17px; }
         .gnb a:hover { color: var(--main-color); }
 
-        /* 오로라 물결 배경 애니메이션 */
+        /* 히어로 배경 */
         .hero { 
             background: linear-gradient(-45deg, #0051A1, #003d7a, #001f3f, #0051A1);
             background-size: 400% 400%;
@@ -50,7 +47,6 @@
         .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .hero p { font-size: 20px; opacity: 0.9; }
 
-        /* 트렌디 흐름 텍스트 (Marquee) */
         .marquee-wrap { background: var(--main-color); overflow: hidden; white-space: nowrap; padding: 15px 0; border-top: 1px solid rgba(255,255,255,0.2); }
         .marquee { display: inline-block; color: #fff; font-size: 16px; font-weight: bold; letter-spacing: 2px; animation: textFlow 25s linear infinite; }
         .marquee span { margin-right: 50px; opacity: 0.8; }
@@ -60,26 +56,59 @@
         section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; color: var(--text-dark); }
 
-        /* 브랜드 스토리 텍스트 영역 */
+        /* 스토리 텍스트 */
         .story-content { text-align: center; max-width: 800px; margin: 0 auto; line-height: 1.6; color: var(--text-dark); word-break: keep-all; }
         .story-content strong { color: var(--main-color); font-size: 24px; display: block; margin-bottom: 15px; }
         .story-highlight { display: inline-block; padding: 6px 16px; background: rgba(0, 81, 161, 0.1); border-radius: 50px; color: var(--main-color); font-size: 14px; font-weight: bold; margin-bottom: 15px; }
         .story-lead { color: var(--text-light); font-size: 17px; margin-bottom: 40px; }
         
-        .story-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto 0; }
-        .story-feature-card { background: #fff; border: 1px solid #eee; padding: 30px; border-radius: 16px; text-align: left; box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: 0.3s; }
-        .story-feature-card:hover { border-color: var(--main-color); transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,81,161,0.08); }
-        .story-feature-card h3 { font-size: 18px; font-weight: 800; color: var(--main-color); margin-bottom: 10px; }
-        .story-feature-card p { font-size: 14px; color: var(--text-light); line-height: 1.6; word-break: keep-all; }
+        /* ★ [적용] 가독성을 높인 네모(카드) 형태 특징 섹션 ★ */
+        .square-features-wrap {
+            position: relative;
+            background: url('bg-espresso.jpg') no-repeat center center/cover; /* 배경 이미지 파일명 맞춰주세요 */
+            background-color: #222; 
+            padding: 80px 20px;
+            margin: 40px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 1000px;
+        }
+        .square-features-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+        .square-features-inner {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .feature-square {
+            background: rgba(255, 255, 255, 0.93);
+            border-radius: 16px;
+            padding: 40px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .feature-square:hover { transform: translateY(-10px); background: #fff; }
+        .feature-square span { font-size: 15px; color: #666; margin-bottom: 12px; word-break: keep-all; font-weight: 700; }
+        .feature-square strong { font-size: 21px; color: var(--main-color); word-break: keep-all; line-height: 1.4; font-weight: 900; }
 
-        /* 매장 사진 슬라이드 영역 */
+        /* 매장 인테리어 슬라이드 */
         .store-slider-wrap { position: relative; max-width: 1000px; margin: 50px auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .store-img-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; width: 100%; }
         .store-img-list::-webkit-scrollbar { display: none; }
         .store-img-item { flex: 0 0 100%; scroll-snap-align: start; }
         .store-img-item img { width: 100%; display: block; object-fit: cover; aspect-ratio: 16/9; }
-        
-        /* 슬라이드 버튼 공통 스타일 */
         .slider-btn { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; background: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; font-size: 20px; color: var(--text-dark); flex-shrink: 0; }
         .slider-btn:hover { background: var(--main-color); color: #fff; border-color: var(--main-color); }
         .store-slider-wrap .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255, 255, 255, 0.9); border: none; }
@@ -90,13 +119,11 @@
         .category-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
         .tab-btn { padding: 10px 30px; font-size: 16px; font-weight: bold; border: 2px solid #ddd; background: #fff; border-radius: 50px; cursor: pointer; transition: all 0.3s; }
         .tab-btn.active, .tab-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
-        
         .menu-slider-wrap { position: relative; display: flex; align-items: center; gap: 15px; max-width: 1000px; margin: 0 auto; }
         .menu-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 10px 5px 30px; scroll-behavior: smooth; width: 100%; }
         .menu-list::-webkit-scrollbar { display: none; }
         .menu-card { flex: 0 0 calc(33.333% - 14px); scroll-snap-align: start; background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; transition: transform 0.3s; position: relative; }
         .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,81,161,0.15); border-color: var(--main-color); }
-        
         .menu-img { width: 100%; height: 250px; background: #eaeaea; display: flex; justify-content: center; align-items: center; overflow: hidden; }
         .menu-img img { width: 100%; height: 100%; object-fit: cover; }
         .menu-info { padding: 20px; text-align: center; }
@@ -106,16 +133,6 @@
         .badge.best { background: #e74c3c; }
         .badge.new { background: #3498db; }
 
-        /* 매장안내 섹션 */
-        .store-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-        .store-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; }
-        .store-card:hover { border-color: var(--main-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,81,161,0.1); }
-        .store-name { font-size: 22px; font-weight: 800; color: var(--main-color); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
-        .store-badge { font-size: 12px; background: var(--text-dark); color: #fff; padding: 4px 10px; border-radius: 20px; font-weight: bold; }
-        .store-info p { font-size: 15px; color: var(--text-light); margin-bottom: 8px; word-break: keep-all; }
-        .store-info strong { color: var(--text-dark); display: inline-block; width: 70px; }
-
-        /* 스크롤 스르륵 등장 (Reveal) 애니메이션 */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -131,13 +148,19 @@
         .benefit-card p { font-size: 15px; color: var(--text-light); line-height: 1.6; word-break: keep-all; }
         .benefit-card p strong { color: var(--main-color); }
 
-        /* 창업문의 페이지 - 가맹 절차 */
+        /* 가맹 절차 */
         .process-wrap { margin-bottom: 60px; }
         .process-title { text-align: center; font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 30px; }
         .process-img-wrap { max-width: 1000px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); background: #0B1D3A; }
         .process-img-wrap img { width: 100%; display: block; object-fit: contain; }
 
-        /* 수익 계산기 스타일 */
+        /* 박람회 배너 */
+        .expo-gallery { display: flex; gap: 15px; margin-bottom: 20px; }
+        .expo-item { flex: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .expo-item img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 350px; transition: transform 0.5s; }
+        .expo-item:hover img { transform: scale(1.03); }
+
+        /* 수익 계산기 */
         .calc-section { padding: 60px 20px; border-radius: 20px; margin-bottom: 60px; }
         .text-gradient { background: linear-gradient(to right, var(--main-color), #00a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 18px; word-break: keep-all; }
@@ -156,7 +179,7 @@
         .result-item.highlight .label { font-size: 18px; font-weight: bold; color: var(--main-color); }
         .result-item.highlight .price-save { font-size: 32px; font-weight: 900; color: var(--main-color); }
 
-        /* 창업문의 폼 스타일 */
+        /* 창업문의 폼 */
         .contact-banner { background: var(--bg-gray); padding: 40px; text-align: center; border-radius: 12px; margin-bottom: 40px; }
         .contact-banner h3 { font-size: 20px; color: var(--text-light); margin-bottom: 10px; }
         .contact-banner .phone { font-size: 40px; font-weight: 900; color: var(--main-color); margin-bottom: 10px; }
@@ -172,7 +195,7 @@
         .submit-btn { width: 100%; padding: 15px; background: var(--main-color); color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 10px;}
         .submit-btn:hover { background: #003d7a; }
 
-        /* 약관 및 개인정보처리방침 페이지 스타일 */
+        /* 약관 팝업 컨테이너 */
         .policy-container { max-width: 800px; margin: 50px auto; padding: 40px; background: #fff; border: 1px solid #eee; border-radius: 12px; line-height: 1.8; word-break: keep-all; }
         .policy-container h2 { font-size: 28px; font-weight: 800; color: var(--main-color); margin-bottom: 30px; border-bottom: 2px solid var(--text-dark); padding-bottom: 15px; }
         .policy-content h3 { font-size: 18px; color: var(--text-dark); margin-top: 30px; margin-bottom: 10px; }
@@ -192,107 +215,32 @@
         .footer-links a { color: #aaa; margin: 0 10px; }
         .footer-links a:hover { color: #fff; }
 
-        /* 굿즈 쇼케이스 섹션 */
-        .goods-showcase { text-align: center; max-width: 1000px; margin: 0 auto; }
-        .goods-desc { font-size: 18px; color: var(--text-light); margin-bottom: 30px; word-break: keep-all; }
-        
-        .goods-img-wrap { max-width: 600px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.08); border: 1px solid #eee; }
-        .goods-img-wrap img { width: 100%; display: block; object-fit: cover; transition: transform 0.5s; }
-        .goods-img-wrap:hover img { transform: scale(1.02); }
-
-        /* 프랜차이즈 박람회 갤러리 스타일 */
-        .expo-gallery { display: flex; gap: 15px; margin-bottom: 20px; }
-        .expo-item { flex: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .expo-item img { width: 100%; height: 100%; object-fit: cover; display: block; max-height: 350px; transition: transform 0.5s; }
-        .expo-item:hover img { transform: scale(1.03); }
-        
-        /* 플로팅 CTA 버튼 스타일 */
+        /* 플로팅 CTA */
         .floating-cta { position: fixed; bottom: 30px; right: 30px; background: #e74c3c; color: #fff; width: 100px; height: 100px; border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; font-size: 13px; font-weight: 800; line-height: 1.3; cursor: pointer; z-index: 9999; box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4); transition: transform 0.3s; }
         .floating-cta:hover { transform: translateY(-5px); }
         .floating-cta .pulse { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #e74c3c; animation: pulseAnim 1.5s infinite; z-index: -1; }
         @keyframes pulseAnim { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
-
-        /* 세련된 네모(카드) 형태 특징 섹션 */
-.square-features-wrap {
-    position: relative;
-    /* 배경 이미지는 보유하신 에스프레소 추출 사진이나 매장 사진으로 변경하세요 */
-    background: url('bg-espresso.jpg') no-repeat center center/cover; 
-    background-color: #222; 
-    padding: 80px 20px;
-    margin: 40px auto;
-    border-radius: 20px;
-    overflow: hidden;
-    max-width: 1000px;
-}
-.square-features-wrap::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.65); /* 글씨가 잘 보이도록 어두운 오버레이 */
-    z-index: 1;
-}
-.square-features-inner {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4개를 나란히 배치 */
-    gap: 20px;
-}
-.feature-square {
-    background: rgba(255, 255, 255, 0.93); /* 살짝 투명한 흰색 */
-    border-radius: 16px; /* 모서리가 부드러운 네모 */
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-/* 마우스 올렸을 때 카드가 살짝 위로 떠오르는 효과 */
-.feature-square:hover { 
-    transform: translateY(-10px); 
-    background: #fff;
-}
-.feature-square span {
-    font-size: 15px;
-    color: #666;
-    margin-bottom: 12px;
-    word-break: keep-all;
-    font-weight: 700;
-}
-.feature-square strong {
-    font-size: 21px;
-    color: var(--main-color);
-    word-break: keep-all;
-    line-height: 1.4;
-    font-weight: 900;
-}
-
-/* 모바일 화면 (2줄씩 2개로 배치) */
-@media (max-width: 768px) {
-    .square-features-wrap { padding: 50px 20px; border-radius: 0; }
-    .square-features-inner { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    .feature-square { padding: 30px 15px; border-radius: 12px; }
-    .feature-square span { font-size: 13px; margin-bottom: 8px; }
-    .feature-square strong { font-size: 17px; }
-    .feature-square:hover { transform: translateY(-5px); }
-}
         
         /* 모바일 최적화 */
         @media (max-width: 768px) {
             .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
             .logo-img { height: 50px; }
-            
-            .gnb { width: 100%; justify-content: flex-start; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; padding-left: 10px; padding-right: 20px; }
+            .gnb { width: 100%; justify-content: center; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
             .gnb::-webkit-scrollbar { display: none; }
-            
             .hero { padding: 80px 20px; }
             .hero h1 { font-size: 32px; }
             .hero p { font-size: 16px; }
             section { margin: 60px auto; }
             .section-title { font-size: 26px; margin-bottom: 30px; }
+            
+            /* 네모 특징 모바일 */
+            .square-features-wrap { padding: 50px 20px; border-radius: 0; }
+            .square-features-inner { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .feature-square { padding: 30px 15px; border-radius: 12px; }
+            .feature-square span { font-size: 13px; margin-bottom: 8px; }
+            .feature-square strong { font-size: 17px; }
+            .feature-square:hover { transform: translateY(-5px); }
+            
             .category-tabs { flex-wrap: wrap; gap: 8px; }
             .tab-btn { padding: 8px 16px; font-size: 14px; }
             
@@ -301,8 +249,10 @@
             .menu-slider-wrap .slider-btn { display: none; }
             .store-slider-wrap .slider-btn { display: none; } 
 
-            .store-list { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
+            .expo-gallery { flex-direction: column; gap: 10px; }
+            .benefit-grid { grid-template-columns: 1fr; }
+            .benefit-card { padding: 25px 20px; }
+            
             .calc-section { padding: 40px 10px; }
             .calculator-box { padding: 25px 15px; }
             .slider-label { flex-direction: column; gap: 10px; text-align: center; }
@@ -311,11 +261,7 @@
             .inquiry-form { padding: 20px; }
             .policy-container { padding: 20px; margin: 30px 10px; }
             
-            .goods-img-wrap { max-width: 100%; margin: 0 10px; }
             .floating-cta { width: 85px; height: 85px; font-size: 12px; bottom: 20px; right: 20px; }
-            .expo-gallery { flex-direction: column; gap: 10px; }
-            .benefit-grid { grid-template-columns: 1fr; }
-            .benefit-card { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -329,17 +275,15 @@
                 <img src="logo.png" alt="지구커피 로고" class="logo-img">
             </a>
             <ul class="gnb">
+                <!-- 굿즈/스토어 메뉴 완전 삭제 후 핵심 메뉴 3개만 남김 -->
                 <li><a onclick="showPage('home', 'story')">브랜드 스토리</a></li>
                 <li><a onclick="showPage('home', 'menu')">메뉴소개</a></li>
-                <li><a onclick="showPage('home', 'goods-intro')">굿즈소개</a></li>
-                <li><a onclick="showPage('home', 'store')">매장안내</a></li>
-                <!-- ★ [변경] 클릭 시 하단 창업문의 섹션으로 부드럽게 스크롤 ★ -->
                 <li><a onclick="showPage('home', 'found')" style="color: #e74c3c; font-weight: 800;">창업문의</a></li>
             </ul>
         </div>
     </header>
 
-    <!-- [1] 메인 화면 영역 (모든 콘텐츠 통합) -->
+    <!-- [1] 메인 화면 영역 -->
     <div id="page-home">
         
         <div class="hero" id="hero">
@@ -349,10 +293,6 @@
 
         <div class="marquee-wrap">
             <div class="marquee">
-                <span>세상에서 가장 순수한 커피, JEEGOO COFFEE</span>
-                <span>✧</span>
-                <span>MOVE FORWARD WITH JEEGOO</span>
-                <span>✧</span>
                 <span>세상에서 가장 순수한 커피, JEEGOO COFFEE</span>
                 <span>✧</span>
                 <span>MOVE FORWARD WITH JEEGOO</span>
@@ -376,46 +316,42 @@
                 <strong>"원두를 사는것이 아니라 한 지역의 시간과 이야기를 연결합니다."</strong>
                 <p class="story-lead">한잔의 시작은 산지가 아니라, 생산자와의 관계입니다.</p>
                 
-                <!-- ★ 점선 구분선 및 가맹점주 타겟팅 타이틀 ★ -->
                 <div style="margin: 60px 0 30px; border-top: 1px dashed #ddd; padding-top: 60px; text-align: center;">
-                    <h3 style="font-size: 26px; font-weight: 900; color: var(--main-color); margin-bottom: 12px; letter-spacing: 1px;">WHY JEEGOO COFFEE?</h3>
+                    <h3 style="font-size: 26px; font-weight: 900; color: var(--main-color); margin-bottom: 12px; letter-spacing: 1px;">WHY JEEGOO COFFEE</h3>
                     <p style="font-size: 19px; color: var(--text-dark); font-weight: bold;">
                         가맹점주님의 <span style="color: #e74c3c;">'확실한 수익과 단골'</span>을 약속하는 4가지 이유
                     </p>
                 </div>
+            </div>
 
-              <!-- ★ 가독성을 높인 네모(카드) UI 섹션 ★ -->
-<div class="square-features-wrap reveal">
-    <div class="square-features-inner">
-        
-        <div class="feature-square">
-            <span>호불호 없는 고소함</span>
-            <strong>오픈 초기<br>신규고객 유입</strong>
-        </div>
-        
-        <div class="feature-square">
-            <span>우유와 찰떡궁합</span>
-            <strong>객단가·마진<br>압도적 상승</strong>
-        </div>
-        
-        <div class="feature-square">
-            <span>기분 좋은 단맛</span>
-            <strong>주 3회 이상<br>안정적 재방문</strong>
-        </div>
-        
-        <div class="feature-square">
-            <span>깔끔한 클린컵</span>
-            <strong>1인 다회 소비<br>추가매출 유도</strong>
-        </div>
-    </div>
-</div>
+            <!-- ★ [적용완료] 가독성을 높인 네모(카드) UI 섹션 ★ -->
+            <div class="square-features-wrap reveal">
+                <div class="square-features-inner">
+                    <div class="feature-square">
+                        <span>호불호 없는 고소함</span>
+                        <strong>오픈 초기<br>신규고객 유입</strong>
+                    </div>
+                    <div class="feature-square">
+                        <span>우유와 찰떡궁합</span>
+                        <strong>객단가·마진<br>압도적 상승</strong>
+                    </div>
+                    <div class="feature-square">
+                        <span>기분 좋은 단맛</span>
+                        <strong>주 3회 이상<br>안정적 재방문</strong>
+                    </div>
+                    <div class="feature-square">
+                        <span>깔끔한 클린컵</span>
+                        <strong>1인 다회 소비<br>추가매출 유도</strong>
+                    </div>
+                </div>
+            </div>
             
-            <!-- 매장 사진 갤러리 슬라이드 -->
+            <!-- 매장 인테리어 어필용 사진 슬라이드는 남김 -->
             <div class="store-slider-wrap reveal">
                 <button class="slider-btn prev" onclick="slideStore(-1)">&#10094;</button>
                 <div class="store-img-list" id="storeList">
-                    <div class="store-img-item"><img src="shop.jpg" alt="매장 전경"></div>
-                    <div class="store-img-item"><img src="shop2.jpg" alt="매장 전경"></div>
+                    <div class="store-img-item"><img src="shop.jpg" alt="매장 인테리어 1"></div>
+                    <div class="store-img-item"><img src="shop2.jpg" alt="매장 인테리어 2"></div>
                 </div>
                 <button class="slider-btn next" onclick="slideStore(1)">&#10095;</button>
             </div>
@@ -429,8 +365,6 @@
                 <button class="tab-btn" onclick="filterMenu('coffee')">커피</button>
                 <button class="tab-btn" onclick="filterMenu('beverage')">음료</button>
             </div>
-            
-            <!-- 메뉴 슬라이드 -->
             <div class="menu-slider-wrap reveal">
                 <button class="slider-btn" onclick="slideMenu(-1)">&#10094;</button>
                 <div class="menu-list" id="menuList"></div>
@@ -438,89 +372,43 @@
             </div>
         </section>
 
-        <!-- 굿즈 소개 섹션 -->
-        <section id="goods-intro">
-            <h2 class="section-title reveal">MD GOODS</h2>
-            <div class="goods-showcase reveal">
-                <p class="goods-desc">지구커피의 순수한 감성을 일상에서도 함께하세요.</p>
-                <div class="goods-img-wrap">
-                    <img src="test.png" alt="지구커피 굿즈 모음 (텀블러, 키링, 드립백, 원두)">
-                </div>
-            </div>
-        </section>
-
-        <!-- 매장안내 섹션 -->
-        <section id="store">
-            <h2 class="section-title reveal">STORE</h2>
-            <div class="store-list">
-                <div class="store-card reveal">
-                    <div class="store-name">지구커피 본점 <span class="store-badge">MAIN</span></div>
-                    <div class="store-info">
-                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 기린대로 163</p>
-                        <p><strong>전화번호</strong> <a href="tel:1551-2776">1551-2776</a></p>
-                        <p><strong>영업시간</strong> 월~금 10:00 - 17:00 / 주말 정기휴무</p>
-                    </div>
-                </div>
-                <div class="store-card reveal">
-                    <div class="store-name">지구커피 금암직영점</div>
-                    <div class="store-info">
-                        <p><strong>주소</strong> 전북특별자치도 전주시 덕진구 거북바우로 34</p>
-                        <p><strong>전화번호</strong> <a href="tel:1551-2776">1551-2776</a></p>
-                        <p><strong>영업시간</strong> 매일 08:00 - 16:00</p>
-                    </div>
-                </div>
-                <div class="store-card reveal">
-                    <div class="store-name">지구커피 시청점</div>
-                    <div class="store-info">
-                        <p><strong>주소</strong> 전북특별자치도 전주시 완산구 기린대로 203</p>
-                        <p><strong>전화번호</strong> <a href="tel:1551-2776">1551-2776</a></p>
-                        <p><strong>영업시간</strong> 평일 08:00 - 16:00 / 주말 정기휴무</p>
-                    </div>
-                </div>
-                <div class="store-card reveal">
-                    <div class="store-name">지구커피 종각점</div>
-                    <div class="store-info">
-                        <p><strong>주소</strong> 서울특별시 종로구 우정국로 4 1F</p>
-                        <p><strong>전화번호</strong> <a href="tel:02-733-3920">02-733-3920</a></p>
-                        <p><strong>영업시간</strong> 매일 07:00 - 20:30</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- (굿즈 및 매장안내 섹션 완전 삭제) -->
 
         <!-- ============================================== -->
-        <!-- ★ [통합] 창업문의 (스크롤로 이어지는 섹션) ★ -->
+        <!-- 창업문의 섹션 -->
         <!-- ============================================== -->
         <section id="found" style="padding-top: 80px; border-top: 1px solid #eee;">
             <h2 class="section-title reveal">FRANCHISE</h2>
 
-            <!-- 프랜차이즈 박람회 배너 영역 -->
+            <!-- 박람회 배너 -->
             <div class="expo-banner reveal" style="max-width: 1000px; margin: 0 auto 50px; text-align: center;">
                 <div class="expo-gallery">
-                    <div class="expo-item">
-                        <img src="bb.png" alt="지구커피 프랜차이즈 창업박람회 현장 1">
-                    </div>
-                    <div class="expo-item">
-                        <img src="bb2.jpg" alt="지구커피 프랜차이즈 창업박람회 현장 2">
-                    </div>
+                    <div class="expo-item"><img src="bb.png" alt="창업박람회 1"></div>
+                    <div class="expo-item"><img src="bb2.jpg" alt="창업박람회 2"></div>
                 </div>
                 <p style="font-size: 18px; color: var(--text-dark); font-weight: bold;">
                     <span style="color: var(--main-color);">2026 프랜차이즈 창업박람회 성료!</span> 예비 점주님들의 뜨거운 성원에 감사드립니다.
                 </p>
             </div>
             
-            <!-- 선착순 프로모션 배너 -->
-            <div class="reveal" style="max-width: 1000px; margin: 0 auto 60px; background: linear-gradient(135deg, #0051A1, #001f3f); border-radius: 16px; padding: 40px; color: #fff; text-align: center; box-shadow: 0 15px 30px rgba(0,81,161,0.2);">
+            <!-- ★ [적용완료] 원두 무상지원 포함된 파격 프로모션 배너 ★ -->
+            <div class="reveal" style="max-width: 1000px; margin: 0 auto 60px; background: linear-gradient(135deg, #0051A1, #001f3f); border-radius: 16px; padding: 40px 20px; color: #fff; text-align: center; box-shadow: 0 15px 30px rgba(0,81,161,0.2);">
                 <div style="font-size: 16px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">★ 런칭 기념 초기 가맹점 특별 혜택 ★</div>
-                <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 20px; line-height: 1.4;">선착순 10호점 한정<br>가맹비·교육비 최대3,000만원 혜택</h3>
-                <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-                    <div style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 50px; font-weight: bold;">✔️ 인테리어 자체 시공 허용</div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 50px; font-weight: bold;">✔️ 1km 압도적 상권 독점 보장</div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 50px; font-weight: bold;">✔️ 오픈 첫 달 마케팅 전액 지원</div>
+                <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 25px; line-height: 1.4;">선착순 10호점 한정<br>가맹비·교육비 0원 혜택</h3>
+                
+                <div style="background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); display: inline-block; padding: 20px 30px; border-radius: 12px; margin-bottom: 30px; max-width: 100%;">
+                    <span style="font-size: 22px; font-weight: 900; color: #ffd700; word-break: keep-all;">🎁 매월 원두 10kg × 6개월 무상 지원!</span>
+                    <p style="font-size: 15px; margin-top: 8px; color: #fff; opacity: 0.9; word-break: keep-all;">오픈 초기 6개월, 원두 원가 걱정 없이 온전히 순수익으로 가져가세요.</p>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 15px;">✔️ 인테리어 자체 시공 허용</div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 15px;">✔️ 1km 압도적 상권 독점 보장</div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 15px;">✔️ 오픈 첫 달 마케팅 전액 지원</div>
                 </div>
             </div>
 
-            <!-- 가맹점주를 위한 4가지 압도적 혜택 -->
+            <!-- 가맹 혜택 4가지 -->
             <div class="benefit-wrap reveal">
                 <h3 class="benefit-title">대형 프랜차이즈는 절대 할 수 없는<br><span>지구커피만의 4가지 창업 경쟁력</span></h3>
                 <div class="benefit-grid">
@@ -532,7 +420,7 @@
                     <div class="benefit-card">
                         <div class="icon">💰</div>
                         <h4>02. 거품 없는 원가와 높은 실질 마진율</h4>
-                        <p>매출이 높아도 비싼 로열티와 물류 마진 때문에 점주 손에 쥐는 돈이 적으면 의미가 없습니다. 고품질 직수입 원두를 본사 마진 없이 합리적으로 공급하여, <strong>대기업 브랜드(순마진 18%) 대비 압도적인 수익률(순마진 최대 28% 이상)</strong>을 확보해 드립니다.</p>
+                        <p>매출이 높아도 비싼 로열티와 물류 마진 때문에 점주 손에 쥐는 돈이 적으면 의미가 없습니다. 고품질 직수입 원두를 본사 마진 없이 합리적으로 공급하여, <strong>대기업 브랜드(순마진 18%) 대비 압도적인 수익률(순마진 30% 이상)</strong>을 확보해 드립니다.</p>
                     </div>
                     <div class="benefit-card">
                         <div class="icon">👤</div>
@@ -641,25 +529,21 @@
         </section>
     </div> <!-- 메인 페이지 끝 -->
 
-    <!-- [2] 이용약관 화면 영역 (별도 팝업처럼 동작) -->
+    <!-- [2] 약관 팝업들 -->
     <div id="page-terms" style="display: none;">
         <div class="policy-container">
             <h2>이용약관</h2>
             <div class="policy-content">
                 <h3>제 1 조 (목적)</h3>
                 <p>본 약관은 지구커피(이하 "회사"라 합니다)가 제공하는 웹사이트 및 관련 제반 서비스의 이용과 관련하여 회사와 이용자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
-                <!-- (생략 - 기존 약관 내용 동일) -->
             </div>
         </div>
     </div>
-
-    <!-- [3] 개인정보처리방침 화면 영역 (별도 팝업처럼 동작) -->
     <div id="page-privacy" style="display: none;">
         <div class="policy-container">
             <h2>개인정보처리방침</h2>
             <div class="policy-content">
                 <p>지구커피는 관련 법령에 따라 이용자의 개인정보를 보호합니다.</p>
-                <!-- (생략 - 기존 방침 내용 동일) -->
             </div>
         </div>
     </div>
@@ -694,18 +578,16 @@
         </div>
     </footer>
     
-    <!-- ★ [변경] 클릭 시 'found' 섹션으로 스크롤 이동 ★ -->
+    <!-- 우측 하단 둥근 버튼 -->
     <div class="floating-cta" onclick="showPage('home', 'found')">
         <div class="pulse"></div>
         <span>선착순 10호점<br>창업 혜택 받기</span>
     </div>
 
     <script>
-        // 새로고침 시 최상단으로 이동
         if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
         window.scrollTo(0, 0);
 
-        // 페이지(섹션) 이동 스크립트
         function showPage(pageId, sectionId) {
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-terms').style.display = 'none';
@@ -714,7 +596,6 @@
             document.getElementById('page-' + pageId).style.display = 'block';
             
             if (sectionId) {
-                // 특정 섹션으로 부드럽게 스크롤
                 const section = document.getElementById(sectionId);
                 if (section) {
                     window.scrollTo({ top: section.offsetTop - 100, behavior: 'smooth' });
@@ -724,7 +605,6 @@
             }
         }
 
-        // 메뉴 데이터 및 생성
         const menuData = [
             { category: 'coffee', img: 'americano.png', name: '지구 아메리카노', price: '3,000원', badge: 'best' },
             { category: 'coffee', img: 'signature.png', name: '지구 시그니처 라떼', price: '4,800원', badge: '' },
@@ -737,7 +617,6 @@
             { category: 'beverage', img: 'strawberry2.png', name: '딸기요거트스무디', price: '5,800원', badge: '' },
             { category: 'beverage', img: 'blueberry.png', name: '블루베리요거트스무디', price: '5,800원', badge: '' },
             { category: 'coffee', img: 'vanilla.png', name: '바닐라라떼', price: '4,500원', badge: '' },
-            
         ];
 
         function renderMenus() {
@@ -789,7 +668,6 @@
             container.scrollBy({ left: direction * container.clientWidth, behavior: 'smooth' });
         }
 
-        // 구글 폼 접수
         function submitForm(event) {
             event.preventDefault(); 
             const form = event.target;
@@ -816,7 +694,6 @@
                 });
         }
 
-        // 초기화 (애니메이션, 계산기)
         document.addEventListener("DOMContentLoaded", function() {
             renderMenus(); 
 
@@ -825,7 +702,6 @@
                     if (entry.isIntersecting) { entry.target.classList.add('active'); }
                 });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('.reveal').forEach((el) => { observer.observe(el); });
 
             const salesSlider = document.getElementById('sales-volume');
@@ -846,7 +722,6 @@
             }
         });
 
-        // 상단 진행바
         window.addEventListener('scroll', () => {
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
