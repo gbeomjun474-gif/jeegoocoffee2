@@ -28,13 +28,12 @@
 
         .scroll-progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: var(--main-color); z-index: 9999; width: 0%; transition: width 0.1s ease-out; }
 
-        /* 헤더 */
+        /* 헤더 (로고 중앙 정렬) */
         header { background: #fff; border-bottom: 2px solid var(--main-color); position: sticky; top: 0; z-index: 1000; }
-        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: center; align-items: center; }
         .logo { display: flex; align-items: center; cursor: pointer; }
-        .logo-img { height: 70px; object-fit: contain; }
-        .gnb { display: flex; gap: 40px; font-weight: 600; font-size: 17px; }
-        .gnb a:hover { color: var(--main-color); }
+        .logo-img { height: 70px; object-fit: contain; transition: transform 0.3s; }
+        .logo-img:hover { transform: scale(1.05); }
 
         /* 히어로 배경 */
         .hero { 
@@ -62,7 +61,7 @@
         .story-highlight { display: inline-block; padding: 6px 16px; background: rgba(0, 81, 161, 0.1); border-radius: 50px; color: var(--main-color); font-size: 14px; font-weight: bold; margin-bottom: 15px; }
         .story-lead { color: var(--text-light); font-size: 17px; margin-bottom: 40px; }
         
-        /* ★ [적용] 가독성을 높인 네모(카드) 형태 특징 섹션 ★ */
+        /* 가맹점주 어필 네모(카드) 형태 특징 섹션 */
         .square-features-wrap {
             position: relative;
             background: url('bg-espresso.jpg') no-repeat center center/cover; /* 배경 이미지 파일명 맞춰주세요 */
@@ -115,24 +114,7 @@
         .store-slider-wrap .slider-btn.prev { left: 20px; }
         .store-slider-wrap .slider-btn.next { right: 20px; }
 
-        /* 메뉴 섹션 */
-        .category-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-        .tab-btn { padding: 10px 30px; font-size: 16px; font-weight: bold; border: 2px solid #ddd; background: #fff; border-radius: 50px; cursor: pointer; transition: all 0.3s; }
-        .tab-btn.active, .tab-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
-        .menu-slider-wrap { position: relative; display: flex; align-items: center; gap: 15px; max-width: 1000px; margin: 0 auto; }
-        .menu-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 10px 5px 30px; scroll-behavior: smooth; width: 100%; }
-        .menu-list::-webkit-scrollbar { display: none; }
-        .menu-card { flex: 0 0 calc(33.333% - 14px); scroll-snap-align: start; background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; transition: transform 0.3s; position: relative; }
-        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,81,161,0.15); border-color: var(--main-color); }
-        .menu-img { width: 100%; height: 250px; background: #eaeaea; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .menu-img img { width: 100%; height: 100%; object-fit: cover; }
-        .menu-info { padding: 20px; text-align: center; }
-        .menu-name { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
-        .menu-price { font-size: 16px; color: var(--text-light); }
-        .badge { position: absolute; top: 15px; left: 15px; padding: 5px 12px; font-size: 12px; font-weight: bold; border-radius: 4px; color: #fff; }
-        .badge.best { background: #e74c3c; }
-        .badge.new { background: #3498db; }
-
+        /* 애니메이션 Reveal */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -223,10 +205,9 @@
         
         /* 모바일 최적화 */
         @media (max-width: 768px) {
-            .nav-inner { flex-direction: column; gap: 15px; padding: 15px 10px; }
+            .nav-inner { padding: 15px 10px; }
             .logo-img { height: 50px; }
-            .gnb { width: 100%; justify-content: center; gap: 20px; font-size: 15px; overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
-            .gnb::-webkit-scrollbar { display: none; }
+            
             .hero { padding: 80px 20px; }
             .hero h1 { font-size: 32px; }
             .hero p { font-size: 16px; }
@@ -241,12 +222,6 @@
             .feature-square strong { font-size: 17px; }
             .feature-square:hover { transform: translateY(-5px); }
             
-            .category-tabs { flex-wrap: wrap; gap: 8px; }
-            .tab-btn { padding: 8px 16px; font-size: 14px; }
-            
-            .menu-slider-wrap { gap: 0; margin: 0 -10px; padding: 0 10px; }
-            .menu-card { flex: 0 0 calc(75%); margin-right: 15px; } 
-            .menu-slider-wrap .slider-btn { display: none; }
             .store-slider-wrap .slider-btn { display: none; } 
 
             .expo-gallery { flex-direction: column; gap: 10px; }
@@ -270,16 +245,11 @@
     <div class="scroll-progress-bar" id="scrollBar"></div>
 
     <header>
+        <!-- ★ 상단 메뉴(GNB) 삭제 및 로고 중앙 정렬 ★ -->
         <div class="nav-inner">
-            <a onclick="showPage('home', 'hero')" class="logo">
+            <a onclick="showPage('home')" class="logo">
                 <img src="logo.png" alt="지구커피 로고" class="logo-img">
             </a>
-            <ul class="gnb">
-                <!-- 굿즈/스토어 메뉴 완전 삭제 후 핵심 메뉴 3개만 남김 -->
-                <li><a onclick="showPage('home', 'story')">브랜드 스토리</a></li>
-                <li><a onclick="showPage('home', 'menu')">메뉴소개</a></li>
-                <li><a onclick="showPage('home', 'found')" style="color: #e74c3c; font-weight: 800;">창업문의</a></li>
-            </ul>
         </div>
     </header>
 
@@ -324,7 +294,7 @@
                 </div>
             </div>
 
-            <!-- ★ [적용완료] 가독성을 높인 네모(카드) UI 섹션 ★ -->
+            <!-- 가독성을 높인 네모(카드) UI 섹션 -->
             <div class="square-features-wrap reveal">
                 <div class="square-features-inner">
                     <div class="feature-square">
@@ -346,7 +316,7 @@
                 </div>
             </div>
             
-            <!-- 매장 인테리어 어필용 사진 슬라이드는 남김 -->
+            <!-- 매장 인테리어 슬라이드 -->
             <div class="store-slider-wrap reveal">
                 <button class="slider-btn prev" onclick="slideStore(-1)">&#10094;</button>
                 <div class="store-img-list" id="storeList">
@@ -357,22 +327,57 @@
             </div>
         </section>
 
-        <!-- 메뉴 섹션 -->
-        <section id="menu">
-            <h2 class="section-title reveal">MENU</h2>
-            <div class="category-tabs reveal">
-                <button class="tab-btn active" onclick="filterMenu('all')">전체보기</button>
-                <button class="tab-btn" onclick="filterMenu('coffee')">커피</button>
-                <button class="tab-btn" onclick="filterMenu('beverage')">음료</button>
-            </div>
-            <div class="menu-slider-wrap reveal">
-                <button class="slider-btn" onclick="slideMenu(-1)">&#10094;</button>
-                <div class="menu-list" id="menuList"></div>
-                <button class="slider-btn" onclick="slideMenu(1)">&#10095;</button>
+        <!-- ★ [적용] 초간결 시그니처 메뉴 섹션 (딱 4개만 노출) ★ -->
+        <section id="menu" style="margin: 40px auto 80px;">
+            <h2 class="section-title reveal" style="margin-bottom: 40px;">
+                SIGNATURE MENU
+                <span style="font-size: 18px; color: var(--text-light); display: block; margin-top: 15px; font-weight: normal;">
+                    마진율과 객단가를 동시에 견인하는 <b style="color: var(--main-color);">지구커피의 대표 라인업</b>
+                </span>
+            </h2>
+            
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto;">
+                <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+                    <div style="width: 100%; height: 220px; background: #eaeaea;">
+                        <img src="americano.png" alt="지구 아메리카노" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 20px;">
+                        <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">지구 아메리카노</div>
+                        <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#압도적_재방문율</div>
+                    </div>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+                    <div style="width: 100%; height: 220px; background: #eaeaea;">
+                        <img src="signature.png" alt="지구 시그니처 라떼" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 20px;">
+                        <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">지구 시그니처 라떼</div>
+                        <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#고수익_핵심메뉴</div>
+                    </div>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+                    <div style="width: 100%; height: 220px; background: #eaeaea;">
+                        <img src="strawberry.png" alt="리얼딸기라떼" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 20px;">
+                        <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">리얼딸기라떼</div>
+                        <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#비주얼_객단가UP</div>
+                    </div>
+                </div>
+
+                <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+                    <div style="width: 100%; height: 220px; background: #eaeaea;">
+                        <img src="fa2.png" alt="피스타치오 카페라떼" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div style="padding: 20px;">
+                        <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">피스타치오 라떼</div>
+                        <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#트렌디_신규유입</div>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <!-- (굿즈 및 매장안내 섹션 완전 삭제) -->
 
         <!-- ============================================== -->
         <!-- 창업문의 섹션 -->
@@ -391,7 +396,7 @@
                 </p>
             </div>
             
-            <!-- ★ [적용완료] 원두 무상지원 포함된 파격 프로모션 배너 ★ -->
+            <!-- 파격 프로모션 배너 (원두지원) -->
             <div class="reveal" style="max-width: 1000px; margin: 0 auto 60px; background: linear-gradient(135deg, #0051A1, #001f3f); border-radius: 16px; padding: 40px 20px; color: #fff; text-align: center; box-shadow: 0 15px 30px rgba(0,81,161,0.2);">
                 <div style="font-size: 16px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">★ 런칭 기념 초기 가맹점 특별 혜택 ★</div>
                 <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 25px; line-height: 1.4;">선착순 10호점 한정<br>가맹비·교육비 0원 혜택</h3>
@@ -579,7 +584,7 @@
     </footer>
     
     <!-- 우측 하단 둥근 버튼 -->
-    <div class="floating-cta" onclick="showPage('home', 'found')">
+    <div class="floating-cta" onclick="document.getElementById('found').scrollIntoView({behavior: 'smooth'})">
         <div class="pulse"></div>
         <span>선착순 10호점<br>창업 혜택 받기</span>
     </div>
@@ -588,79 +593,13 @@
         if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
         window.scrollTo(0, 0);
 
-        function showPage(pageId, sectionId) {
+        function showPage(pageId) {
             document.getElementById('page-home').style.display = 'none';
             document.getElementById('page-terms').style.display = 'none';
             document.getElementById('page-privacy').style.display = 'none';
             
             document.getElementById('page-' + pageId).style.display = 'block';
-            
-            if (sectionId) {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    window.scrollTo({ top: section.offsetTop - 100, behavior: 'smooth' });
-                }
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        const menuData = [
-            { category: 'coffee', img: 'americano.png', name: '지구 아메리카노', price: '3,000원', badge: 'best' },
-            { category: 'coffee', img: 'signature.png', name: '지구 시그니처 라떼', price: '4,800원', badge: '' },
-            { category: 'beverage', img: 'fa.png', name: '초코 프라프치노', price: '4,000원', badge: 'new' },
-            { category: 'beverage', img: 'fa2.png', name: '피스타치오 카페라떼', price: '4,500원', badge: 'new' },
-            { category: 'beverage', img: 'strawberry.png', name: '리얼딸기라떼', price: '5,700원', badge: 'best' },
-            { category: 'beverage', img: 'choco.png', name: '리얼초코라떼', price: '5,500원', badge: '' },
-            { category: 'beverage', img: 'lemon.png', name: '블루레몬에이드', price: '4,000원', badge: '' },
-            { category: 'beverage', img: 'manggo.png', name: '망고요거트스무디', price: '5,800원', badge: '' },
-            { category: 'beverage', img: 'strawberry2.png', name: '딸기요거트스무디', price: '5,800원', badge: '' },
-            { category: 'beverage', img: 'blueberry.png', name: '블루베리요거트스무디', price: '5,800원', badge: '' },
-            { category: 'coffee', img: 'vanilla.png', name: '바닐라라떼', price: '4,500원', badge: '' },
-        ];
-
-        function renderMenus() {
-            const menuList = document.getElementById('menuList');
-            if(!menuList) return; 
-            menuList.innerHTML = ''; 
-            
-            menuData.forEach(menu => {
-                let badgeHtml = '';
-                if(menu.badge === 'best') badgeHtml = '<div class="badge best">BEST</div>';
-                if(menu.badge === 'new') badgeHtml = '<div class="badge new">NEW</div>';
-                
-                const cardHtml = `
-                    <div class="menu-card item-${menu.category}">
-                        ${badgeHtml}
-                        <div class="menu-img"><img src="${menu.img}" alt="${menu.name}"></div>
-                        <div class="menu-info">
-                            <div class="menu-name">${menu.name}</div>
-                            <div class="menu-price">${menu.price}</div>
-                        </div>
-                    </div>
-                `;
-                menuList.innerHTML += cardHtml;
-            });
-        }
-
-        function filterMenu(category) {
-            const items = document.querySelectorAll('.menu-card');
-            items.forEach(item => {
-                if (category === 'all' || item.classList.contains('item-' + category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-            const btns = document.querySelectorAll('.tab-btn');
-            btns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById('menuList').scrollTo({ left: 0, behavior: 'smooth' });
-        }
-
-        function slideMenu(direction) {
-            const container = document.getElementById('menuList');
-            container.scrollBy({ left: direction * (container.clientWidth / 2), behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function slideStore(direction) {
@@ -695,8 +634,6 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            renderMenus(); 
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) { entry.target.classList.add('active'); }
