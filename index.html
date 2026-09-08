@@ -64,7 +64,7 @@
         /* 가맹점주 어필 네모(카드) 형태 특징 섹션 */
         .square-features-wrap {
             position: relative;
-            background: url('bg-espresso.jpg') no-repeat center center/cover; /* 배경 이미지 파일명 맞춰주세요 */
+            background: url('bg-espresso.jpg') no-repeat center center/cover; 
             background-color: #222; 
             padding: 80px 20px;
             margin: 40px auto;
@@ -101,18 +101,6 @@
         .feature-square:hover { transform: translateY(-10px); background: #fff; }
         .feature-square span { font-size: 15px; color: #666; margin-bottom: 12px; word-break: keep-all; font-weight: 700; }
         .feature-square strong { font-size: 21px; color: var(--main-color); word-break: keep-all; line-height: 1.4; font-weight: 900; }
-
-        /* 매장 인테리어 슬라이드 */
-        .store-slider-wrap { position: relative; max-width: 1000px; margin: 50px auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .store-img-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; width: 100%; }
-        .store-img-list::-webkit-scrollbar { display: none; }
-        .store-img-item { flex: 0 0 100%; scroll-snap-align: start; }
-        .store-img-item img { width: 100%; display: block; object-fit: cover; aspect-ratio: 16/9; }
-        .slider-btn { width: 45px; height: 45px; border-radius: 50%; border: 1px solid #ddd; background: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: 0.3s; font-size: 20px; color: var(--text-dark); flex-shrink: 0; }
-        .slider-btn:hover { background: var(--main-color); color: #fff; border-color: var(--main-color); }
-        .store-slider-wrap .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255, 255, 255, 0.9); border: none; }
-        .store-slider-wrap .slider-btn.prev { left: 20px; }
-        .store-slider-wrap .slider-btn.next { right: 20px; }
 
         /* 애니메이션 Reveal */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
@@ -220,10 +208,7 @@
             .feature-square { padding: 30px 15px; border-radius: 12px; }
             .feature-square span { font-size: 13px; margin-bottom: 8px; }
             .feature-square strong { font-size: 17px; }
-            .feature-square:hover { transform: translateY(-5px); }
             
-            .store-slider-wrap .slider-btn { display: none; } 
-
             .expo-gallery { flex-direction: column; gap: 10px; }
             .benefit-grid { grid-template-columns: 1fr; }
             .benefit-card { padding: 25px 20px; }
@@ -245,7 +230,6 @@
     <div class="scroll-progress-bar" id="scrollBar"></div>
 
     <header>
-        <!-- ★ 상단 메뉴(GNB) 삭제 및 로고 중앙 정렬 ★ -->
         <div class="nav-inner">
             <a onclick="showPage('home')" class="logo">
                 <img src="logo.png" alt="지구커피 로고" class="logo-img">
@@ -278,7 +262,7 @@
             </div>
         </div>
 
-        <!-- 브랜드 스토리 섹션 -->
+        <!-- 1. 브랜드 스토리 섹션 -->
         <section id="story">
             <h2 class="section-title reveal">BRAND STORY</h2>
             <div class="story-content reveal">
@@ -287,14 +271,14 @@
                 <p class="story-lead">한잔의 시작은 산지가 아니라, 생산자와의 관계입니다.</p>
                 
                 <div style="margin: 60px 0 30px; border-top: 1px dashed #ddd; padding-top: 60px; text-align: center;">
-                    <h3 style="font-size: 26px; font-weight: 900; color: var(--main-color); margin-bottom: 12px; letter-spacing: 1px;">WHY JEEGOO COFFEE ?</h3>
+                    <h3 style="font-size: 26px; font-weight: 900; color: var(--main-color); margin-bottom: 12px; letter-spacing: 1px;">WHY JEEGOO COFFEE</h3>
                     <p style="font-size: 19px; color: var(--text-dark); font-weight: bold;">
                         가맹점주님의 <span style="color: #e74c3c;">'확실한 수익과 단골'</span>을 약속하는 4가지 이유
                     </p>
                 </div>
             </div>
 
-            <!-- 가독성을 높인 네모(카드) UI 섹션 -->
+            <!-- 네모(카드) 형태 특징 4가지 -->
             <div class="square-features-wrap reveal">
                 <div class="square-features-inner">
                     <div class="feature-square">
@@ -315,19 +299,9 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- 매장 인테리어 슬라이드 -->
-            <div class="store-slider-wrap reveal">
-                <button class="slider-btn prev" onclick="slideStore(-1)">&#10094;</button>
-                <div class="store-img-list" id="storeList">
-                    <div class="store-img-item"><img src="shop.jpg" alt="매장 인테리어 1"></div>
-                    <div class="store-img-item"><img src="shop2.jpg" alt="매장 인테리어 2"></div>
-                </div>
-                <button class="slider-btn next" onclick="slideStore(1)">&#10095;</button>
-            </div>
         </section>
 
-        <!-- ★ [적용] 초간결 시그니처 메뉴 섹션 (딱 4개만 노출) ★ -->
+        <!-- 2. 시그니처 메뉴 섹션 -->
         <section id="menu" style="margin: 40px auto 80px;">
             <h2 class="section-title reveal" style="margin-bottom: 40px;">
                 SIGNATURE MENU
@@ -379,9 +353,29 @@
             </div>
         </section>
 
-        <!-- ============================================== -->
-        <!-- 창업문의 섹션 -->
-        <!-- ============================================== -->
+        <!-- 3. 시그니처 인테리어 섹션 (메뉴 아래로 이동) -->
+        <section id="interior" style="margin: 80px auto;">
+            <div class="interior-wrap reveal" style="text-align: center;">
+                <h3 style="font-size: 28px; font-weight: 900; color: var(--main-color); margin-bottom: 20px;">
+                    지구커피 시그니처 인테리어
+                </h3>
+                <p style="font-size: 17px; color: var(--text-dark); line-height: 1.7; margin-bottom: 40px; word-break: keep-all;">
+                    지구커피는 브랜드 컬러인 딥블루와 따뜻한 톤을 베이스로 하여<br>
+                    매장이 위치한 상권의 특성을 가장 잘 살릴 수 있도록<br>
+                    <strong style="color: var(--text-dark); font-size: 18px;">편안하면서도 감각적인 맞춤 인테리어로</strong><br>
+                    고객의 발길이 머무는 공간을 완성합니다.
+                </p>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px; max-width: 1000px; margin: 0 auto;">
+                    <!-- 실제 매장 사진이나 조감도 이미지 파일명을 넣어주세요 -->
+                    <img src="shop.jpg" alt="지구커피 외관 인테리어" style="width: 100%; display: block; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                    <img src="shop2.jpg" alt="지구커피 내부 인테리어" style="width: 100%; display: block; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 4. 창업문의(프랜차이즈) 섹션 -->
         <section id="found" style="padding-top: 80px; border-top: 1px solid #eee;">
             <h2 class="section-title reveal">FRANCHISE</h2>
 
@@ -399,7 +393,7 @@
             <!-- 파격 프로모션 배너 (원두지원) -->
             <div class="reveal" style="max-width: 1000px; margin: 0 auto 60px; background: linear-gradient(135deg, #0051A1, #001f3f); border-radius: 16px; padding: 40px 20px; color: #fff; text-align: center; box-shadow: 0 15px 30px rgba(0,81,161,0.2);">
                 <div style="font-size: 16px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">★ 런칭 기념 초기 가맹점 특별 혜택 ★</div>
-                <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 25px; line-height: 1.4;">선착순 10호점 한정<br>가맹비·교육비 3,000만원 혜택</h3>
+                <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 25px; line-height: 1.4;">선착순 10호점 한정<br>가맹비·교육비 0원 혜택</h3>
                 
                 <div style="background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); display: inline-block; padding: 20px 30px; border-radius: 12px; margin-bottom: 30px; max-width: 100%;">
                     <span style="font-size: 22px; font-weight: 900; color: #ffd700; word-break: keep-all;">🎁 매월 원두 10kg × 6개월 무상 지원!</span>
@@ -420,7 +414,7 @@
                     <div class="benefit-card">
                         <div class="icon">🗺️</div>
                         <h4>01. 압도적으로 넓은 상권 독점 보장</h4>
-                        <p>200~300m 간격으로 점포가 들어서 자기잠식(카니발리제이션)이 심한 대형 브랜드와 다릅니다. <strong>반경 500m~1km 내 동종 브랜드 독점 출점 및 라이더 10분 내 배달완료를 보장</strong>하며, 인근 배달 상권을 온전히 한 점포가 가져갈 수 있는 강력한 영업권을 약속합니다. 
+                        <p>200~300m 간격으로 점포가 들어서 자기잠식(카니발리제이션)이 심한 대형 브랜드와 다릅니다. <strong>반경 500m~1km 내 동종 브랜드 독점 출점및 라이더 배정 후 10분안에 배달을 보장</strong>하며, 인근 배달 상권을 온전히 한 점포가 가져갈 수 있는 강력한 영업권을 약속합니다.</p>
                     </div>
                     <div class="benefit-card">
                         <div class="icon">💰</div>
@@ -534,7 +528,7 @@
         </section>
     </div> <!-- 메인 페이지 끝 -->
 
-    <!-- [2] 약관 팝업들 -->
+    <!-- 약관 팝업들 -->
     <div id="page-terms" style="display: none;">
         <div class="policy-container">
             <h2>이용약관</h2>
@@ -583,7 +577,7 @@
         </div>
     </footer>
     
-   <!-- 우측 하단 둥근 버튼 -->
+    <!-- ★ [적용] 우측 하단 둥근 버튼 (로고 헤더 높이만큼 100px 덜 내려가도록 수정) ★ -->
     <div class="floating-cta" onclick="window.scrollTo({ top: document.getElementById('found').offsetTop - 100, behavior: 'smooth' })">
         <div class="pulse"></div>
         <span>선착순 10호점<br>창업 혜택 받기</span>
@@ -600,11 +594,6 @@
             
             document.getElementById('page-' + pageId).style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function slideStore(direction) {
-            const container = document.getElementById('storeList');
-            container.scrollBy({ left: direction * container.clientWidth, behavior: 'smooth' });
         }
 
         function submitForm(event) {
