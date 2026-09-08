@@ -211,6 +211,74 @@
         .floating-cta:hover { transform: translateY(-5px); }
         .floating-cta .pulse { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #e74c3c; animation: pulseAnim 1.5s infinite; z-index: -1; }
         @keyframes pulseAnim { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
+
+        /* 세련된 네모(카드) 형태 특징 섹션 */
+.square-features-wrap {
+    position: relative;
+    /* 배경 이미지는 보유하신 에스프레소 추출 사진이나 매장 사진으로 변경하세요 */
+    background: url('bg-espresso.jpg') no-repeat center center/cover; 
+    background-color: #222; 
+    padding: 80px 20px;
+    margin: 40px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 1000px;
+}
+.square-features-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.65); /* 글씨가 잘 보이도록 어두운 오버레이 */
+    z-index: 1;
+}
+.square-features-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개를 나란히 배치 */
+    gap: 20px;
+}
+.feature-square {
+    background: rgba(255, 255, 255, 0.93); /* 살짝 투명한 흰색 */
+    border-radius: 16px; /* 모서리가 부드러운 네모 */
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+/* 마우스 올렸을 때 카드가 살짝 위로 떠오르는 효과 */
+.feature-square:hover { 
+    transform: translateY(-10px); 
+    background: #fff;
+}
+.feature-square span {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 12px;
+    word-break: keep-all;
+    font-weight: 700;
+}
+.feature-square strong {
+    font-size: 21px;
+    color: var(--main-color);
+    word-break: keep-all;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+/* 모바일 화면 (2줄씩 2개로 배치) */
+@media (max-width: 768px) {
+    .square-features-wrap { padding: 50px 20px; border-radius: 0; }
+    .square-features-inner { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .feature-square { padding: 30px 15px; border-radius: 12px; }
+    .feature-square span { font-size: 13px; margin-bottom: 8px; }
+    .feature-square strong { font-size: 17px; }
+    .feature-square:hover { transform: translateY(-5px); }
+}
         
         /* 모바일 최적화 */
         @media (max-width: 768px) {
@@ -316,26 +384,31 @@
                     </p>
                 </div>
 
-                <!-- 가맹점주 관점의 비즈니스 강점 4가지 -->
-                <div class="story-features">
-                    <div class="story-feature-card">
-                        <h3>01. 고소한 첫인상 = 신규 고객 유입</h3>
-                        <p>한국인이 가장 선호하는 기분 좋은 견과류 톤의 고소함. 호불호 없는 대중적인 맛으로 <b>오픈 초기 신규 고객의 진입 장벽을 대폭 낮춥니다.</b></p>
-                    </div>
-                    <div class="story-feature-card">
-                        <h3>02. 깊고 묵직한 중심 = 객단가·마진 상승</h3>
-                        <p>맹맹하지 않고 든든한 바디감을 가져 우유나 시럽과 섞여도 커피 맛이 죽지 않습니다. <b>마진율이 높은 베리에이션(라떼류) 음료 판매율을 높여줍니다.</b></p>
-                    </div>
-                    <div class="story-feature-card">
-                        <h3>03. 자연스러운 단맛 = 안정적인 재방문율</h3>
-                        <p>시럽 없이도 느껴지는 기분 좋은 후미. 질리지 않는 맛으로 <b>주 3~5회 이상 매일 찾아오는 탄탄한 동네/오피스 단골층을 확보</b>합니다.</p>
-                    </div>
-                    <div class="story-feature-card">
-                        <h3>04. 깔끔한 마무리 = 1일 다회 소비 유도</h3>
-                        <p>입안에 텁텁함이 남지 않는 클린컵. 식후나 업무 중 부담 없이 마실 수 있어 <b>한 고객이 하루에 2잔 이상 구매하는 추가 매출을 이끌어냅니다.</b></p>
-                    </div>
-                </div>
-            </div>
+              <!-- ★ 가독성을 높인 네모(카드) UI 섹션 ★ -->
+<div class="square-features-wrap reveal">
+    <div class="square-features-inner">
+        
+        <div class="feature-square">
+            <span>호불호 없는 고소함</span>
+            <strong>오픈 초기<br>신규고객 유입</strong>
+        </div>
+        
+        <div class="feature-square">
+            <span>우유와 찰떡궁합</span>
+            <strong>객단가·마진<br>압도적 상승</strong>
+        </div>
+        
+        <div class="feature-square">
+            <span>기분 좋은 단맛</span>
+            <strong>주 3회 이상<br>안정적 재방문</strong>
+        </div>
+        
+        <div class="feature-square">
+            <span>깔끔한 클린컵</span>
+            <strong>1인 다회 소비<br>추가매출 유도</strong>
+        </div>
+    </div>
+</div>
             
             <!-- 매장 사진 갤러리 슬라이드 -->
             <div class="store-slider-wrap reveal">
