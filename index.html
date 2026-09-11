@@ -119,15 +119,13 @@
         .benefit-card p { font-size: 15px; color: var(--text-light); line-height: 1.6; word-break: keep-all; }
         .benefit-card p strong { color: var(--main-color); }
 
-        /* 5. 가맹 절차 및 박람회 (PC/모바일 분리) */
+       /* 5. 가맹 절차 및 박람회 (PC/모바일 분리) */
         .process-title { text-align: center; font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 20px; }
         
-        /* 가맹절차 이미지 크기 강제 제한 (스크롤 고정 풀림 방지) */
+        /* ★ 가맹절차 이미지 크기 절대값 고정 (스크롤 시 커지는 현상 완벽 차단) ★ */
         .process-img-wrap { 
             max-width: 700px; 
-            height: 30vh; 
-            min-height: 150px; 
-            max-height: 280px; 
+            height: 250px; /* vh 대신 고정된 px 값 사용 */
             margin: 0 auto 25px; 
             border-radius: 16px; 
             overflow: hidden; 
@@ -137,7 +135,8 @@
             justify-content: center; 
             align-items: center; 
         }
-        .process-img-wrap img { width: 100%; height: 100%; display: block; object-fit: contain; }
+        /* 사진이 잘리지 않도록 여백(padding)을 살짝 주어 더 깔끔하게 떨어지게 함 */
+        .process-img-wrap img { width: 100%; height: 100%; display: block; object-fit: contain; padding: 15px; }
 
         .expo-gallery { display: flex; gap: 15px; margin: 0 auto 20px; max-width: 600px; width: 100%; }
         .expo-item { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
@@ -236,6 +235,8 @@
             .inquiry-form { padding: 20px; }
             .floating-cta { width: 85px; height: 85px; font-size: 12px; bottom: 20px; right: 20px; }
         }
+        /* 모바일에서 가맹절차 사진 높이 고정 */
+            .process-img-wrap { height: 160px; }
     </style>
 </head>
 <body>
