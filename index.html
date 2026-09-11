@@ -181,6 +181,25 @@
         .floating-cta .pulse { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #e74c3c; animation: pulseAnim 1.5s infinite; z-index: -1; }
         @keyframes pulseAnim { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
         
+        /* ★ 시그니처 메뉴 반응형 CSS ★ */
+        .sig-menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; max-width: 1000px; margin: 0 auto; }
+        .sig-menu-card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        /* 비율(1:1)을 유지하여 모바일에서도 찌그러지지 않게 함 */
+        .sig-menu-img-wrap { width: 100%; aspect-ratio: 1 / 1; background: #f8f8f8; display: flex; justify-content: center; align-items: center; }
+        /* cover(꽉 채우기) 대신 contain(쏙 들어가게) 사용 */
+        .sig-menu-img-wrap img { width: 100%; height: 100%; object-fit: contain; padding: 15px; } 
+        .sig-menu-info { padding: 20px; }
+        .sig-menu-name { font-size: 18px; font-weight: 800; margin-bottom: 5px; color: var(--text-dark); }
+        .sig-menu-tag { font-size: 14px; color: var(--main-color); font-weight: 600; }
+
+        /* 모바일에서는 2x2 바둑판 배열로 축소 */
+        @media (max-width: 768px) {
+            .sig-menu-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .sig-menu-img-wrap { aspect-ratio: 4 / 3; } /* 모바일에서는 살짝 가로로 긴 비율로 맞춤 */
+            .sig-menu-info { padding: 15px 10px; }
+            .sig-menu-name { font-size: 15px; letter-spacing: -0.5px; }
+            .sig-menu-tag { font-size: 12px; }
+        }
         /* 모바일 최적화 (모바일에서는 스냅 해제하여 자연스럽게 스크롤) */
         @media (max-width: 768px) {
             html { scroll-snap-type: none; }
@@ -283,7 +302,7 @@
         </div>
     </section>
 
-    <!-- [슬라이드 3] 시그니처 메뉴 -->
+  <!-- [슬라이드 3] 시그니처 메뉴 -->
     <section class="snap-section" id="menu">
         <h2 class="section-title reveal" style="margin-bottom: 40px;">
             SIGNATURE MENU
@@ -292,35 +311,41 @@
             </span>
         </h2>
         
-        <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; width: 100%;">
-            <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-                <div style="width: 100%; height: 220px; background: #eaeaea;"><img src="americano.png" alt="지구 아메리카노" style="width: 100%; height: 100%; object-fit: cover;"></div>
-                <div style="padding: 20px;">
-                    <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">지구 아메리카노</div>
-                    <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#압도적_재방문율</div>
+        <!-- 반응형 CSS가 적용된 메뉴 그리드 -->
+        <div class="reveal sig-menu-grid">
+            
+            <div class="sig-menu-card">
+                <div class="sig-menu-img-wrap"><img src="americano.png" alt="지구 아메리카노"></div>
+                <div class="sig-menu-info">
+                    <div class="sig-menu-name">지구 아메리카노</div>
+                    <div class="sig-menu-tag">#압도적_재방문율</div>
                 </div>
             </div>
-            <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-                <div style="width: 100%; height: 220px; background: #eaeaea;"><img src="signature.png" alt="지구 시그니처 라떼" style="width: 100%; height: 100%; object-fit: cover;"></div>
-                <div style="padding: 20px;">
-                    <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">지구 시그니처 라떼</div>
-                    <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#고수익_핵심메뉴</div>
+
+            <div class="sig-menu-card">
+                <div class="sig-menu-img-wrap"><img src="signature.png" alt="지구 시그니처 라떼"></div>
+                <div class="sig-menu-info">
+                    <div class="sig-menu-name">지구 시그니처 라떼</div>
+                    <div class="sig-menu-tag">#고수익_핵심메뉴</div>
                 </div>
             </div>
-            <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-                <div style="width: 100%; height: 220px; background: #eaeaea;"><img src="strawberry.png" alt="리얼딸기라떼" style="width: 100%; height: 100%; object-fit: cover;"></div>
-                <div style="padding: 20px;">
-                    <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">리얼딸기라떼</div>
-                    <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#비주얼_객단가UP</div>
+
+            <div class="sig-menu-card">
+                <div class="sig-menu-img-wrap"><img src="strawberry.png" alt="리얼딸기라떼"></div>
+                <div class="sig-menu-info">
+                    <div class="sig-menu-name">리얼딸기라떼</div>
+                    <div class="sig-menu-tag">#비주얼_객단가UP</div>
                 </div>
             </div>
-            <div style="background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
-                <div style="width: 100%; height: 220px; background: #eaeaea;"><img src="fa2.png" alt="피스타치오 라떼" style="width: 100%; height: 100%; object-fit: cover;"></div>
-                <div style="padding: 20px;">
-                    <div style="font-size: 18px; font-weight: 800; margin-bottom: 5px;">피스타치오 라떼</div>
-                    <div style="font-size: 14px; color: var(--main-color); font-weight: 600;">#트렌디_신규유입</div>
+
+            <div class="sig-menu-card">
+                <div class="sig-menu-img-wrap"><img src="fa2.png" alt="피스타치오 라떼"></div>
+                <div class="sig-menu-info">
+                    <div class="sig-menu-name">피스타치오 라떼</div>
+                    <div class="sig-menu-tag">#트렌디_신규유입</div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -388,6 +413,67 @@
         </div>
     </section>
 
+    <!-- ★ [신규 슬라이드] 투명한 창업 비용 안내 ★ -->
+    <section class="snap-section" id="cost">
+        <div class="reveal" style="max-width: 900px; margin: 0 auto; width: 100%;">
+            <h2 class="section-title" style="margin-bottom: 15px;">FRANCHISE COST</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 17px; word-break: keep-all;">
+                거품을 쫙 뺀 투명한 원가 공개. <strong style="color: #e74c3c;">선착순 6호점만의 파격적인 창업 혜택</strong>을 눈으로 확인하세요.<br>
+                <span style="font-size: 14px; color: #999;">(기준: 10평 / 단위: 만 원 / VAT 별도)</span>
+            </p>
+
+            <div style="background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #eee;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                    <thead>
+                        <tr style="background: var(--main-color); color: #fff;">
+                            <th style="padding: 18px 10px; font-size: 16px; border-right: 1px solid rgba(255,255,255,0.2);">구분</th>
+                            <th style="padding: 18px 10px; font-size: 16px; border-right: 1px solid rgba(255,255,255,0.2);">타사 평균가</th>
+                            <th style="padding: 18px 10px; font-size: 18px; background: #003d7a; font-weight: 900;">지구커피 6호점 특별가</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 15px; color: var(--text-dark);">
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">가맹비</td>
+                            <td style="padding: 18px 10px; text-decoration: line-through; color: #999; border-right: 1px solid #eee;">500</td>
+                            <td style="padding: 18px 10px; font-weight: 900; color: #e74c3c; background: rgba(231, 76, 60, 0.05);">0 (전액 면제)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">교육비</td>
+                            <td style="padding: 18px 10px; text-decoration: line-through; color: #999; border-right: 1px solid #eee;">300</td>
+                            <td style="padding: 18px 10px; font-weight: 900; color: #e74c3c; background: rgba(231, 76, 60, 0.05);">0 (전액 면제)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">계약이행보증금</td>
+                            <td style="padding: 18px 10px; border-right: 1px solid #eee;">300</td>
+                              <td style="padding: 18px 10px; font-weight: 900; color: #e74c3c; background: rgba(231, 76, 60, 0.05);">0 (전액 면제)</td
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">인테리어</td>
+                            <td style="padding: 18px 10px; border-right: 1px solid #eee;">2,500 </td>
+                            <td style="padding: 18px 10px; font-weight: bold; color: var(--main-color); background: rgba(231, 76, 60, 0.05);">점주 자체 시공 허용 (감리비만 최소화)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee; background: #fbfbfb;">
+                            <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">기기 및 장비</td>
+                            <td style="padding: 18px 10px; color: var(--text-light); text-align: left; padding-left: 20px;" colspan="2">2,500 (커피머신, 그라인더, 제빙기, 냉장고 등 실비)</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee; background: #fbfbfb;">
+                            <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">메뉴보드 (DID모니터 3대)</td>
+                            <td style="padding: 18px 10px; color: var(--text-light); text-align: left; padding-left: 20px;" colspan="2">200 </td>
+                        </tr>
+                        <tr style="background: #fbfbfb;">
+                            <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">가구</td>
+                            <td style="padding: 18px 10px; color: var(--text-light); text-align: left; padding-left: 20px;" colspan="2">200 (고객용 의자 및 테이블, 붙박이 의자)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="text-align: right; font-size: 13px; color: #999; margin-top: 15px;">
+                * 철거, 파사드, 전기증설, 냉난방기, 소방, 테라스 등 별도 공사 비용은 제외된 기본 금액입니다.<br>
+                * 위 금액은 대략적인 예상치로, 현장 상황과 물가에 따라 변동될 수 있습니다.
+            </p>
+        </div>
+    </section>
+    
    <!-- [슬라이드 7] 가맹 절차 & 박람회 -->
     <section class="snap-section" id="process">
         <div class="process-wrap reveal" style="margin-bottom: 0; width: 100%;">
