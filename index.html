@@ -119,24 +119,15 @@
         .benefit-card p { font-size: 15px; color: var(--text-light); line-height: 1.6; word-break: keep-all; }
         .benefit-card p strong { color: var(--main-color); }
 
-       /* 5. 가맹 절차 및 박람회 (PC/모바일 분리) */
+        /* 5. 가맹 절차 및 박람회 (자체 UI 그리드) */
         .process-title { text-align: center; font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 20px; }
         
-        /* ★ 가맹절차 이미지 크기 절대값 고정 (스크롤 시 커지는 현상 완벽 차단) ★ */
-        .process-img-wrap { 
-            max-width: 700px; 
-            height: 250px; /* vh 대신 고정된 px 값 사용 */
-            margin: 0 auto 25px; 
-            border-radius: 16px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            background: #0B1D3A; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-        }
-        /* 사진이 잘리지 않도록 여백(padding)을 살짝 주어 더 깔끔하게 떨어지게 함 */
-        .process-img-wrap img { width: 100%; height: 100%; display: block; object-fit: contain; padding: 15px; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1000px; margin: 0 auto 30px; width: 100%; }
+        .process-step { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s; }
+        .process-step:hover { transform: translateY(-5px); border-color: var(--main-color); }
+        .step-num { font-size: 26px; font-weight: 900; color: var(--main-color); margin-bottom: 10px; opacity: 0.2; font-style: italic; }
+        .process-step h4 { font-size: 17px; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; word-break: keep-all; }
+        .process-step p { font-size: 13px; color: var(--text-light); line-height: 1.5; word-break: keep-all; }
 
         .expo-gallery { display: flex; gap: 15px; margin: 0 auto 20px; max-width: 600px; width: 100%; }
         .expo-item { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
@@ -219,6 +210,13 @@
             .sig-menu-name { font-size: 15px; letter-spacing: -0.5px; }
             .sig-menu-tag { font-size: 12px; }
 
+            /* 가맹절차 2x4 바둑판 배열 */
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .process-step { padding: 20px 10px; }
+            .step-num { font-size: 22px; margin-bottom: 5px; }
+            .process-step h4 { font-size: 15px; margin-bottom: 5px; }
+            .process-step p { font-size: 12px; line-height: 1.4; }
+
             /* 박람회 배너 반응형 (꽉 찬 16:9) */
             .expo-gallery { flex-direction: column; gap: 12px; max-width: 100%; }
             .expo-item img { height: auto; aspect-ratio: 16 / 9; }
@@ -235,8 +233,6 @@
             .inquiry-form { padding: 20px; }
             .floating-cta { width: 85px; height: 85px; font-size: 12px; bottom: 20px; right: 20px; }
         }
-        /* 모바일에서 가맹절차 사진 높이 고정 */
-            .process-img-wrap { height: 160px; }
     </style>
 </head>
 <body>
@@ -482,8 +478,47 @@
             <div class="process-wrap reveal" style="width: 100%;">
                 <h3 class="process-title">지구커피 가맹 절차</h3>
                 
-                <div class="process-img-wrap">
-                    <img src="sangdam2.png" alt="지구커피 가맹 절차 8단계">
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-num">01</div>
+                        <h4>가맹 문의 및 상담</h4>
+                        <p>예상 투자금 및 희망 지역 상권 브리핑</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">02</div>
+                        <h4>상권 분석 및 선정</h4>
+                        <p>데이터 기반 A급 입지 분석 및 점포 확정</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">03</div>
+                        <h4>가맹 계약 체결</h4>
+                        <p>투명한 가맹 계약서 작성 및 최종 승인</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">04</div>
+                        <h4>인테리어 시공</h4>
+                        <p>점주 자체 시공 허용 및 본사 도면 감리</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">05</div>
+                        <h4>교육 및 인허가</h4>
+                        <p>본사 바리스타 교육 및 영업 신고 진행</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">06</div>
+                        <h4>기기 셋팅 및 점검</h4>
+                        <p>커피 머신 및 매장 집기 완벽 셋팅</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">07</div>
+                        <h4>가오픈 및 마케팅</h4>
+                        <p>동선 리허설 및 로컬 타깃 마케팅 실행</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">08</div>
+                        <h4>그랜드 오픈</h4>
+                        <p>정식 오픈 및 본사 전담 SV 사후 관리</p>
+                    </div>
                 </div>
                 
                 <div class="expo-gallery">
