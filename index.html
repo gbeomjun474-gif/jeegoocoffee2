@@ -128,7 +128,7 @@
         .support-box:hover { transform: translateY(-5px); background: #0051A1; }
         .support-box span { font-size: 15px; font-weight: normal; opacity: 0.9; margin-top: 8px; color: #ffd700; }
 
-        /* 6. 컴팩트 창업 비용 테이블 CSS */
+       /* 6. 컴팩트 창업 비용 테이블 CSS */
         .cost-compact-wrap { max-width: 960px; margin: 0 auto; width: 100%; }
         .cost-badge-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 10px; }
         .cost-badge-box { background: #eef4fb; border: 1px solid #d0e1f9; border-radius: 8px; padding: 8px 18px; font-size: 14px; font-weight: 700; color: var(--main-color); }
@@ -141,7 +141,11 @@
         .jeegoo-table th { background: #1d3557; color: #fff; padding: 9px 6px; border: 1px solid #2d4666; font-size: 13px; font-weight: 700; white-space: nowrap; }
         .jeegoo-table th.promo-th { background: #2e7d32; }
         .jeegoo-table td { padding: 7px 6px; border: 1px solid #e2e8f0; color: var(--text-dark); vertical-align: middle; word-break: keep-all; }
-        .jeegoo-table td.left-align { text-align: left; padding-left: 10px; font-size: 12px; color: #555; }
+        
+        /* ★ [핵심] 상세 내용(설명)만 줄바꿈을 허용하고, 나머지 금액/항목 칸은 절대 줄바꿈 금지 ★ */
+        .jeegoo-table td.left-align { text-align: left; padding-left: 10px; font-size: 12px; color: #555; white-space: normal; } 
+        .jeegoo-table td:not(.left-align) { white-space: nowrap; } 
+
         .jeegoo-table td.strikethrough { text-decoration: line-through; color: #94a3b8; }
         .jeegoo-table td.highlight-red { color: #e74c3c; font-weight: 800; background: #fff5f5; }
         .jeegoo-table td.highlight-blue { color: #0051A1; font-weight: 800; }
@@ -581,7 +585,7 @@
                         </tbody>
                     </table>
                 </div>
-                <p style="text-align: right; font-size: 11px; color: #94a3b8; margin-top: 8px;">
+                <p style="text-align: right; font-size: 11px; color: #94a3b8; margin-top: 8px; white-space: nowrap; letter-spacing: -0.5px;">
                     * 철거, 냉난방기, 어닝, 전기증설 등 별도공사는 현장 상황에 따라 실비 적용됩니다.
                 </p>
             </div>
