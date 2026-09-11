@@ -94,7 +94,7 @@
         .feature-square span { font-size: 15px; color: #666; margin-bottom: 12px; word-break: keep-all; font-weight: 700; }
         .feature-square strong { font-size: 21px; color: var(--main-color); word-break: keep-all; line-height: 1.4; font-weight: 900; }
 
-        /* 3. 시그니처 메뉴 CSS (반응형 1:1, 4:3) */
+        /* 3. 시그니처 메뉴 CSS */
         .sig-menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; width: 100%; max-width: 1000px; margin: 0 auto; }
         .sig-menu-card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         .sig-menu-img-wrap { width: 100%; aspect-ratio: 1 / 1; background: #f8f8f8; display: flex; justify-content: center; align-items: center; }
@@ -119,9 +119,30 @@
         .benefit-card p { font-size: 15px; color: var(--text-light); line-height: 1.6; word-break: keep-all; }
         .benefit-card p strong { color: var(--main-color); }
 
-        /* 5. 가맹 절차 및 박람회 (자체 UI 그리드) */
+        /* ★ [신규] 5. 본사 지원 시스템 CSS ★ */
+        .support-system-title { font-size: 32px; font-weight: 900; color: var(--text-dark); margin-bottom: 15px; }
+        .support-system-sub { font-size: 18px; color: var(--text-light); margin-bottom: 30px; font-weight: bold; }
+        .support-massive-badge { display: inline-block; background: #2e7d32; color: #fff; font-size: 36px; font-weight: 900; padding: 15px 40px; border-radius: 50px; margin-bottom: 40px; box-shadow: 0 10px 20px rgba(46,125,50,0.3); }
+        .support-grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .support-box { background: #1d3557; color: #fff; border-radius: 12px; padding: 30px 10px; font-size: 20px; font-weight: 900; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; line-height: 1.4; word-break: keep-all;}
+        .support-box:hover { transform: translateY(-5px); background: #0051A1; }
+        .support-box span { font-size: 15px; font-weight: normal; opacity: 0.9; margin-top: 8px; color: #ffd700; }
+
+        /* ★ [신규] 7. 창업 비용 테이블 CSS ★ */
+        .cost-table-container { width: 100%; overflow-x: auto; overflow-y: auto; max-height: 60vh; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #ddd; }
+        .jeegoo-table { width: 100%; min-width: 800px; border-collapse: collapse; text-align: center; font-size: 14px; background: #fff; }
+        .jeegoo-table th { background: #1d3557; color: #fff; padding: 12px 8px; border: 1px solid #3a506b; font-weight: bold; white-space: nowrap; }
+        .jeegoo-table th.promo-th { background: #2e7d32; }
+        .jeegoo-table td { padding: 12px 8px; border: 1px solid #ddd; color: var(--text-dark); vertical-align: middle; }
+        .jeegoo-table td.left-align { text-align: left; padding-left: 15px; word-break: keep-all;}
+        .jeegoo-table td.strikethrough { text-decoration: line-through; color: #999; }
+        .jeegoo-table td.highlight-red { color: #e74c3c; font-weight: 900; }
+        .jeegoo-table td.highlight-blue { color: #0051A1; font-weight: 900; }
+        .jeegoo-table tr.total-row td { background: #f1f5f9; font-size: 16px; font-weight: 900; border-top: 2px solid #1d3557;}
+        .jeegoo-table tr.total-row td.promo-total { color: #e74c3c; font-size: 18px; }
+
+        /* 8. 가맹 절차 및 박람회 */
         .process-title { text-align: center; font-size: 24px; font-weight: 800; color: var(--text-dark); margin-bottom: 20px; }
-        
         .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1000px; margin: 0 auto 30px; width: 100%; }
         .process-step { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 25px 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: transform 0.3s; }
         .process-step:hover { transform: translateY(-5px); border-color: var(--main-color); }
@@ -134,7 +155,7 @@
         .expo-item img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform 0.5s; }
         .expo-item:hover img { transform: scale(1.03); }
 
-        /* 6. 수익 계산기 */
+        /* 9. 수익 계산기 */
         .calc-section-inner { background-color: var(--bg-cream); padding: 50px 20px; border-radius: 20px; max-width: 1000px; margin: 0 auto; width: 100%; }
         .text-gradient { background: linear-gradient(to right, var(--main-color), #00a8ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 18px; word-break: keep-all; }
@@ -152,7 +173,7 @@
         .result-item.highlight .label { font-size: 18px; font-weight: bold; color: var(--main-color); }
         .result-item.highlight .price-save { font-size: 32px; font-weight: 900; color: var(--main-color); }
 
-        /* 7. 창업문의 폼 */
+        /* 10. 창업문의 폼 */
         .contact-banner { background: var(--bg-gray); padding: 30px; text-align: center; border-radius: 12px; margin-bottom: 30px; }
         .contact-banner h3 { font-size: 20px; color: var(--text-light); margin-bottom: 10px; }
         .contact-banner .phone { font-size: 40px; font-weight: 900; color: var(--main-color); margin-bottom: 10px; }
@@ -203,26 +224,34 @@
             .feature-square span { font-size: 12px; margin-bottom: 8px; }
             .feature-square strong { font-size: 15px; }
 
-            /* 메뉴 반응형 (2x2 바둑판) */
             .sig-menu-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .sig-menu-img-wrap { aspect-ratio: 4 / 3; }
             .sig-menu-info { padding: 15px 10px; }
             .sig-menu-name { font-size: 15px; letter-spacing: -0.5px; }
             .sig-menu-tag { font-size: 12px; }
 
-            /* 가맹절차 2x4 바둑판 배열 */
+            /* 모바일 본사 지원 시스템 */
+            .support-system-title { font-size: 24px; }
+            .support-system-sub { font-size: 15px; margin-bottom: 20px; }
+            .support-massive-badge { font-size: 24px; padding: 10px 20px; margin-bottom: 30px; }
+            .support-grid-6 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .support-box { padding: 20px 10px; font-size: 15px; }
+            .support-box span { font-size: 12px; }
+
+            /* 모바일 창업 비용 테이블 */
+            .cost-table-container { max-height: none; border-radius: 8px; }
+            
+            .benefit-grid { grid-template-columns: 1fr; }
+            .benefit-card { padding: 25px 20px; }
+
             .process-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .process-step { padding: 20px 10px; }
             .step-num { font-size: 22px; margin-bottom: 5px; }
             .process-step h4 { font-size: 15px; margin-bottom: 5px; }
             .process-step p { font-size: 12px; line-height: 1.4; }
 
-            /* 박람회 배너 반응형 (꽉 찬 16:9) */
             .expo-gallery { flex-direction: column; gap: 12px; max-width: 100%; }
             .expo-item img { height: auto; aspect-ratio: 16 / 9; }
-            
-            .benefit-grid { grid-template-columns: 1fr; }
-            .benefit-card { padding: 25px 20px; }
             
             .calc-section-inner { padding: 30px 15px; }
             .calculator-box { padding: 25px 15px; }
@@ -363,22 +392,39 @@
             </div>
         </section>
 
-        <!-- [슬라이드 5] 프랜차이즈 혜택 (원두 지원) -->
+        <!-- ★ [슬라이드 5] 본사 지원 시스템 (새롭게 적용된 디자인) ★ -->
         <section class="snap-section" id="promo">
-            <h2 class="section-title reveal" style="margin-bottom: 30px;">FRANCHISE</h2>
-            <div class="reveal" style="max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, #0051A1, #001f3f); border-radius: 16px; padding: 50px 20px; color: #fff; text-align: center; box-shadow: 0 15px 30px rgba(0,81,161,0.2); width: 100%;">
-                <div style="font-size: 16px; font-weight: bold; color: #ffd700; margin-bottom: 10px;">★ 런칭 기념 초기 가맹점 특별 혜택 ★</div>
-                <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 30px; line-height: 1.4;">선착순 10호점 한정<br>가맹비·교육비 최대 3,000만원 혜택</h3>
+            <div class="reveal" style="text-align: center; max-width: 1000px; margin: 0 auto; width: 100%;">
+                <h2 class="support-system-title">본사 지원 시스템</h2>
+                <p class="support-system-sub">혼자 운영하는 카페가 아닌, 본사와 함께하는 프랜차이즈</p>
                 
-                <div style="background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); display: inline-block; padding: 25px 40px; border-radius: 12px; margin-bottom: 35px; max-width: 100%;">
-                    <span style="font-size: 24px; font-weight: 900; color: #ffd700; word-break: keep-all;">🎁 매월 원두 10kg × 6개월 무상 지원!</span>
-                    <p style="font-size: 16px; margin-top: 12px; color: #fff; opacity: 0.9; word-break: keep-all;">오픈 초기 6개월, 원두 원가 걱정 없이 온전히 순수익으로 가져가세요.</p>
-                </div>
+                <div class="support-massive-badge">약 3,000만원 파격지원</div>
 
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <div style="background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 15px;">✔️ 인테리어 자체 시공 허용</div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 15px;">✔️ 1km 압도적 상권 독점 보장</div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 50px; font-weight: bold; font-size: 15px;">✔️ 오픈 첫 달 마케팅 전액 지원</div>
+                <div class="support-grid-6">
+                    <div class="support-box">
+                        가맹비·교육비<br>면제
+                        <span>(800만원)</span>
+                    </div>
+                    <div class="support-box">
+                        계약이행보증금<br>면제
+                        <span>(300만원)</span>
+                    </div>
+                    <div class="support-box">
+                        광고·디자인<br>최대 지원
+                        <span>(300만원)</span>
+                    </div>
+                    <div class="support-box">
+                        인테리어·장비<br>지원
+                        <span>(최대 1,000만원)</span>
+                    </div>
+                    <div class="support-box">
+                        상생 지원금<br>지원
+                        <span>(월 최대 150만원)</span>
+                    </div>
+                    <div class="support-box">
+                        원두 10KG<br>지원
+                        <span>(최대 6개월 / 약 150만원)</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -412,64 +458,129 @@
             </div>
         </section>
 
-        <!-- [슬라이드 7] 투명한 창업 비용 안내 -->
+        <!-- ★ [슬라이드 7] 상세 창업 비용 (새롭게 적용된 테이블) ★ -->
         <section class="snap-section" id="cost">
-            <div class="reveal" style="max-width: 900px; margin: 0 auto; width: 100%;">
-                <h2 class="section-title" style="margin-bottom: 15px;">FRANCHISE COST</h2>
-                <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 17px; word-break: keep-all;">
-                    거품을 쫙 뺀 투명한 원가 공개. <strong style="color: #e74c3c;">선착순 10호점만의 파격적인 창업 혜택</strong>을 눈으로 확인하세요.<br>
-                    <span style="font-size: 14px; color: #999;">(기준: 10평 / 단위: 만 원 / VAT 별도)</span>
-                </p>
+            <div class="reveal" style="max-width: 1000px; margin: 0 auto; width: 100%;">
+                <h2 class="section-title" style="margin-bottom: 20px;">지구커피 창업 비용</h2>
 
-                <div style="background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #eee;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                <div class="cost-table-container">
+                    <table class="jeegoo-table">
                         <thead>
-                            <tr style="background: var(--main-color); color: #fff;">
-                                <th style="padding: 18px 10px; font-size: 16px; border-right: 1px solid rgba(255,255,255,0.2);">구분</th>
-                                <th style="padding: 18px 10px; font-size: 16px; border-right: 1px solid rgba(255,255,255,0.2);">타사 평균가</th>
-                                <th style="padding: 18px 10px; font-size: 18px; background: #003d7a; font-weight: 900;">지구커피 10호점 특별가</th>
+                            <tr>
+                                <th rowspan="2">구분</th>
+                                <th rowspan="2">항목</th>
+                                <th rowspan="2" style="min-width: 250px;">내용</th>
+                                <th colspan="2">10평 가맹비용 (VAT별도)</th>
+                                <th colspan="2">20평 가맹비용 (VAT별도)</th>
+                            </tr>
+                            <tr>
+                                <th>기존</th>
+                                <th class="promo-th">프로모션</th>
+                                <th>기존</th>
+                                <th class="promo-th">프로모션</th>
                             </tr>
                         </thead>
-                        <tbody style="font-size: 15px; color: var(--text-dark);">
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">가맹비</td>
-                                <td style="padding: 18px 10px; text-decoration: line-through; color: #999; border-right: 1px solid #eee;">500</td>
-                                <td style="padding: 18px 10px; font-weight: 900; color: #e74c3c; background: rgba(231, 76, 60, 0.05);">0 (전액 면제)</td>
+                        <tbody>
+                            <tr>
+                                <td rowspan="3" style="font-weight: bold;">가맹계약</td>
+                                <td>가맹비</td>
+                                <td class="left-align">상호사용권, 영업권 보장, 현장경험 피드백 제공</td>
+                                <td class="strikethrough">500만원</td>
+                                <td class="highlight-red">박람회 면제</td>
+                                <td class="strikethrough">500만원</td>
+                                <td class="highlight-red">박람회 면제</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">교육비</td>
-                                <td style="padding: 18px 10px; text-decoration: line-through; color: #999; border-right: 1px solid #eee;">300</td>
-                                <td style="padding: 18px 10px; font-weight: 900; color: #e74c3c; background: rgba(231, 76, 60, 0.05);">0 (전액 면제)</td>
+                            <tr>
+                                <td>교육비</td>
+                                <td class="left-align">서비스, 매장운영, 레시피, 오픈지원, 교육등</td>
+                                <td class="strikethrough">300만원</td>
+                                <td class="highlight-red">박람회 면제</td>
+                                <td class="strikethrough">300만원</td>
+                                <td class="highlight-red">박람회 면제</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">보증금</td>
-                                <td style="padding: 18px 10px; border-right: 1px solid #eee;">200</td>
-                                <td style="padding: 18px 10px; background: rgba(231, 76, 60, 0.05);">200 (계약 종료 시 100% 반환)</td>
+                            <tr>
+                                <td>계약이행<br>보증금</td>
+                                <td class="left-align">계약이행 보증금 예치</td>
+                                <td class="strikethrough">300만원</td>
+                                <td class="highlight-red">박람회 면제</td>
+                                <td class="strikethrough">300만원</td>
+                                <td class="highlight-red">박람회 면제</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">인테리어</td>
-                                <td style="padding: 18px 10px; border-right: 1px solid #eee;">2,000 내외</td>
-                                <td style="padding: 18px 10px; font-weight: bold; color: var(--main-color); background: rgba(231, 76, 60, 0.05);">점주 자체 시공 허용 (감리비만 최소화)</td>
+                            <tr>
+                                <td rowspan="2" style="font-weight: bold;">인테리어</td>
+                                <td>필수공사</td>
+                                <td class="left-align">필수공사, 목공사, 도장, 타일, 조명, 전기, 설비등</td>
+                                <td>3,000만원</td>
+                                <td class="highlight-red">2,500만원</td>
+                                <td>4,500만원</td>
+                                <td class="highlight-red">4,000만원</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #eee; background: #fbfbfb;">
-                                <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">기기 및 장비</td>
-                                <td style="padding: 18px 10px; color: var(--text-light); text-align: left; padding-left: 20px;" colspan="2">2,500 내외 (커피머신, 그라인더, 제빙기, 냉장고 등 실비)</td>
+                            <tr>
+                                <td>별도공사</td>
+                                <td class="left-align">철거, 어닝, 간판, 전기증설, 소방시설, 냉난방기,<br>음향시설, 외부공사</td>
+                                <td colspan="4" style="background: #f9f9f9; color: #666; text-align: center;">현장 상황에 따라 변동</td>
                             </tr>
-                            <tr style="border-bottom: 1px solid #eee; background: #fbfbfb;">
-                                <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">간판 / 사인물</td>
-                                <td style="padding: 18px 10px; color: var(--text-light); text-align: left; padding-left: 20px;" colspan="2">400 내외 (매장 실측 및 현장 상황에 따라 변동)</td>
+                            <tr>
+                                <td rowspan="3" style="font-weight: bold;">기기 및 집기</td>
+                                <td>기기장비</td>
+                                <td class="left-align">커피머신, 그라인더 2대, 블렌더 2대, 제빙기,<br>온수 디스펜서 등</td>
+                                <td>3,000만원</td>
+                                <td class="highlight-red">2,500만원</td>
+                                <td>3,000만원</td>
+                                <td class="highlight-red">2,500만원</td>
                             </tr>
-                            <tr style="background: #fbfbfb;">
-                                <td style="padding: 18px 10px; font-weight: bold; border-right: 1px solid #eee;">초도물품</td>
-                                <td style="padding: 18px 10px; color: var(--text-light); text-align: left; padding-left: 20px;" colspan="2">200 내외 (원두, 부자재, 포장 용기 등 초기 셋팅)</td>
+                            <tr>
+                                <td>메뉴보드</td>
+                                <td class="left-align">DID 모니터 3대</td>
+                                <td>200만원</td>
+                                <td>200만원</td>
+                                <td>200만원</td>
+                                <td>200만원</td>
+                            </tr>
+                            <tr>
+                                <td>가구</td>
+                                <td class="left-align">고객용 의자 및 테이블, 붙박이 의자</td>
+                                <td>200만원</td>
+                                <td>200만원</td>
+                                <td>300만원</td>
+                                <td>300만원</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">마케팅</td>
+                                <td>광고</td>
+                                <td class="left-align">온라인 마케팅 / SNS / 오픈 홍보 지원</td>
+                                <td class="strikethrough">300만원</td>
+                                <td class="highlight-red">박람회 면제</td>
+                                <td class="strikethrough">300만원</td>
+                                <td class="highlight-red">박람회 면제</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" style="font-weight: bold;">지원 항목</td>
+                                <td>지원금</td>
+                                <td class="left-align">상생 지원금 최대 6개월 지원 (수익보장)</td>
+                                <td></td>
+                                <td class="highlight-blue">+900만원</td>
+                                <td></td>
+                                <td class="highlight-blue">+900만원</td>
+                            </tr>
+                            <tr>
+                                <td>원두</td>
+                                <td class="left-align">매달 10KG 최대 6개월 지원</td>
+                                <td></td>
+                                <td class="highlight-blue">+150만원</td>
+                                <td></td>
+                                <td class="highlight-blue">+150만원</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="3">총 합계</td>
+                                <td>7,800만원</td>
+                                <td class="promo-total">↓ 4,350만원</td>
+                                <td>9,400만원</td>
+                                <td class="promo-total">↓ 5,950만원</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p style="text-align: right; font-size: 13px; color: #999; margin-top: 15px;">
-                    * 철거, 파사드, 전기증설, 냉난방기, 소방, 테라스 등 별도 공사 비용은 제외된 기본 금액입니다.<br>
-                    * 위 금액은 대략적인 예상치로, 현장 상황과 물가에 따라 변동될 수 있습니다.
-                </p>
             </div>
         </section>
 
@@ -525,7 +636,7 @@
                     <div class="expo-item"><img src="bb.png" alt="창업박람회 1"></div>
                     <div class="expo-item"><img src="bb2.jpg" alt="창업박람회 2"></div>
                 </div>
-               <p style="text-align: center; font-size: 15px; color: var(--text-dark); font-weight: bold; margin-top: 15px; line-height: 1.6;">
+                <p style="text-align: center; font-size: 15px; color: var(--text-dark); font-weight: bold; margin-top: 15px; line-height: 1.6;">
                     <span style="color: var(--main-color); font-size: 17px;">2026 프랜차이즈 창업박람회 성료!</span><br>
                     예비 점주님들의 뜨거운 성원에 감사드립니다.
                 </p>
