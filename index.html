@@ -138,7 +138,6 @@
 
         .cost-table-container { width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid #ddd; box-shadow: 0 4px 15px rgba(0,0,0,0.04); background: #fff; }
         .jeegoo-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; }
-       /* 수정된 코드 */
         .jeegoo-table th { 
             background: #1d3557; 
             color: #fff; 
@@ -146,7 +145,7 @@
             border: 1px solid #2d4666; 
             font-size: 13px; 
             font-weight: 700; 
-            white-space: nowrap !important; /* ★ 제목 글자 절대 줄바꿈 금지 ★ */
+            white-space: nowrap !important;
             word-break: keep-all;
         }
         .jeegoo-table th.promo-th { background: #2e7d32; }
@@ -180,8 +179,8 @@
         .brand-gallery-item { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.06); background: #fff; border: 1px solid #eee; display: flex; flex-direction: column; transition: transform 0.3s; }
         .brand-gallery-item:hover { transform: translateY(-5px); }
         
-        .brand-gallery-img-box { width: 100%; height: 210px; background: #f8f9fa; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        .brand-gallery-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+        .brand-gallery-img-box { width: 100%; height: 230px; background: #f8f9fa; display: flex; justify-content: center; align-items: center; overflow: hidden; padding: 10px; }
+        .brand-gallery-img-box img { width: 100%; height: 100%; object-fit: contain !important; display: block; transition: transform 0.4s ease; }
         .brand-gallery-item:hover img { transform: scale(1.05); }
 
         .brand-gallery-caption { padding: 14px 10px; text-align: center; background: #fff; border-top: 1px solid #f0f0f0; }
@@ -239,7 +238,7 @@
         @keyframes pulseAnim { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
         
         /* ============================================== */
-        /* ★ 모바일 최적화 반응형 CSS (사진 확대 적용) ★ */
+        /* ★ 모바일 최적화 반응형 CSS (오류 완전 제거) ★ */
         /* ============================================== */
         @media (max-width: 768px) {
             html { scroll-snap-type: none; }
@@ -294,7 +293,7 @@
             .process-step h4 { font-size: 15px; margin-bottom: 5px; }
             .process-step p { font-size: 12px; line-height: 1.4; }
 
-            /* ★ [핵심] 모바일에서 사진을 큼직하게 넘겨보는 카드형 스와이프 UI ★ */
+            /* 모바일 카드형 스와이프 UI */
             .brand-gallery-wrap { padding: 0; }
             .brand-gallery-title { font-size: 19px; }
             .brand-gallery-sub { font-size: 13px; margin-bottom: 12px; }
@@ -315,42 +314,28 @@
                 padding-right: 5px;
             }
 
-          /* 교체할 코드 */
             .brand-gallery-item {
-            flex: 0 0 85%; /* 화면의 85% 너비로 시원하게 설정 */
-            scroll-snap-align: center;
-            border-radius: 16px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+                flex: 0 0 85%;
+                scroll-snap-align: center;
+                border-radius: 16px;
+                box-shadow: 0 6px 18px rgba(0,0,0,0.08);
             }
 
-        /* 세로 포스터가 충분히 크게 보일 수 있도록 높이 280px로 확대 */
             .brand-gallery-img-box {
-            height: 280px;      /* 높이를 250px -> 280px로 늘림 */
-            padding: 10px;      /* 사진 둘레 안쪽 여백 */
-            background: #f4f6f9; /* 모바일용 연한 배경색 */
+                height: 290px; /* 모바일에서 포스터 글자가 아주 잘 보이도록 높이 확대 */
+                padding: 10px;
+                background: #f4f6f9;
             }
 
-           CSS
-            /* 1) 사진을 담는 네모 틀 */
-            .brand-gallery-img-box { 
-            width: 100%; 
-            height: 230px;            /* PC 기준 높이 */
-            background: #f8f9fa;       /* 사진 주변에 생기는 여백을 채워줄 깔끔한 연회색 */
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            overflow: hidden; 
-            padding: 10px;            /* 포스터 가장자리가 답답하지 않게 안쪽 여백 추가 */
-        }
-
-            /* 2) 실제 이미지 태그 (여기가 핵심!) */
-            .brand-gallery-img-box img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain;      /* ★ cover 대신 contain을 써서 원본 전체가 다 보이게 함 ★ */
-            display: block; 
-            transition: transform 0.4s ease; 
-        }
+            .brand-gallery-caption {
+                padding: 15px 12px;
+            }
+            .brand-gallery-caption strong {
+                font-size: 16px;
+            }
+            .brand-gallery-caption span {
+                font-size: 13px;
+            }
             
             .calc-section-inner { padding: 30px 15px; }
             .calculator-box { padding: 25px 15px; }
@@ -711,7 +696,7 @@
                     </div>
                 </div>
                 
-                <!-- 브랜드 공신력 갤러리 (모바일 가로 스와이프로 큼직하게 노출) -->
+                <!-- 브랜드 공신력 갤러리 (잘림 방지 인라인 스타일 적용) -->
                 <div class="brand-gallery-wrap">
                     <div class="brand-gallery-title">지구커피 공식 브랜드 실적 & MD</div>
                     <p class="brand-gallery-sub">공공기관 선정 관광굿즈 및 대형 박람회로 입증된 브랜드 파워</p>
@@ -721,7 +706,7 @@
                     <div class="brand-gallery-grid">
                         <div class="brand-gallery-item">
                             <div class="brand-gallery-img-box">
-                                <img src="bater2.jpg" alt="서울 안테나숍 전시 팝업스토어 선정 포스터">
+                                <img src="bater2.jpg" alt="서울 안테나숍 전시 팝업스토어 선정 포스터" style="object-fit: contain !important; width: 100% !important; height: 100% !important;">
                             </div>
                             <div class="brand-gallery-caption">
                                 <strong>서울 안테나숍 팝업 전시</strong>
@@ -730,7 +715,7 @@
                         </div>
                         <div class="brand-gallery-item">
                             <div class="brand-gallery-img-box">
-                                <img src="bater.png" alt="지구커피 공식 에코 머그 및 캐릭터 굿즈">
+                                <img src="bater.png" alt="지구커피 공식 에코 머그 및 캐릭터 굿즈" style="object-fit: contain !important; width: 100% !important; height: 100% !important;">
                             </div>
                             <div class="brand-gallery-caption">
                                 <strong>공식 캐릭터 MD 라인업</strong>
@@ -739,7 +724,7 @@
                         </div>
                         <div class="brand-gallery-item">
                             <div class="brand-gallery-img-box">
-                                <img src="bb.png" alt="2026 창업박람회 부스 전경">
+                                <img src="bb.png" alt="2026 창업박람회 부스 전경" style="object-fit: cover; width: 100%; height: 100%;">
                             </div>
                             <div class="brand-gallery-caption">
                                 <strong>2026 창업박람회 성료</strong>
@@ -748,10 +733,10 @@
                         </div>
                         <div class="brand-gallery-item">
                             <div class="brand-gallery-img-box">
-                                <img src="bb2.jpg" alt="창업박람회 1:1 창업상담">
+                                <img src="bb2.jpg" alt="창업박람회 1:1 창업상담" style="object-fit: cover; width: 100%; height: 100%;">
                             </div>
                             <div class="brand-gallery-caption">
-                                <strong>2026년 창업박람회</strong></strong>
+                                <strong>2026년 창업박람회</strong>
                                 <span>지구커피 임직원 단체사진</span>
                             </div>
                         </div>
